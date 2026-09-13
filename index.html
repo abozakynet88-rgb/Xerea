@@ -99,6 +99,11 @@
   }
   .g-btn:hover{border-color:#b9b2a0;}
   .g-btn svg{width:18px;height:18px;}
+  header.site .g-btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.35);color:#fff;}
+  header.site .g-btn:hover{background:rgba(255,255,255,.18);border-color:#8fb9be;color:#fff;}
+  header.site .user-chip{background:#102a43;border-color:#3f7c80;color:#fff;}
+  header.site .user-chip .btn-outline{background:#8fb9be;color:#18324a;border-color:#8fb9be;}
+  header.site .user-chip .btn-outline:hover{background:#d8e4e3;color:#18324a;}
 
   main{max-width:1120px;margin:0 auto;padding:28px 20px 80px;}
   .view{display:none;}
@@ -866,22 +871,22 @@
   .category-orb:hover .category-orb-image{border-color:#fff;outline-color:#28565c;}
   .floating-whatsapp{box-shadow:0 3px 10px rgba(24,50,74,.25);}
   /* صور GitHub المرفوعة في جذر المستودع */
-  .brand:before{background-image:url('xerea-logo.png.png');}
-  .offer-red{background-image:linear-gradient(90deg,rgba(24,50,74,.94),rgba(63,124,128,.42)),url('assetscategory-smarthome.jpg.webp');}
-  .offer-dark{background:linear-gradient(135deg,rgba(24,50,74,.94),rgba(63,124,128,.45)),url('category-home.jpg.png') center/cover;}
-  #view-store>.hero-slider{background-image:url('assetscategory-smarthome.jpg.webp');}
-  .category-kitchen{background-image:url('assetscategory-all.avif.avif');}
-  .category-kids{background-image:url('assetscategory-kids.jpg.webp');}
-  .category-home{background-image:url('category-home.jpg.png');}
-  .category-smart{background-image:url('assetscategory-tracking.jpg.png');}
-  .category-car{background-image:url('assetscategory-car.jpg.jpg');}
-  .category-appliances{background-image:url('assetscategory-smarthome.jpg.webp');}
-  #view-store .need-card:nth-child(1) .need-ic{background-image:url('assetscategory-all.avif.avif');}
-  #view-store .need-card:nth-child(2) .need-ic{background-image:url('assetscategory-kids.jpg');}
-  #view-store .need-card:nth-child(3) .need-ic{background-image:url('category-home.jpg.png');}
-  #view-store .need-card:nth-child(4) .need-ic{background-image:url('assetscategory-tracking.jpg.png');}
-  #view-store .need-card:nth-child(5) .need-ic{background-image:url('assetscategory-car.jpg.jpg');}
-  #view-store .need-card:nth-child(6) .need-ic{background-image:url('assetscategory-smarthome.jpg.webp');}
+  .brand:before{background-image:url('https://abozakynet88-rgb.github.io/Zaro/xerea-logo.png.png');}
+  .offer-red{background-image:linear-gradient(90deg,rgba(24,50,74,.94),rgba(63,124,128,.42)),url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-smarthome.jpg.webp');}
+  .offer-dark{background:linear-gradient(135deg,rgba(24,50,74,.94),rgba(63,124,128,.45)),url('https://abozakynet88-rgb.github.io/Zaro/category-home.jpg.png') center/cover;}
+  #view-store>.hero-slider{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-smarthome.jpg.webp');}
+  .category-kitchen{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-all.avif.avif');}
+  .category-kids{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-kids.jpg.webp');}
+  .category-home{background-image:url('https://abozakynet88-rgb.github.io/Zaro/category-home.jpg.png');}
+  .category-smart{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-tracking.jpg.png');}
+  .category-car{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-car.jpg.jpg');}
+  .category-appliances{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-smarthome.jpg.webp');}
+  #view-store .need-card:nth-child(1) .need-ic{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-all.avif.avif');}
+  #view-store .need-card:nth-child(2) .need-ic{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-kids.jpg');}
+  #view-store .need-card:nth-child(3) .need-ic{background-image:url('https://abozakynet88-rgb.github.io/Zaro/category-home.jpg.png');}
+  #view-store .need-card:nth-child(4) .need-ic{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-tracking.jpg.png');}
+  #view-store .need-card:nth-child(5) .need-ic{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-car.jpg.jpg');}
+  #view-store .need-card:nth-child(6) .need-ic{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-smarthome.jpg.webp');}
 </style>
 </head>
 <body>
@@ -3642,7 +3647,6 @@ function listenShippingCompanies(){
   if(unsubShippingCompanies) unsubShippingCompanies();
   unsubShippingCompanies = db.collection('shippingCompanies').orderBy('name').onSnapshot(snap=>{
     shippingCompaniesCache = snap.docs.map(d=>({id:d.id,...d.data()}));
-    renderAccountsCompanyFilter();
     renderAccountsTab();
     renderTeamAllOrders();
     renderAdminOrders();
