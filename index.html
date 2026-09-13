@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZARO — متجر إلكتروني</title>
+<title>XEREA | إكسيرا — Smart Things. Simple Life.</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1b1613">
+<meta name="theme-color" content="#0b0f16">
 <link rel="apple-touch-icon" href="zaro-logo.png">
 <link rel="icon" href="zaro-logo.png">
 
 <!-- Open Graph (مؤقت — صورة عامة لحد ما يتعمل حل ديناميكي عبر Cloud Function يعرض صورة كل منتج وقت المشاركة) -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="ZARO — متجر إلكتروني">
+<meta property="og:title" content="XEREA | إكسيرا — Smart Things. Simple Life.">
 <meta property="og:description" content="تسوق أحدث المنتجات مع توصيل لمعظم المحافظات والدفع عند الاستلام">
 <meta property="og:image" content="zaro-share-banner.jpg">
 
@@ -27,18 +27,18 @@
 
 <style>
   :root{
-    --ink:#1b1613;          /* أسود فحمي دافئ — خلفية الموقع الأساسية */
-    --ink-2:#241d19;        /* أفتح شوية — كروت وبطاقات */
-    --parchment:#1b1613;    /* خلفية الصفحة (نفس الفحمي) */
-    --paper:#221b17;        /* خلفية الكروت/النوافذ */
-    --copper:#c9a24b;       /* ذهبي مطفي — الأسعار وأزرار الفعل */
-    --copper-dark:#9c7d34;
-    --emerald:#e8cfc2;      /* بيج وردي — نص وعناصر ثانوية عالية التباين */
-    --emerald-light:#f7e9e0;
-    --rose:#d1495b;         /* تنبيه/خطأ */
-    --line:#3a2f29;
-    --line-dark:#3a2f29;
-    --ink-text:#ece2da;
+    --ink:#0b0f16;          /* أسود كحلي غامق — خلفية الموقع الأساسية */
+    --ink-2:#131a24;        /* أفتح شوية — كروت وبطاقات */
+    --parchment:#0b0f16;    /* خلفية الصفحة (نفس الكحلي) */
+    --paper:#10161f;        /* خلفية الكروت/النوافذ */
+    --copper:#2f8bf0;       /* أزرق كهربائي — اللون المميز لـ XEREA */
+    --copper-dark:#1f66b8;
+    --emerald:#dce8f7;      /* أبيض مزرق فاتح — نص وعناصر ثانوية عالية التباين */
+    --emerald-light:#ffffff;
+    --rose:#e0463a;         /* تنبيه/خطأ */
+    --line:#232f3d;
+    --line-dark:#232f3d;
+    --ink-text:#eef2f7;
     font-family:'Tajawal',sans-serif;
   }
   *{box-sizing:border-box;}
@@ -47,7 +47,7 @@
   .mono{font-variant-numeric:tabular-nums;}
   a{color:inherit;}
   button{font-family:inherit;cursor:pointer;}
-  ::selection{background:var(--copper);color:#0a0a0a;}
+  ::selection{background:var(--copper);color:#ffffff;}
 
   /* ---------- شريط علوي ---------- */
   header.site{
@@ -63,10 +63,10 @@
     background:none;border:none;padding:8px 14px;border-radius:8px;font-size:14.5px;color:var(--ink-text);white-space:nowrap;
   }
   nav.links button:hover{background:rgba(255,255,255,.07);}
-  nav.links button.active{background:var(--copper);color:#0a0a0a;font-weight:700;}
+  nav.links button.active{background:var(--copper);color:#ffffff;font-weight:700;}
   .cart-btn{position:relative;}
   .cart-badge{
-    position:absolute;top:-4px;left:-6px;background:var(--copper);color:#0a0a0a;border-radius:99px;
+    position:absolute;top:-4px;left:-6px;background:var(--copper);color:#ffffff;border-radius:99px;
     font-size:11px;min-width:18px;height:18px;display:flex;align-items:center;justify-content:center;padding:0 4px;font-weight:700;
   }
   .user-chip{display:flex;align-items:center;gap:8px;font-size:13.5px;background:var(--ink-2);padding:5px 10px 5px 5px;border-radius:99px;border:1px solid var(--line);}
@@ -104,7 +104,7 @@
     padding:54px 26px 20px;
     background:linear-gradient(to top, rgba(0,0,0,.88) 10%, rgba(0,0,0,.35) 60%, transparent);
   }
-  .hero-slide-caption .tag{display:inline-block;background:var(--copper);color:#0a0a0a;font-size:11px;font-weight:800;padding:3px 10px;border-radius:99px;margin-bottom:8px;}
+  .hero-slide-caption .tag{display:inline-block;background:var(--copper);color:#ffffff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:99px;margin-bottom:8px;}
   .hero-slide-caption h1{font-size:21px;line-height:1.3;margin:0 0 8px;color:#fff;}
   .hero-slide-caption .price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:12px;}
   .hero-slide-caption .price-row .price{font-size:19px;}
@@ -131,9 +131,20 @@
   .cat-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
   .cat-chip{background:none;border:1px solid var(--line);color:var(--ink-text);padding:7px 15px;border-radius:99px;font-size:13px;}
   .cat-chip:hover{background:rgba(255,255,255,.06);}
-  .cat-chip.active{background:var(--copper);color:#0a0a0a;border-color:var(--copper);font-weight:700;}
+  .cat-chip.active{background:var(--copper);color:#ffffff;border-color:var(--copper);font-weight:700;}
 
-  /* فلتر النوع الاحترافي (رجالي/حريمي/أطفال) أعلى المتجر */
+  /* فلتر النوع الاحترافي (تصنيفات XEREA) أعلى المتجر */
+  /* ---------- "إنت محتاج إيه؟" — اختيار حسب الاحتياج بدل تصنيفات تقليدية ---------- */
+  .need-picker{margin:22px 0 26px;}
+  .need-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;}
+  .need-card{
+    display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
+    background:var(--ink-2);border:1px solid var(--line);border-radius:14px;padding:18px 10px;
+    color:var(--ink-text);font-size:13px;font-weight:700;line-height:1.4;
+  }
+  .need-card:hover{border-color:var(--copper);background:rgba(47,139,240,.08);}
+  .need-card .need-ic{font-size:28px;}
+
   .gender-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
   .gender-tab{
     flex:1;min-width:90px;text-align:center;background:var(--ink-2);border:1px solid var(--line-dark);
@@ -141,7 +152,7 @@
     display:flex;align-items:center;justify-content:center;gap:6px;transition:.15s;
   }
   .gender-tab:hover{border-color:var(--copper);color:#fff;}
-  .gender-tab.active{background:var(--copper);color:#0a0a0a;border-color:var(--copper);}
+  .gender-tab.active{background:var(--copper);color:#ffffff;border-color:var(--copper);}
   .gender-tab .ic{font-size:15px;}
 
   .grid-products{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;}
@@ -162,11 +173,11 @@
   .price{font-family:'Almarai',sans-serif;font-weight:800;color:var(--copper);font-size:16px;}
   .stock-tag{font-size:11px;color:var(--rose);}
   .btn{
-    border:none;border-radius:9px;padding:9px 14px;font-size:13.5px;font-weight:700;
+    border:1px solid transparent;border-radius:9px;padding:9px 14px;font-size:13.5px;font-weight:700;
   }
-  .btn-copper{background:var(--copper);color:#0a0a0a;}
+  .btn-copper{background:var(--copper);color:#ffffff;border-color:var(--copper-dark);}
   .btn-copper:hover{background:var(--copper-dark);}
-  .btn-emerald{background:var(--emerald-light);color:#1b1613;}
+  .btn-emerald{background:var(--emerald-light);color:#0b0f16;border-color:var(--line);}
   .btn-emerald:hover{background:var(--emerald);}
   .btn-outline{background:none;border:1px solid var(--line);color:var(--ink-text);}
   .btn-outline:hover{background:rgba(255,255,255,.06);}
@@ -266,7 +277,7 @@
   .supplier-card .phone{font-size:12px;color:#8a8a8a;margin-bottom:10px;}
   .wh-subtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
   .wh-subtabs button{background:var(--ink-2);border:1px solid var(--line-dark);color:#c8c8c8;padding:8px 14px;border-radius:8px;font-size:12.5px;}
-  .wh-subtabs button.active{background:var(--copper);color:#0a0a0a;border-color:var(--copper);font-weight:700;}
+  .wh-subtabs button.active{background:var(--copper);color:#ffffff;border-color:var(--copper);font-weight:700;}
   .ledger-card{background:var(--ink-2);border:1px solid var(--line-dark);border-radius:12px;padding:16px;text-align:center;flex:1;min-width:150px;}
   .ledger-card .lbl{color:#8a8a8a;font-size:12px;margin-bottom:6px;}
   .ledger-card .val{font-size:22px;font-weight:800;}
@@ -286,7 +297,7 @@
 
   .stepper{display:flex;gap:4px;margin:10px 0 4px;flex-wrap:wrap;}
   .step-dot{flex:1;min-width:60px;text-align:center;font-size:10.5px;padding:6px 4px;border-radius:6px;background:#232323;color:#7a7a7a;}
-  .step-dot.on{background:var(--copper);color:#0a0a0a;font-weight:700;}
+  .step-dot.on{background:var(--copper);color:#ffffff;font-weight:700;}
   .step-dot.stop-dot{background:var(--rose);color:#fff;}
 
   /* ---------- بانر تثبيت التطبيق ---------- */
@@ -325,7 +336,7 @@
   .new-slide{flex:0 0 190px;background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;}
   .new-slide .thumb{aspect-ratio:3/4;background:linear-gradient(135deg,#232323,#121212);overflow:hidden;position:relative;}
   .new-slide .thumb img{width:100%;height:100%;object-fit:contain;padding:5px;box-sizing:border-box;}
-  .new-slide .badge-new{position:absolute;top:8px;right:8px;background:var(--copper);color:#0a0a0a;font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;}
+  .new-slide .badge-new{position:absolute;top:8px;right:8px;background:var(--copper);color:#ffffff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;}
   .new-slide .body{padding:10px 12px 12px;}
   .new-slide h4{margin:0 0 4px;font-size:13.5px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .new-slide .price{font-size:13.5px;}
@@ -355,7 +366,7 @@
   .qty-stepper input::-webkit-outer-spin-button,.qty-stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
   .size-mode-toggle{display:flex;gap:8px;margin-bottom:12px;}
   .size-mode-toggle button{flex:1;background:var(--ink);border:1px solid var(--line-dark);color:#9a9a9a;padding:8px;border-radius:8px;font-size:12.5px;}
-  .size-mode-toggle button.on{background:var(--copper);color:#0a0a0a;font-weight:700;border-color:var(--copper);}
+  .size-mode-toggle button.on{background:var(--copper);color:#ffffff;font-weight:700;border-color:var(--copper);}
 
   .type-badge.new{background:rgba(63,140,255,.18);color:#8fb8ff;}
   .type-badge.previous{background:rgba(160,160,160,.18);color:#cfcfcf;}
@@ -420,7 +431,7 @@ const FIREBASE_CONFIG = {
 <header class="site">
   <div class="nav-wrap">
     <div style="display:flex;align-items:center;gap:14px">
-      <div class="brand" onclick="go('store')" style="cursor:pointer"><img src="zaro-logo.png" alt="ZARO"></div>
+      <div class="brand" onclick="go('store')" style="cursor:pointer">XEREA<span style="color:var(--copper);margin-right:2px">.</span></div>
       <div style="display:flex;gap:8px;align-items:center">
         <a href="https://wa.me/201152155717" target="_blank" rel="noopener" title="تواصل واتساب" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:#25D366;color:#fff">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.05c-.24.68-1.39 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3s.74-2.12 1-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.35 1.46.29.15.46.13.63-.08.17-.21.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.13.07.72-.17 1.4z"/></svg>
@@ -446,7 +457,7 @@ const FIREBASE_CONFIG = {
 </header>
 
 <div class="install-banner" id="installBanner">
-  <span>📲 ثبّت تطبيق ZARO على جهازك عشان تجربة أسرع وإشعارات فورية.</span>
+  <span>📲 ثبّت تطبيق XEREA على جهازك عشان تجربة أسرع وإشعارات فورية.</span>
   <div class="ib-actions">
     <button class="btn btn-copper btn-sm" onclick="installApp()">تثبيت التطبيق</button>
     <button class="ib-close" onclick="dismissInstallBanner()">×</button>
@@ -466,11 +477,35 @@ const FIREBASE_CONFIG = {
       <div class="hero-dots" id="heroDots"></div>
     </div>
     <div class="new-slider-wrap" id="newArrivalsWrap" style="display:none">
-      <div class="section-head"><h2>عروض حصرية 🔥</h2></div>
+      <div class="section-head"><h2>وصل حديثًا 🆕</h2></div>
       <div class="new-slider" id="newArrivalsScroller"><div class="new-slider-track" id="newArrivalsSlider"></div></div>
     </div>
+    <div class="new-slider-wrap" id="bestsellersWrap" style="display:none">
+      <div class="section-head"><h2>الأكثر مبيعًا 🔥</h2></div>
+      <div class="new-slider" id="bestsellersScroller"><div class="new-slider-track" id="bestsellersSlider"></div></div>
+    </div>
+    <div class="new-slider-wrap" id="offersWrap" style="display:none">
+      <div class="section-head"><h2>عروض إكسيرا 💰</h2></div>
+      <div class="new-slider" id="offersScroller"><div class="new-slider-track" id="offersSlider"></div></div>
+    </div>
+    <div class="new-slider-wrap" id="giftsWrap" style="display:none">
+      <div class="section-head"><h2>هدايا ذكية 🎁</h2></div>
+      <div class="new-slider" id="giftsScroller"><div class="new-slider-track" id="giftsSlider"></div></div>
+    </div>
 
-    <div class="store-filter-bar">
+    <div class="need-picker">
+      <div class="section-head"><h2>إنت محتاج إيه؟</h2></div>
+      <div class="need-grid">
+        <button type="button" class="need-card" onclick="pickNeed('kids')"><span class="need-ic">👶</span><span>عايز أطمن على ابني</span></button>
+        <button type="button" class="need-card" onclick="pickNeed('home')"><span class="need-ic">🏠</span><span>عايز أأمّن بيتي</span></button>
+        <button type="button" class="need-card" onclick="pickNeed('tracking')"><span class="need-ic">📍</span><span>خايف أفقد حاجة مهمة</span></button>
+        <button type="button" class="need-card" onclick="pickNeed('car')"><span class="need-ic">🚗</span><span>عايز أتابع عربيتي</span></button>
+        <button type="button" class="need-card" onclick="pickNeed('travel')"><span class="need-ic">🎒</span><span>مسافر وعايز أطمن على شنطتي</span></button>
+        <button type="button" class="need-card" onclick="pickNeed('smarthome')"><span class="need-ic">⚡</span><span>عايز أخلي بيتي أذكى</span></button>
+      </div>
+    </div>
+
+    <div class="store-filter-bar" id="storeFilterBar">
       <div class="gender-tabs" id="storeGenderTabs"></div>
       <div class="cat-chips" id="storeItemTypeList"></div>
     </div>
@@ -520,11 +555,11 @@ const FIREBASE_CONFIG = {
         <button class="active" data-tab="reception" onclick="teamTab('reception')">استقبال الطلبات والتواصل</button>
         <button data-tab="sales" onclick="teamTab('sales')">المبيعات</button>
         <button data-tab="shipping" onclick="teamTab('shipping')">الشحن</button>
+        <button data-tab="delivered" onclick="teamTab('delivered')">تم التسليم</button>
         <button data-tab="accounts" onclick="teamTab('accounts')">الحسابات</button>
         <button data-tab="all" onclick="teamTab('all')">كل الطلبات</button>
         <button data-tab="customers" onclick="teamTab('customers')">العملاء</button>
-        <button data-tab="products" onclick="teamTab('products')">المنتجات</button>
-        <button data-tab="purchases" onclick="teamTab('purchases')">المخزن</button>
+        <button data-tab="purchases" onclick="teamTab('purchases')">المنتجات والمخزن</button>
         <button data-tab="salesReport" onclick="teamTab('salesReport')">تقرير المبيعات</button>
       </div>
       <div class="dash-inner">
@@ -543,7 +578,7 @@ const FIREBASE_CONFIG = {
             </select>
           </div>
           <div class="table-wrap"><table class="data">
-            <thead><tr><th>رقم الطلب</th><th>المنتج</th><th>العميل</th><th>تصنيف العميل</th><th>الموظف المستلم</th><th>القسم الحالي</th><th>المرحلة</th><th>تواصل</th><th>آخر تحديث</th></tr></thead>
+            <thead><tr><th>رقم الطلب</th><th>المنتج</th><th>العميل</th><th>تصنيف العميل</th><th>الموظف المستلم</th><th>القسم الحالي</th><th>المرحلة</th><th>شركة الشحن</th><th>تواصل</th><th>آخر تحديث</th></tr></thead>
             <tbody id="teamAllOrdersTable"></tbody>
           </table></div>
         </div>
@@ -590,22 +625,19 @@ const FIREBASE_CONFIG = {
             </table></div>
           </div>
         </div>
-        <div id="team-tab-products" style="display:none">
-          <div class="section-head" style="margin-bottom:14px">
-            <h2 style="color:#fff">المنتجات</h2>
-            <button class="btn btn-copper btn-sm" onclick="openProductModal()">+ إضافة منتج</button>
-          </div>
-          <div class="table-wrap"><table class="data">
-            <thead><tr><th>المنتج</th><th>النوع - الصنف</th><th>السعر</th><th>المخزون</th><th>المحجوز</th><th>المتاح للبيع</th><th>المباع</th><th>المرتجع</th><th>تنبيه</th><th></th></tr></thead>
-            <tbody id="teamProductsTable"></tbody>
-          </table></div>
+
+        <div id="team-tab-delivered" style="display:none">
+          <h2>تم التسليم</h2>
+          <div class="sub">الطلبات اللي وصلت للعميل — سجّل هنا هل شركة الشحن حوّلت المبلغ كامل ولا جزء منه، عشان الطلب ينتقل صح لقسم الحسابات.</div>
+          <div id="teamDeliveredOrders"></div>
+          <div class="empty" id="teamDeliveredEmpty" style="display:none;color:#8a8a8a">مفيش طلبات "تم التسليم" بانتظار تسجيل التحصيل دلوقتي.</div>
         </div>
         <div id="team-tab-purchases" style="display:none">
           <div class="section-head" style="margin-bottom:14px">
-            <h2 style="color:#fff">المخزن</h2>
+            <h2 style="color:#fff">المنتجات والمخزن</h2>
           </div>
           <div class="wh-subtabs">
-            <button class="active" data-wh="stock" onclick="warehouseTab('stock')">المخزون (كل المنتجات)</button>
+            <button class="active" data-wh="stock" onclick="warehouseTab('stock')">المنتجات والمخزون</button>
             <button data-wh="purchases" onclick="warehouseTab('purchases')">المشتريات والفواتير</button>
             <button data-wh="suppliers" onclick="warehouseTab('suppliers')">الموردين</button>
             <button data-wh="items" onclick="warehouseTab('items')">الأصناف</button>
@@ -613,7 +645,10 @@ const FIREBASE_CONFIG = {
           </div>
 
           <div id="wh-tab-stock">
-            <div class="sub">كل المنتجات وكميتها الحالية في المخزون — نفس بيانات تاب "المنتجات" بالظبط، هنا للمتابعة السريعة من قسم المخزن.</div>
+            <div class="section-head" style="margin-bottom:14px">
+              <h3 style="color:#fff;font-size:15px">كل المنتجات ورصيد المخزون</h3>
+              <button class="btn btn-copper btn-sm" onclick="openProductModal()">+ إضافة منتج</button>
+            </div>
             <div class="table-wrap"><table class="data">
               <thead><tr><th>المنتج</th><th>النوع - الصنف</th><th>السعر</th><th>المخزون</th><th>المحجوز</th><th>المتاح للبيع</th><th>المباع</th><th>المرتجع</th><th>تنبيه</th><th></th></tr></thead>
               <tbody id="warehouseStockTable"></tbody>
@@ -947,28 +982,6 @@ const FIREBASE_CONFIG = {
           <button type="button" onclick="stepOoQty(1)">+</button>
         </div>
       </div>
-      <div class="field">
-        <label>لون كل قطعة</label>
-        <div id="ooColors"></div>
-      </div>
-      <div class="size-mode-toggle">
-        <button type="button" id="ooModeSize" class="on" onclick="setSizeMode('size')">مقاس جاهز</button>
-        <button type="button" id="ooModeHW" onclick="setSizeMode('hw')">أبعث الطول والوزن</button>
-      </div>
-      <div class="field" id="ooSizeField">
-        <label>المقاس</label>
-        <select id="ooSize">
-          <option value="S">S</option>
-          <option value="M" selected>M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-          <option value="XXL">XXL</option>
-        </select>
-      </div>
-      <div class="field" id="ooHwField" style="display:none">
-        <label>الطول (سم)</label><input type="number" id="ooHeight" min="0">
-        <label style="margin-top:8px">الوزن (كجم)</label><input type="number" id="ooWeight" min="0">
-      </div>
       <div class="cart-total" style="margin-top:4px">
         <span>سعر القطعة</span><span class="mono" id="ooUnitPrice">0 ج.م</span>
       </div>
@@ -1037,14 +1050,19 @@ const FIREBASE_CONFIG = {
         <div style="font-size:11.5px;color:#8a8a8a;margin-top:4px">الأصناف بتتضاف من قسم "المشتريات" — لو الصنف اللي محتاجه مش موجود، ضيفه من هناك الأول.</div>
       </div>
       <div class="field"><label>الوصف</label><textarea id="pDesc"></textarea></div>
-      <div class="field"><label>المواصفات (اختياري — كل مواصفة في سطر، مثال: الخامة: قطن 100%)</label><textarea id="pSpecs" placeholder="الخامة: قطن 100%&#10;المقاسات المتاحة: S - M - L - XL&#10;بلد الصنع: مصر"></textarea></div>
+      <div class="field"><label>المميزات (اختياري — كل ميزة في سطر، مثال: بطارية تدوم 30 يوم)</label><textarea id="pSpecs" placeholder="بطارية تدوم 30 يوم&#10;مقاوم للماء IP67&#10;تتبع مباشر عبر تطبيق الموبايل"></textarea></div>
+      <div class="field"><label>طريقة التشغيل (اختياري — كل خطوة في سطر)</label><textarea id="pHowToUse" placeholder="حمّل تطبيق XEREA وسجّل حساب&#10;اضغط زرار التشغيل 3 ثواني لحد ما تشتغل اللمبة الزرقاء&#10;اربط الجهاز بالتطبيق عن طريق مسح كود QR"></textarea></div>
+      <div class="field"><label>رابط فيديو قصير (اختياري — يوتيوب/تيك توك/رابط فيديو مباشر)</label><input type="url" id="pVideo" placeholder="https://..."></div>
       <div class="field"><label>السعر الأساسي (قطعة واحدة) (ج.م)</label><input type="number" id="pPrice" min="0" step="0.01" required></div>
       <div class="field"><label>السعر قبل الخصم (اختياري — لإظهار شارة تخفيض)</label><input type="number" id="pCompareAt" min="0" step="0.01" placeholder="مثال: 500"></div>
       <div class="field"><label>المخزون المتاح</label><input type="number" id="pStock" min="0" step="1" required></div>
       <div class="field"><label>حد المخزون المنخفض (تنبيه ⚠️ لما المتاح للبيع يوصله أو أقل)</label><input type="number" id="pLowStock" min="0" step="1" placeholder="افتراضي: 5"></div>
-      <div class="field"><label>الألوان المتاحة (افصل بينها بفاصلة ،)</label><input type="text" id="pColors" placeholder="مثال: أسود، كحلي، بني"></div>
+      <div class="field" style="display:flex;align-items:center;gap:8px">
+        <input type="checkbox" id="pIsGift" style="width:auto">
+        <label style="margin:0" for="pIsGift">يظهر في قسم "هدايا ذكية 🎁"</label>
+      </div>
       <div class="field">
-        <label>صور المنتج (ارفع حتى 5 صور — هيتم إضافة لوجو ZARO عليها تلقائيًا)</label>
+        <label>صور المنتج (ارفع حتى 5 صور — هيتم إضافة لوجو XEREA عليها تلقائيًا)</label>
         <input type="file" id="pImagesInput" accept="image/*" multiple onchange="handleProductImagesSelected(event)">
         <div id="pImagesPreview" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"></div>
       </div>
@@ -1238,6 +1256,7 @@ const DEPARTMENTS = [
   {key:'reception', label:'استقبال الطلبات والتواصل', statuses:['new','contacting']},
   {key:'sales',     label:'المبيعات',        statuses:['confirmed','preparing']},
   {key:'shipping',  label:'الشحن',           statuses:['ready_ship','shipped']},
+  {key:'delivered', label:'تم التسليم',      statuses:['delivered']},
   {key:'accounts',  label:'الحسابات',        statuses:['accounts']},
 ];
 function deptForStatus(status){
@@ -1374,9 +1393,9 @@ async function releaseReservationInTx(t, order, orderId){
    بيشمل كمان تابات مش مرحلة طلب (المنتجات، المخزن، تقرير المبيعات). */
 const STAFF_DEPARTMENTS = [
   {key:'reception', label:'استقبال الطلبات والتواصل'},
-  {key:'sales',     label:'المبيعات والمخزن والتجهيز', tabs:['sales','products','purchases','salesReport']},
-  {key:'shipping',  label:'الشحن'},
-  {key:'accounts',  label:'الحسابات'},
+  {key:'sales',     label:'المبيعات والمخزن والتجهيز', tabs:['sales','purchases','salesReport']},
+  {key:'shipping',  label:'الشحن',                     tabs:['shipping','delivered']},
+  {key:'accounts',  label:'الحسابات',                  tabs:['accounts','delivered']},
 ];
 STAFF_DEPARTMENTS.forEach(d=>{ if(!d.tabs) d.tabs=[d.key]; });
 /* التابات دي متاحة لأي عضو فريق بغض النظر عن أقسامه — نظرة عامة بدون صلاحيات تعديل حساسة */
@@ -1770,7 +1789,6 @@ async function submitProfile(e){
 db.collection('products').orderBy('createdAt','desc').onSnapshot(snap=>{
   products = snap.docs.map(d=>({id:d.id,...d.data()}));
   renderStoreProducts();
-  renderTeamProducts('teamProductsTable');
   renderTeamProducts('warehouseStockTable');
   if(currentPdProduct && document.getElementById('productDetailModalWrap').classList.contains('active')){
     const fresh = products.find(x=>x.id===currentPdProduct.id);
@@ -1780,9 +1798,17 @@ db.collection('products').orderBy('createdAt','desc').onSnapshot(snap=>{
 listenItemTypes();
 
 /* ============================================================
-   النوع (رجالي/حريمي/أطفال) + الأصناف (تُضاف من قسم المشتريات)
+   التصنيف الرئيسي (تصنيفات XEREA) + الأصناف (تُضاف من قسم المشتريات)
    ============================================================ */
-const GENDER_LABELS = {men:'رجالي', women:'حريمي', kids:'أطفال'};
+const GENDER_LABELS = {
+  kids:'أمان الأطفال 👶',
+  home:'أمان المنزل 🏠',
+  tracking:'التتبع والحماية 📍',
+  smarthome:'البيت الذكي ⚡',
+  car:'السيارة 🚗',
+  travel:'السفر 🎒',
+  gadgets:'أجهزة ذكية للحياة اليومية ✨',
+};
 let itemTypesCache = [];
 function listenItemTypes(){
   db.collection('itemTypes').orderBy('label').onSnapshot(snap=>{
@@ -1830,7 +1856,7 @@ function renderPItemTypeSelect(){
   if(types.some(t=>t.id===current)) itemSel.value = current;
 }
 
-/* --- فلتر المتجر الاحترافي: تابات للنوع (رجالي/حريمي/أطفال) + شرائح للصنف --- */
+/* --- فلتر المتجر الاحترافي: تابات للتصنيف الرئيسي + شرائح للصنف --- */
 const GENDER_ICONS = {men:'👔', women:'👗', kids:'🧸'};
 let categoryFilter = '';
 let genderFilter = '';
@@ -1858,6 +1884,12 @@ function setGenderFilter(v){
   categoryFilter = '';
   renderStoreFilters();
   renderStoreProducts();
+}
+/* لما العميل يختار احتياجه من "إنت محتاج إيه؟" — بنفلتر بنفس منطق التصنيف
+   الرئيسي الموجود، وبننزّل الصفحة للمنتجات على طول */
+function pickNeed(key){
+  setGenderFilter(key);
+  document.getElementById('storeFilterBar')?.scrollIntoView({behavior:'smooth', block:'start'});
 }
 function setCategoryFilter(cat){
   categoryFilter = cat;
@@ -1895,7 +1927,7 @@ function renderStoreProducts(){
       </div>
     </div>`;
   }).join('');
-  renderNewArrivalsSlider();
+  renderHomeSliders();
   renderHeroSlider();
   tryOpenPendingSharedProduct();
 }
@@ -1985,28 +2017,34 @@ function tsMillis(v){
 function productRecencyScore(p){
   return Math.max(tsMillis(p.createdAt), tsMillis(p.updatedAt));
 }
-let offersScrollRafId = null;
-let offersScrollPaused = false;
-function renderNewArrivalsSlider(){
-  const wrap = document.getElementById('newArrivalsWrap');
-  const scroller = document.getElementById('newArrivalsScroller');
-  const el = document.getElementById('newArrivalsSlider');
+/* ============================================================
+   سلايدرز الصفحة الرئيسية: وصل حديثًا / الأكثر مبيعًا / عروض إكسيرا / هدايا ذكية
+   كل سلايدر بيستخدم نفس منطق التمرير التلقائي، بس ببيانات مختلفة حسب القسم
+   ============================================================ */
+const sliderStates = {};
+function renderProductSlider(key, list, badgeText){
+  const wrap = document.getElementById(key+'Wrap');
+  const scroller = document.getElementById(key+'Scroller');
+  const el = document.getElementById(key+'Slider');
   if(!wrap||!el||!scroller) return;
-  /* آخر 10 منتجات سواء اتضافوا جدد أو اتعمل عليهم أي تعديل (زي تخفيض سعر) */
-  const latest = [...products].sort((a,b)=>productRecencyScore(b)-productRecencyScore(a)).slice(0,10);
-  wrap.style.display = latest.length? 'block':'none';
-  if(!latest.length){ cancelAnimationFrame(offersScrollRafId); return; }
-  const slideHtml = latest.map(p=>{
+  if(!sliderStates[key]) sliderStates[key] = {rafId:0, paused:false};
+  const state = sliderStates[key];
+  wrap.style.display = list.length? 'block':'none';
+  if(!list.length){ cancelAnimationFrame(state.rafId); return; }
+  const slideHtml = list.map(p=>{
     const thumb = productImages(p)[0];
+    const hasDiscount = p.compareAtPrice && p.compareAtPrice > p.price;
     return `
     <div class="new-slide" onclick="openProductDetail('${p.id}')">
       <div class="thumb">
         ${thumb? `<img src="${esc(thumb)}">` : ''}
-        <span class="badge-new">عروض حصرية</span>
+        <span class="badge-new">${badgeText}</span>
       </div>
       <div class="body">
         <h4>${esc(p.name)}</h4>
-        <span class="price">${money(p.price)}</span>
+        ${hasDiscount
+          ? `<span class="old-price" style="font-size:11px;display:block">${money(p.compareAtPrice)}</span><span class="price">${money(p.price)}</span>`
+          : `<span class="price">${money(p.price)}</span>`}
       </div>
     </div>`;
   }).join('');
@@ -2014,20 +2052,40 @@ function renderNewArrivalsSlider(){
      الشريط بالظبط نرجّع scrollLeft لأول نقطة، فيبقى فيه شريط بلا نهاية بدون أي فراغ */
   el.innerHTML = slideHtml + slideHtml;
   scroller.scrollLeft = 0;
-  cancelAnimationFrame(offersScrollRafId);
+  cancelAnimationFrame(state.rafId);
   const step = ()=>{
-    if(!offersScrollPaused){
+    if(!state.paused){
       const halfWidth = el.scrollWidth / 2;
       scroller.scrollLeft += 0.6;
-      if(scroller.scrollLeft >= halfWidth){
-        scroller.scrollLeft -= halfWidth;
-      }
+      if(scroller.scrollLeft >= halfWidth) scroller.scrollLeft -= halfWidth;
     }
-    offersScrollRafId = requestAnimationFrame(step);
+    state.rafId = requestAnimationFrame(step);
   };
-  offersScrollRafId = requestAnimationFrame(step);
-  scroller.onmouseenter = ()=>{ offersScrollPaused = true; };
-  scroller.onmouseleave = ()=>{ offersScrollPaused = false; };
+  state.rafId = requestAnimationFrame(step);
+  scroller.onmouseenter = ()=>{ state.paused = true; };
+  scroller.onmouseleave = ()=>{ state.paused = false; };
+}
+function renderHomeSliders(){
+  /* وصل حديثًا — بترتيب تاريخ الإضافة الفعلي، مش أي تعديل لاحق */
+  const newest = [...products].sort((a,b)=>{
+    const at = a.createdAt?.toMillis ? a.createdAt.toMillis() : 0;
+    const bt = b.createdAt?.toMillis ? b.createdAt.toMillis() : 0;
+    return bt-at;
+  }).slice(0,10);
+  renderProductSlider('newArrivals', newest, '🆕 جديد');
+
+  /* الأكثر مبيعًا — من soldCount الفعلي اللي بيتحدث تلقائيًا مع كل عملية بيع */
+  const bestsellers = [...products].filter(p=>Number(p.soldCount||0)>0)
+    .sort((a,b)=>Number(b.soldCount||0)-Number(a.soldCount||0)).slice(0,10);
+  renderProductSlider('bestsellers', bestsellers, '🔥 الأكثر مبيعًا');
+
+  /* عروض إكسيرا — منتجات عليها خصم فعلي (سعر قبل الخصم أعلى من السعر الحالي) */
+  const offers = products.filter(p=>p.compareAtPrice && p.compareAtPrice>p.price).slice(0,10);
+  renderProductSlider('offers', offers, '💰 عرض');
+
+  /* هدايا ذكية — منتجات متعلّم عليها كهدية من فورم المنتج */
+  const gifts = products.filter(p=>p.isGift).slice(0,10);
+  renderProductSlider('gifts', gifts, '🎁 هدية ذكية');
 }
 
 /* ============================================================
@@ -2049,10 +2107,9 @@ function openOrderOptions(id){
   if(!p) return;
   ooCurrentProductId = id;
   document.getElementById('ooTitle').textContent = 'تفاصيل طلب: '+p.name;
-  document.getElementById('ooSub').textContent = 'حدد الكمية ولون كل قطعة والمقاس (أو أبعث الطول والوزن).';
+  document.getElementById('ooSub').textContent = 'حدد الكمية اللي محتاجها.';
   document.getElementById('orderOptionsForm').reset();
   document.getElementById('ooQty').value = 1;
-  setSizeMode('size');
   onOoQtyChange();
   document.getElementById('orderOptionsModalWrap').classList.add('active');
   pushModalHistory();
@@ -2063,25 +2120,10 @@ function stepOoQty(delta){
   input.value = next;
   onOoQtyChange();
 }
-function setSizeMode(mode){
-  document.getElementById('ooModeSize').classList.toggle('on', mode==='size');
-  document.getElementById('ooModeHW').classList.toggle('on', mode==='hw');
-  document.getElementById('ooSizeField').style.display = mode==='size' ? 'block':'none';
-  document.getElementById('ooHwField').style.display = mode==='hw' ? 'block':'none';
-  document.getElementById('orderOptionsForm').dataset.sizeMode = mode;
-}
 function onOoQtyChange(){
   const p = products.find(x=>x.id===ooCurrentProductId);
   if(!p) return;
   const qty = Math.max(1, Number(document.getElementById('ooQty').value)||1);
-  const colorsWrap = document.getElementById('ooColors');
-  const availableColors = Array.isArray(p.colors) ? p.colors.filter(Boolean) : [];
-  colorsWrap.innerHTML = Array.from({length:qty}).map((_,i)=>{
-    const field = availableColors.length
-      ? `<select id="ooColor${i}"><option value="">اختر اللون</option>${availableColors.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('')}</select>`
-      : `<input type="text" id="ooColor${i}" placeholder="اللون">`;
-    return `<div class="unit-row"><span class="n">قطعة ${i+1}</span>${field}</div>`;
-  }).join('');
   document.getElementById('ooUnitPrice').textContent = money(tierUnitPrice(p, qty));
 }
 async function confirmOrderOptions(e){
@@ -2089,14 +2131,9 @@ async function confirmOrderOptions(e){
   const p = products.find(x=>x.id===ooCurrentProductId);
   if(!p) return;
   const qty = Math.max(1, Number(document.getElementById('ooQty').value)||1);
-  const colors = Array.from({length:qty}).map((_,i)=>document.getElementById('ooColor'+i)?.value.trim()||'');
-  const sizeMode = document.getElementById('orderOptionsForm').dataset.sizeMode || 'size';
-  const variant = sizeMode==='size'
-    ? {mode:'size', size: document.getElementById('ooSize').value}
-    : {mode:'hw', height: document.getElementById('ooHeight').value.trim(), weight: document.getElementById('ooWeight').value.trim()};
   const unitPrice = tierUnitPrice(p, qty);
   cart.push({
-    productId: p.id, name:p.name, category:p.category||'', gender:p.gender||'', price: unitPrice, qty, colors, variant,
+    productId: p.id, name:p.name, category:p.category||'', gender:p.gender||'', price: unitPrice, qty,
     image: p.image||(Array.isArray(p.images)&&p.images[0])||'',
   });
   renderCart();
@@ -2137,6 +2174,20 @@ function tryOpenPendingSharedProduct(){
     pendingSharedProductId = null;
   }
 }
+/* تحويل رابط الفيديو (يوتيوب/تيك توك/رابط ملف مباشر) لعنصر تشغيل مناسب داخل صفحة المنتج */
+function videoEmbedHtml(url){
+  try{
+    const u = new URL(url);
+    if(u.hostname.includes('youtube.com') || u.hostname.includes('youtu.be')){
+      let videoId = u.hostname.includes('youtu.be') ? u.pathname.slice(1) : (u.searchParams.get('v') || u.pathname.split('/').pop());
+      return `<iframe src="https://www.youtube.com/embed/${esc(videoId)}" style="width:100%;height:100%;border:0" allowfullscreen loading="lazy"></iframe>`;
+    }
+    if(u.hostname.includes('tiktok.com') || u.hostname.includes('instagram.com')){
+      return `<iframe src="${esc(url)}" style="width:100%;height:100%;border:0" allowfullscreen loading="lazy"></iframe>`;
+    }
+  }catch(e){ /* رابط غير صالح — هيترسم كفيديو مباشر تحت وممكن يفشل بصمت، من غير Crash */ }
+  return `<video src="${esc(url)}" controls style="width:100%;height:100%;object-fit:cover;background:#000"></video>`;
+}
 function renderProductDetail(p){
   const imgs = productImages(p);
   const reviews = Array.isArray(p.reviews) ? p.reviews : [];
@@ -2151,6 +2202,7 @@ function renderProductDetail(p){
       ${imgs[pdActiveImg]? `<img src="${esc(imgs[pdActiveImg])}">` : 'بدون صورة'}
     </div>
     ${imgs.length>1? `<div class="pd-thumbs">${imgs.map((im,i)=>`<img src="${esc(im)}" class="${i===pdActiveImg?'active':''}" onclick="pdActiveImg=${i};renderProductDetail(currentPdProduct)">`).join('')}</div>` : ''}
+    ${p.video? `<div style="margin-top:10px;border-radius:12px;overflow:hidden;aspect-ratio:16/9">${videoEmbedHtml(p.video)}</div>` : ''}
     <h2>${esc(p.name)}</h2>
     ${reviews.length? `<div style="margin-bottom:6px">${renderStars(Math.round(avg))} <span style="color:#8a8a8a;font-size:12.5px">(${reviews.length} تقييم)</span></div>` : ''}
     <div class="price-block" style="margin-bottom:6px">
@@ -2159,15 +2211,19 @@ function renderProductDetail(p){
     </div>
     ${p.stock>0 ? '' : '<div class="stock-tag">غير متوفر حاليًا</div>'}
 
-    <div class="pd-tabs" style="display:flex;gap:6px;margin:16px 0 10px;border-bottom:1px solid var(--line-dark)">
-      <button type="button" class="pd-tab-btn on" data-tab="desc" onclick="switchPdTab('desc')" style="background:none;border:none;color:#fff;padding:8px 4px;font-size:13px;border-bottom:2px solid var(--copper)">الوصف والمواصفات</button>
+    <div class="pd-tabs" style="display:flex;gap:6px;margin:16px 0 10px;border-bottom:1px solid var(--line-dark);flex-wrap:wrap">
+      <button type="button" class="pd-tab-btn on" data-tab="desc" onclick="switchPdTab('desc')" style="background:none;border:none;color:#fff;padding:8px 4px;font-size:13px;border-bottom:2px solid var(--copper)">الوصف والمميزات</button>
+      ${Array.isArray(p.howToUse)&&p.howToUse.length? `<button type="button" class="pd-tab-btn" data-tab="howto" onclick="switchPdTab('howto')" style="background:none;border:none;color:#9a9a9a;padding:8px 4px;font-size:13px;border-bottom:2px solid transparent">طريقة التشغيل</button>` : ''}
       <button type="button" class="pd-tab-btn" data-tab="shipping" onclick="switchPdTab('shipping')" style="background:none;border:none;color:#9a9a9a;padding:8px 4px;font-size:13px;border-bottom:2px solid transparent">الشحن والاستبدال</button>
     </div>
     <div class="pd-tab-panel" data-panel="desc">
       ${p.description? `<div class="desc" style="color:#c8c8c8;font-size:14px;line-height:1.7;margin-bottom:${Array.isArray(p.specs)&&p.specs.length?'10px':'0'}">${esc(p.description)}</div>` : ''}
       ${Array.isArray(p.specs) && p.specs.length? `<ul style="margin:0;padding-right:18px;color:#c8c8c8;font-size:13.5px;line-height:2">${p.specs.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>` : ''}
-      ${(!p.description && !(Array.isArray(p.specs)&&p.specs.length))? '<div style="color:#8a8a8a;font-size:13px">لا يوجد وصف أو مواصفات مضافة لهذا المنتج.</div>' : ''}
+      ${(!p.description && !(Array.isArray(p.specs)&&p.specs.length))? '<div style="color:#8a8a8a;font-size:13px">لا يوجد وصف أو مميزات مضافة لهذا المنتج.</div>' : ''}
     </div>
+    ${Array.isArray(p.howToUse)&&p.howToUse.length? `<div class="pd-tab-panel" data-panel="howto" style="display:none">
+      <ol style="margin:0;padding-right:18px;color:#c8c8c8;font-size:13.5px;line-height:2">${p.howToUse.map(s=>`<li>${esc(s)}</li>`).join('')}</ol>
+    </div>` : ''}
     <div class="pd-tab-panel" data-panel="shipping" style="display:none">
       <div style="color:#c8c8c8;font-size:13.5px;line-height:2">
         🚚 توصيل لمعظم المحافظات خلال 2-5 أيام عمل.<br>
@@ -2327,7 +2383,7 @@ async function submitOrder(e){
     phone: document.getElementById('ckPhone').value.trim(),
     address: document.getElementById('ckAddress').value.trim(),
     notes: document.getElementById('ckNotes').value.trim(),
-    items: cart.map(c=>({productId:c.productId,name:c.name,category:c.category||'',gender:c.gender||'',price:c.price,qty:c.qty,colors:c.colors||[],variant:c.variant||null,image:c.image||''})),
+    items: cart.map(c=>({productId:c.productId,name:c.name,category:c.category||'',gender:c.gender||'',price:c.price,qty:c.qty,image:c.image||''})),
     subtotal: cartTotal(),
     shippingFee: SHIPPING_FEE,
     total: cartTotal() + SHIPPING_FEE,
@@ -2420,12 +2476,13 @@ async function customerConfirm(orderId, status){
    لوحة الفريق
    ============================================================ */
 function teamTab(name){
-  ['reception','sales','shipping','accounts','all','customers','products','purchases','salesReport'].forEach(t=>{
+  ['reception','sales','shipping','delivered','accounts','all','customers','purchases','salesReport'].forEach(t=>{
     document.getElementById('team-tab-'+t).style.display = (t===name)?'block':'none';
   });
   document.querySelectorAll('#view-team .dash-tabs button').forEach(b=>b.classList.toggle('active', b.dataset.tab===name));
   if(name==='accounts') renderAccountsTab();
   if(name==='salesReport') renderSalesReport();
+  if(name==='purchases') warehouseTab('stock');
 }
 
 /* إخفاء تابات لوحة الفريق اللي مش من صلاحيات العضو الحالي، وتحويله لأول تاب متاح له.
@@ -2646,6 +2703,7 @@ function listenTeamOrders(){
     renderDeptReception();
     renderDeptSales();
     renderDeptShipping();
+    renderDeptDelivered();
     renderSalesReport();
     renderAccountsTab();
   }, err=>console.error('listenTeamOrders', err));
@@ -2696,9 +2754,10 @@ function renderTeamAllOrders(){
       <td>${esc(o.claimedByName||'—')}</td>
       <td>${esc(deptForStatus(o.status))}</td>
       <td>${stageBadgeHtml(o.status)}</td>
+      <td style="font-size:11.5px">${o.shippingCompany? esc(o.shippingCompany)+(o.shippedAt? '<br><span style="color:#8a8a8a">'+fmtDate(o.shippedAt)+'</span>':'') : '—'}</td>
       <td>${contactBtnsHtml(o.phone)}</td>
       <td class="mono" style="font-size:11.5px">${fmtDate(o.updatedAt)}</td>
-    </tr>`).join('') || `<tr><td colspan="9" style="text-align:center;color:#8a8a8a;padding:20px">لا توجد نتائج</td></tr>`;
+    </tr>`).join('') || `<tr><td colspan="10" style="text-align:center;color:#8a8a8a;padding:20px">لا توجد نتائج</td></tr>`;
 }
 
 function ordersForDept(deptKey, catFilterId, empFilterId){
@@ -2736,6 +2795,14 @@ function renderDeptShipping(){
   const list = ordersForDept('shipping','deptShippingFilterCategory','deptShippingFilterEmployee');
   document.getElementById('teamShippingEmpty').style.display = list.length? 'none':'block';
   wrap.innerHTML = list.map(o=>teamOrderCard(o,'shipping')).join('');
+}
+/* ===== قسم: تم التسليم — تسجيل هل التحصيل كامل ولا جزئي قبل الانتقال للحسابات ===== */
+function renderDeptDelivered(){
+  const wrap = document.getElementById('teamDeliveredOrders');
+  if(!wrap) return;
+  const list = ordersForDept('delivered', null, null);
+  document.getElementById('teamDeliveredEmpty').style.display = list.length? 'none':'block';
+  wrap.innerHTML = list.map(o=>teamOrderCard(o,'delivered')).join('');
 }
 
 /* رجوع لمرحلة سابقة مع كتابة ملاحظة سبب الرجوع */
@@ -2831,6 +2898,12 @@ function teamOrderCard(o, dept){
         <button class="btn btn-emerald btn-sm" onclick="advanceOrder('${o.id}','delivered','تم التسليم للعميل')">تم التسليم للعميل</button>
         <button class="btn btn-outline btn-sm" onclick="returnOrderToStage('${o.id}','preparing')">رجوع للمبيعات</button>`;
     }
+  } else if(dept==='delivered'){
+    if(o.status==='delivered'){
+      actions = `
+        <button class="btn btn-emerald btn-sm" onclick="openCollectionModal('${o.id}')">تسجيل التحصيل (كامل/جزئي)</button>
+        <button class="btn btn-outline btn-sm" onclick="returnOrderToStage('${o.id}','shipped')">رجوع للشحن</button>`;
+    }
   } else if(dept==='accounts'){
     if(o.status==='accounts'){
       actions = `
@@ -2856,6 +2929,15 @@ function teamOrderCard(o, dept){
       </div>
       <div class="items-list">${orderItemsSummary(o)}</div>
       <div class="meta">الإجمالي: <b class="mono">${money(o.total)}</b>${o.notes? ' — ملاحظات: '+esc(o.notes):''}</div>
+      ${o.shippingCompany? `<div class="meta" style="line-height:1.9">
+        شركة الشحن: <b style="color:#fff">${esc(o.shippingCompany)}</b>${o.shippingBranch? ' — الفرع: '+esc(o.shippingBranch):''}<br>
+        ${o.shippingRepName? 'المندوب: '+esc(o.shippingRepName)+(o.shippingRepPhone? ' — '+esc(o.shippingRepPhone):'')+'<br>':''}
+        ${o.shippedAt? 'تاريخ استلام الشركة للطرد: '+fmtDate(o.shippedAt)+'<br>':''}
+        ${o.trackingNumber? 'رقم التتبع: '+esc(o.trackingNumber):''}
+      </div>`:''}
+      ${o.collectedAmount? `<div class="meta">
+        التحصيل: <b style="color:${o.collectionStatus==='partial'?'var(--rose)':'#7fd4bd'}">${money(o.collectedAmount)}${o.collectionStatus==='partial'? ' (جزئي — الباقي '+money((o.total||0)-o.collectedAmount)+')' : ' (كامل)'}</b>
+      </div>`:''}
       <div class="actions">
         ${actions}
         <button class="btn btn-outline btn-sm" onclick="loadCustomerPanel('${o.id}','${esc(o.customerUid||'')}')">بيانات العميل كاملة</button>
@@ -3330,7 +3412,7 @@ async function removeEmployee(id){
 }
 
 function renderTeamProducts(targetId){
-  const tbody = document.getElementById(targetId||'teamProductsTable');
+  const tbody = document.getElementById(targetId||'warehouseStockTable');
   if(!tbody) return;
   tbody.innerHTML = products.map(p=>{
     const stock = Number(p.stock||0);
@@ -3719,7 +3801,9 @@ function openProductModal(id){
     document.getElementById('pItemType').value = p.category||'';
     document.getElementById('pDesc').value = p.description||'';
     document.getElementById('pSpecs').value = Array.isArray(p.specs)? p.specs.join('\n') : '';
-    document.getElementById('pColors').value = Array.isArray(p.colors)? p.colors.join('، ') : '';
+    document.getElementById('pHowToUse').value = Array.isArray(p.howToUse)? p.howToUse.join('\n') : '';
+    document.getElementById('pVideo').value = p.video||'';
+    document.getElementById('pIsGift').checked = !!p.isGift;
     document.getElementById('pPrice').value = p.price||0;
     document.getElementById('pCompareAt').value = p.compareAtPrice||'';
     document.getElementById('pStock').value = p.stock||0;
@@ -3742,7 +3826,7 @@ function openProductModal(id){
 }
 
 /* ============================================================
-   رفع الصور + إضافة لوجو ZARO تلقائيًا عليها (تُخزَّن كـ base64 داخل Firestore)
+   رفع الصور + إضافة لوجو XEREA تلقائيًا عليها (تُخزَّن كـ base64 داخل Firestore)
    ============================================================ */
 let pendingProductImages = [];
 function loadImageEl(src){
@@ -3813,13 +3897,14 @@ async function submitProduct(e){
   e.preventDefault();
   const gender = document.getElementById('pGender').value;
   const itemType = document.getElementById('pItemType').value;
-  if(!gender){ toast('اختر النوع (رجالي/حريمي/أطفال)'); return; }
+  if(!gender){ toast('اختر التصنيف الرئيسي للمنتج'); return; }
   if(!itemType){ toast('اختر الصنف — لو مش موجود ضيفه الأول من قسم المشتريات'); return; }
   const images = pendingProductImages.slice();
   const basePrice = Number(document.getElementById('pPrice').value);
   const compareAt = Number(document.getElementById('pCompareAt').value) || 0;
   const specs = document.getElementById('pSpecs').value.split('\n').map(s=>s.trim()).filter(Boolean);
-  const colors = document.getElementById('pColors').value.split(/[،,]/).map(s=>s.trim()).filter(Boolean);
+  const howToUse = document.getElementById('pHowToUse').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  const video = document.getElementById('pVideo').value.trim();
   const tiers = {
     1: Number(document.getElementById('pTier1').value)||basePrice,
     2: Number(document.getElementById('pTier2').value)||basePrice,
@@ -3834,7 +3919,9 @@ async function submitProduct(e){
     category: itemType,
     description: document.getElementById('pDesc').value.trim(),
     specs,
-    colors,
+    howToUse,
+    video: video||null,
+    isGift: document.getElementById('pIsGift').checked,
     price: basePrice,
     compareAtPrice: compareAt>basePrice ? compareAt : 0,
     stock: newStock,
@@ -4197,7 +4284,7 @@ async function submitSupplierItem(e){
 
 /* أول تحميل */
 renderCart();
-renderStoreFilters(); /* اظهار تابات النوع (رجالي/حريمي/أطفال) فورًا من ثابت GENDER_LABELS، من غير ما تنتظر تحميل الأصناف من فايرستور */
+renderStoreFilters(); /* اظهار تابات التصنيف الرئيسي فورًا من ثابت GENDER_LABELS، من غير ما تنتظر تحميل الأصناف من فايرستور */
 /* نفس الفكرة بالظبط لقايمتي "النوع" في فورم المنتج وفورم إضافة صنف جديد —
    دول قايمتين ثابتتين من GENDER_LABELS ومش المفروض يستنوا استجابة Firestore
    خالص. قبل الإصلاح ده كانوا بيفضلوا فاضيين لو استعلام itemTypes اتأخر أو
