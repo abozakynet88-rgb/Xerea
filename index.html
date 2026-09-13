@@ -91,8 +91,16 @@
     position:absolute;top:-4px;left:-6px;background:var(--copper);color:#ffffff;border-radius:99px;
     font-size:11px;min-width:18px;height:18px;display:flex;align-items:center;justify-content:center;padding:0 4px;font-weight:700;
   }
-  .user-chip{display:flex;align-items:center;gap:8px;font-size:13.5px;background:var(--ink-2);padding:5px 10px 5px 5px;border-radius:99px;border:1px solid var(--line);}
+  .user-chip{display:flex;align-items:center;gap:8px;font-size:13.5px;background:var(--ink-2);padding:5px 10px 5px 5px;border-radius:99px;border:1px solid var(--line);cursor:pointer;}
   .user-chip img{width:24px;height:24px;border-radius:50%;}
+  .user-avatar{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--copper);color:#fff;font-weight:800;font-size:13px;flex:none;}
+  .user-chip-mlabel{display:none;}
+  @media(max-width:760px){
+    .user-chip{background:none;border:none;padding:0;gap:2px;flex-direction:column;}
+    .user-chip-name{display:none;}
+    .user-chip>.btn.btn-outline.btn-sm{display:none;}
+    .user-chip-mlabel{display:block;font-size:10px;font-weight:700;color:var(--ink-text);}
+  }
 
   .g-btn{
     display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #d8d2c2;color:#3c3c3c;
@@ -895,6 +903,11 @@
   /* ---------- شريط تنقل سفلي للموبايل ---------- */
   .mobile-bottom-nav{display:none;}
   @media(max-width:760px){
+    /* السلة وطلباتي وفريق العمل والإدارة اتنقلوا للأزرار السفلية على الموبايل */
+    header.site nav.links{display:none!important;}
+    header.site .cart-btn{display:none!important;}
+    .nav-wrap{padding:8px 12px;min-height:0;}
+    .brand img{height:34px;}
     .mobile-bottom-nav{
       display:flex;position:fixed;left:0;right:0;bottom:0;z-index:85;
       background:var(--navy,#18324a);border-top:1px solid var(--copper,#3f7c80);
@@ -904,10 +917,11 @@
     .mobile-bottom-nav button{
       flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
       background:none;border:none;color:#d8e4e3;font-family:inherit;font-size:10.5px;font-weight:700;
-      padding:4px 2px;line-height:1.2;
+      padding:4px 2px;line-height:1.2;position:relative;
     }
-    .mobile-bottom-nav button .mbn-ic{font-size:19px;line-height:1;}
+    .mobile-bottom-nav button .mbn-ic{font-size:19px;line-height:1;position:relative;}
     .mobile-bottom-nav button.active{color:#fff;}
+    .mobile-bottom-nav .mbn-badge{position:absolute;top:-4px;left:-8px;background:var(--rose,#b86b55);color:#fff;border-radius:99px;font-size:10px;min-width:16px;height:16px;display:flex;align-items:center;justify-content:center;padding:0 3px;font-weight:800;}
     body{padding-bottom:64px;}
     .floating-whatsapp{bottom:72px!important;}
     .toast-wrap{bottom:72px;}
@@ -933,16 +947,9 @@ const FIREBASE_CONFIG = {
 </script>
 
 <header class="site">
-  <div class="top-bar">
-    <div class="top-bar-content">
-      <span><span class="top-bar-icon">🚚</span> شحن سريع لمعظم المحافظات</span>
-      <span><span class="top-bar-icon">💳</span> الدفع عند الاستلام متاح</span>
-      <span><span class="top-bar-icon">📞</span> خدمة العملاء: 01152155717</span>
-    </div>
-  </div>
   <div class="nav-wrap">
     <div style="display:flex;align-items:center;gap:14px">
-      <div class="brand" onclick="go('store')" style="cursor:pointer"><span class="brand-x">X</span>EREA</div>
+      <div class="brand" onclick="go('store')" style="cursor:pointer"><img src="xerea-logo.png" alt="XEREA"></div>
       <div style="display:flex;gap:8px;align-items:center">
         <a href="https://wa.me/201152155717" target="_blank" rel="noopener" title="تواصل واتساب" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:#25D366;color:#fff">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.05c-.24.68-1.39 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3s.74-2.12 1-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.35 1.46.29.15.46.13.63-.08.17-.21.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.13.07.72-.17 1.4z"/></svg>
@@ -971,14 +978,17 @@ const FIREBASE_CONFIG = {
   <button type="button" data-view="store" onclick="go('store')">
     <span class="mbn-ic">🏬</span><span>المتجر</span>
   </button>
+  <button type="button" onclick="openCart()">
+    <span class="mbn-ic">🛒<span class="mbn-badge" id="mbnCartBadge">0</span></span><span>السلة</span>
+  </button>
   <button type="button" data-view="my-orders" onclick="go('my-orders')">
     <span class="mbn-ic">📦</span><span>طلباتي</span>
   </button>
-  <button type="button" onclick="goToHomeSection('offersWrap')">
-    <span class="mbn-ic">🔥</span><span>عروض حصرية</span>
+  <button type="button" data-view="team" onclick="go('team')" id="mbnTeam" style="display:none">
+    <span class="mbn-ic">👥</span><span>فريق العمل</span>
   </button>
-  <button type="button" onclick="goToHomeSection('bestsellersWrap')">
-    <span class="mbn-ic">⭐</span><span>الأكثر مبيعًا</span>
+  <button type="button" data-view="admin" onclick="go('admin')" id="mbnAdmin" style="display:none">
+    <span class="mbn-ic">⚙️</span><span>الإدارة</span>
   </button>
 </nav>
 
@@ -1581,7 +1591,8 @@ const FIREBASE_CONFIG = {
 <!-- نموذج استكمال بيانات العميل بعد أول تسجيل دخول -->
 <div class="modal-wrap dark-modal" id="profileModalWrap">
   <div class="modal">
-    <h2>استكمال بياناتك</h2>
+    <button class="modal-close" id="profileModalCloseBtn" style="display:none" onclick="closeModal('profileModalWrap')">×</button>
+    <h2 id="profileModalTitle">استكمال بياناتك</h2>
     <div class="sub">خطوة أخيرة قبل ما تبدأ — البيانات دي هنستخدمها في توصيل طلباتك.</div>
     <form id="profileForm" onsubmit="submitProfile(event)">
       <div class="field"><label>البريد الإلكتروني</label><input type="email" id="pfEmail" disabled></div>
@@ -1598,6 +1609,7 @@ const FIREBASE_CONFIG = {
       </div>
       <button type="submit" class="btn btn-emerald btn-block">حفظ ومتابعة</button>
     </form>
+    <button type="button" class="btn btn-outline btn-block" id="profileModalLogoutBtn" style="display:none;margin-top:10px" onclick="closeModal('profileModalWrap');signOutUser()">تسجيل الخروج</button>
   </div>
 </div>
 
@@ -1968,6 +1980,7 @@ const STAFF_SHARED_TABS = ['all','customers'];
 
 let currentUser = null;   // firebase auth user
 let currentRole = 'customer'; // customer | team | admin
+let currentCustomerData = null; // بيانات بروفايل العميل (customers/{uid}) بعد آخر جلب/حفظ
 /* null = بدون تقييد (إدارة، أو عضو فريق قديم اتضاف قبل نظام الأقسام — يفضل شغال زي قبل كده تمامًا)
    array = مقيد بأقسام معينة اختارها المدير من لوحة الإدارة */
 let currentStaffDepts = null;
@@ -2199,17 +2212,53 @@ function signIn(){
 function signOutUser(){
   auth.signOut();
 }
+function myDisplayName(user){
+  return (currentCustomerData && currentCustomerData.name) || (user&&user.displayName) || (user&&user.email) || 'عميل';
+}
+function avatarInitial(name){
+  const n = (name||'').trim();
+  return n ? n[0] : '؟';
+}
+function renderUserChip(user){
+  const authArea = document.getElementById('authArea');
+  if(!authArea) return;
+  const name = myDisplayName(user);
+  authArea.innerHTML = `
+    <div class="user-chip" onclick="openMyProfile()" title="بياناتي">
+      <span class="user-avatar">${esc(avatarInitial(name))}</span>
+      <span class="user-chip-name">${esc(name)}</span>
+      <span class="user-chip-mlabel">حسابي</span>
+      <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();signOutUser()">خروج</button>
+    </div>`;
+}
+async function openMyProfile(){
+  if(!currentUser){ signIn(); return; }
+  try{
+    const doc = await db.collection('customers').doc(currentUser.uid).get();
+    currentCustomerData = doc.exists ? doc.data() : null;
+  }catch(e){ /* لو فشلت القراءة نفتح الفورم فاضي عشان يقدر يدخل بياناته */ }
+  document.getElementById('pfEmail').value = currentUser.email||'';
+  document.getElementById('pfName').value = (currentCustomerData&&currentCustomerData.name) || currentUser.displayName || '';
+  document.getElementById('pfPhone').value = (currentCustomerData&&currentCustomerData.phone) || '';
+  populateGovernorates('pfGov');
+  if(currentCustomerData&&currentCustomerData.governorate){
+    document.getElementById('pfGov').value = currentCustomerData.governorate;
+    onGovChange('pfGov','pfMarkaz');
+    if(currentCustomerData.markaz) document.getElementById('pfMarkaz').value = currentCustomerData.markaz;
+  }
+  document.getElementById('pfAddress').value = (currentCustomerData&&currentCustomerData.address) || '';
+  document.getElementById('profileModalTitle').textContent = 'بياناتي';
+  document.getElementById('profileModalCloseBtn').style.display = 'block';
+  document.getElementById('profileModalLogoutBtn').style.display = 'block';
+  document.getElementById('profileModalWrap').classList.add('active');
+  renderUserChip(currentUser);
+}
 
 auth.onAuthStateChanged(async user=>{
   currentUser = user;
   const authArea = document.getElementById('authArea');
   if(user){
-    authArea.innerHTML = `
-      <div class="user-chip">
-        <img src="${esc(user.photoURL||'')}" onerror="this.style.display='none'">
-        <span>${esc(user.displayName||user.email)}</span>
-        <button class="btn btn-outline btn-sm" onclick="signOutUser()">خروج</button>
-      </div>`;
+    renderUserChip(user);
     // تحقق من صلاحية المستخدم
     try{
       const roleDoc = await db.collection('roles').doc((user.email||'').toLowerCase()).get();
@@ -2234,6 +2283,8 @@ auth.onAuthStateChanged(async user=>{
 
   document.getElementById('navTeam').style.display = (currentRole==='team'||currentRole==='admin') ? 'inline-block':'none';
   document.getElementById('navAdmin').style.display = (currentRole==='admin') ? 'inline-block':'none';
+  document.getElementById('mbnTeam').style.display = (currentRole==='team'||currentRole==='admin') ? 'flex':'none';
+  document.getElementById('mbnAdmin').style.display = (currentRole==='admin') ? 'flex':'none';
 
   // لو مسجل دخول وواقف في بوابة الفريق ورجعت صلاحيته صحيحة، ادخله اللوحة
   if(user && document.getElementById('view-team-gate').classList.contains('active')){
@@ -2344,11 +2395,18 @@ async function checkCustomerProfile(user){
   if(!user) return;
   try{
     const doc = await db.collection('customers').doc(user.uid).get();
+    if(doc.exists){
+      currentCustomerData = doc.data();
+      renderUserChip(user);
+    }
     if(doc.exists && doc.data().governorate && doc.data().phone){
       document.getElementById('profileModalWrap').classList.remove('active');
       return;
     }
   }catch(e){ /* لو فشل القراءة نسيب الفورم يظهر برضه */ }
+  document.getElementById('profileModalTitle').textContent = 'استكمال بياناتك';
+  document.getElementById('profileModalCloseBtn').style.display = 'none';
+  document.getElementById('profileModalLogoutBtn').style.display = 'none';
   document.getElementById('pfEmail').value = user.email||'';
   document.getElementById('pfName').value = user.displayName||'';
   document.getElementById('profileModalWrap').classList.add('active');
@@ -2368,6 +2426,8 @@ async function submitProfile(e){
   };
   try{
     await db.collection('customers').doc(currentUser.uid).set(data, {merge:true});
+    currentCustomerData = {...(currentCustomerData||{}), ...data};
+    renderUserChip(currentUser);
     document.getElementById('profileModalWrap').classList.remove('active');
     toast('تم حفظ بياناتك');
     // نملى بيانات فورم الطلب تلقائيًا من نفس البيانات
@@ -2912,6 +2972,8 @@ function renderCart(){
     </div>`).join('');
   document.getElementById('cartTotal').textContent = money(cartTotal());
   document.getElementById('cartBadge').textContent = cart.reduce((s,c)=>s+c.qty,0);
+  const mbnBadge = document.getElementById('mbnCartBadge');
+  if(mbnBadge) mbnBadge.textContent = cart.reduce((s,c)=>s+c.qty,0);
 }
 function hideCartOverlay(){ document.getElementById('cartOverlay').classList.remove('active'); }
 function openCart(){ document.getElementById('cartOverlay').classList.add('active'); pushModalHistory(); }
