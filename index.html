@@ -78,7 +78,7 @@
   .nav-wrap{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
   .brand{display:flex;align-items:center;font-family:'Cairo',sans-serif;font-weight:800;font-size:24px;letter-spacing:.01em;color:var(--ink-text);}
   .brand-x{color:var(--copper);}
-  .brand img{height:56px;width:auto;display:block;}
+  .brand img{height:112px;width:auto;display:block;}
   .brand span{color:var(--copper);}
   nav.links{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
   nav.links button{
@@ -451,7 +451,7 @@
   }
   @media (max-width:480px){
     .nav-wrap{padding:10px 14px;gap:8px;}
-    .brand img{height:42px;}
+    .brand img{height:84px;}
     .nav-wrap > div:first-child{order:1;}
     .nav-wrap > div:last-child{order:2;}
     .nav-wrap > div:first-child a{width:28px;height:28px;}
@@ -544,7 +544,7 @@
   .offer-tile b{font-size:18px;margin-bottom:4px;}
   .offer-tile small{font-size:13px;opacity:.88;}
   .site-footer{background:#1a1a1a;color:#fff;margin-top:10px;padding:44px 0 18px;}
-  .footer-content{max-width:1200px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:45px;}
+  .footer-content{max-width:1200px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:2fr 1fr;gap:45px;}
   .footer-brand h3{font-size:24px;margin:0 0 12px;}
   .footer-brand h3 span{color:#e0182a;}
   .footer-brand p{max-width:360px;color:#999;font-size:14px;line-height:1.8;margin:0 0 16px;}
@@ -765,7 +765,7 @@
     .category-strip-head h2{font-size:19px;}
     .category-strip-track{gap:14px;}
     .category-orb{flex-basis:92px;}
-    .category-orb-image{width:78px;height:78px;font-size:29px;}
+    .category-orb-image{width:78px;height:78px;font-size:0;}
     .category-orb b{font-size:11px;}
   }
   @media(min-width:901px){
@@ -907,7 +907,7 @@
     header.site nav.links{display:none!important;}
     header.site .cart-btn{display:none!important;}
     .nav-wrap{padding:8px 12px;min-height:0;}
-    .brand img{height:34px;}
+    .brand img{height:68px;}
     .mobile-bottom-nav{
       display:flex;position:fixed;left:0;right:0;bottom:0;z-index:85;
       background:var(--navy,#18324a);border-top:1px solid var(--copper,#3f7c80);
@@ -966,7 +966,7 @@ const FIREBASE_CONFIG = {
       <button data-view="admin" onclick="go('admin')" id="navAdmin" style="display:none">لوحة الإدارة</button>
     </nav>
     <div style="display:flex;align-items:center;gap:10px;">
-      <button class="btn btn-outline cart-btn" onclick="openCart()">
+      <button class="btn btn-outline cart-btn" data-view="cart" onclick="go('cart')">
         السلة <span class="cart-badge" id="cartBadge">0</span>
       </button>
       <div id="authArea"></div>
@@ -978,7 +978,7 @@ const FIREBASE_CONFIG = {
   <button type="button" data-view="store" onclick="go('store')">
     <span class="mbn-ic">🏬</span><span>المتجر</span>
   </button>
-  <button type="button" onclick="openCart()">
+  <button type="button" data-view="cart" onclick="go('cart')">
     <span class="mbn-ic">🛒<span class="mbn-badge" id="mbnCartBadge">0</span></span><span>السلة</span>
   </button>
   <button type="button" data-view="my-orders" onclick="go('my-orders')">
@@ -1085,6 +1085,16 @@ const FIREBASE_CONFIG = {
     </div>
     <div id="myOrdersList"></div>
     <div class="empty" id="myOrdersEmpty" style="display:none">لسه معملتش أي طلب.</div>
+  </section>
+
+  <!-- ================= السلة ================= -->
+  <section class="view" id="view-cart">
+    <div class="section-head"><h2>سلة المشتريات</h2></div>
+    <div id="cartItems"></div>
+    <div class="empty" id="cartEmpty" style="display:none">السلة فاضية.</div>
+    <div class="cart-total"><span>الإجمالي (المنتجات)</span><span id="cartTotal" class="mono">0 ج.م</span></div>
+    <div style="font-size:11.5px;color:#8a8a8a;margin-bottom:10px">+ 70 ج.م مصاريف شحن هتتحسب عند إتمام الطلب</div>
+    <button class="btn btn-copper btn-block" onclick="proceedToCheckout()" style="max-width:420px">إتمام الطلب</button>
   </section>
 
   <!-- ================= بوابة دخول الفريق ================= -->
@@ -1515,7 +1525,6 @@ const FIREBASE_CONFIG = {
       <p>وجهتك للتقنيات الذكية والمنتجات العملية. اختيارات مفيدة، طلب واضح، وخدمة تقدر تعتمد عليها.</p>
       <div class="footer-social"><a href="https://wa.me/201152155717" target="_blank" rel="noopener">واتساب</a><a href="https://www.facebook.com/share/19gYbwSUyr/" target="_blank" rel="noopener">فيسبوك</a></div>
     </div>
-    <div class="footer-column"><h4>روابط سريعة</h4><a href="#" onclick="go('store');return false">المتجر</a><a href="#" onclick="go('my-orders');return false">طلباتي</a><a href="#" onclick="document.getElementById('storeProductsSection').scrollIntoView({behavior:'smooth'});return false">المنتجات</a></div>
     <div class="footer-column"><h4>خدمة العملاء</h4><a href="tel:01152155717">📞 01152155717</a><a href="mailto:support@xerea.com">✉️ support@xerea.com</a><span>📍 القاهرة، مصر</span></div>
   </div>
   <div class="footer-bottom"><span>© 2025 XEREA. جميع الحقوق محفوظة.</span><span>دفع آمن عند الاستلام أو إلكترونيًا</span></div>
@@ -1524,17 +1533,6 @@ const FIREBASE_CONFIG = {
 <a class="floating-whatsapp" href="https://wa.me/201152155717" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب">تواصل معنا</a>
 
 <!-- سلة المشتريات -->
-<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()">
-  <div class="drawer">
-    <h2>سلة المشتريات</h2>
-    <div id="cartItems"></div>
-    <div class="empty" id="cartEmpty" style="display:none">السلة فاضية.</div>
-    <div class="cart-total"><span>الإجمالي (المنتجات)</span><span id="cartTotal" class="mono">0 ج.م</span></div>
-    <div style="font-size:11.5px;color:#8a8a8a;margin-bottom:10px">+ 70 ج.م مصاريف شحن هتتحسب عند إتمام الطلب</div>
-    <button class="btn btn-copper btn-block" onclick="proceedToCheckout()">إتمام الطلب</button>
-  </div>
-</div>
-
 <!-- صفحة تفاصيل المنتج -->
 <div class="modal-wrap dark-modal" id="productDetailModalWrap">
   <div class="modal" style="max-width:640px">
@@ -2992,13 +2990,10 @@ function renderCart(){
   const mbnBadge = document.getElementById('mbnCartBadge');
   if(mbnBadge) mbnBadge.textContent = cart.reduce((s,c)=>s+c.qty,0);
 }
-function hideCartOverlay(){ document.getElementById('cartOverlay').classList.remove('active'); }
-function openCart(){ document.getElementById('cartOverlay').classList.add('active'); pushModalHistory(); }
-function closeCart(){ hideCartOverlay(); consumeModalHistoryIfAny(); }
+function openCart(){ go('cart'); }
 const SHIPPING_FEE = 70;
 function proceedToCheckout(){
   if(!cart.length){ toast('السلة فاضية'); return; }
-  hideCartOverlay();
   document.getElementById('checkoutSub').innerHTML = `
     <div>إجمالي المنتجات: ${money(cartTotal())}</div>
     <div>مصاريف الشحن: ${money(SHIPPING_FEE)}</div>
