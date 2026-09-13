@@ -93,7 +93,7 @@
   }
   .user-chip{display:flex;align-items:center;gap:8px;font-size:13.5px;background:var(--ink-2);padding:5px 10px 5px 5px;border-radius:99px;border:1px solid var(--line);cursor:pointer;}
   .user-chip img{width:24px;height:24px;border-radius:50%;}
-  .user-avatar{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--copper);color:#fff;font-weight:800;font-size:13px;flex:none;}
+  .user-avatar{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#3f7c80;color:#fff;font-weight:800;font-size:13px;flex:none;}
   .user-chip-mlabel{display:none;}
   @media(max-width:760px){
     .user-chip{background:none;border:none;padding:0;gap:2px;flex-direction:column;}
@@ -268,7 +268,7 @@
   .dash .team-panel,.dash .supplier-card,.dash .ledger-card{background:#202936;border-color:#344252;}
   .dash .dash-tabs button.active{background:#202936;color:#fff;}
   .dash-inner{padding:26px 24px 40px;}
-  .dash-tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line-dark);padding:14px 24px 0;}
+  .dash-tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line-dark);padding:14px 24px 10px;position:sticky;top:73px;z-index:20;background:var(--ink-2);}
   .dash-tabs button{
     background:none;border:none;color:#9a9a9a;padding:10px 14px;font-size:13.5px;border-radius:8px 8px 0 0;
   }
@@ -442,7 +442,7 @@
     nav.links{gap:2px;}
     nav.links button{padding:7px 10px;font-size:13px;}
     .dash-inner{padding:18px 14px 30px;}
-    .dash-tabs{padding:12px 14px 0;}
+    .dash-tabs{padding:12px 14px 8px;top:57px;}
     table.data{font-size:12px;}
     table.data th,table.data td{padding:8px 6px;}
     .modal{padding:20px 16px;}
@@ -886,20 +886,20 @@
   .category-orb:hover .category-orb-image{border-color:#fff;outline-color:#28565c;}
   .floating-whatsapp{box-shadow:0 3px 10px rgba(24,50,74,.25);}
   /* صور GitHub المرفوعة في جذر المستودع */
-  .offer-red{background-image:linear-gradient(90deg,rgba(24,50,74,.94),rgba(63,124,128,.42)),url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-smarthome.jpg');}
-  .offer-dark{background:linear-gradient(135deg,rgba(24,50,74,.94),rgba(63,124,128,.45)),url('https://abozakynet88-rgb.github.io/Zaro/category-home.jpg.png') center/cover;}
-  #view-store>.hero-slider{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-smarthome.jpg');}
-  .category-kitchen{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-all.avif.avif');}
-  .category-kids{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-kids.jpg.webp');}
-  .category-home{background-image:url('https://abozakynet88-rgb.github.io/Zaro/category-home.jpg.png');}
-  .category-smart{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-tracking.png');}
-  .category-car{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-car.jpg.jpg');}
-  .category-appliances{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-smarthome.jpg');}
-  #view-store .need-card:nth-child(1) .need-ic{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-all.avif.avif');}
-  #view-store .need-card:nth-child(2) .need-ic{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-kids.jpg');}
-  #view-store .need-card:nth-child(3) .need-ic{background-image:url('https://abozakynet88-rgb.github.io/Zaro/category-home.jpg.png');}
-  #view-store .need-card:nth-child(4) .need-ic{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-tracking.png');}
-  #view-store .need-card:nth-child(5) .need-ic{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-car.jpg.jpg');}
+  .offer-red{background-image:linear-gradient(90deg,rgba(24,50,74,.94),rgba(63,124,128,.42)),url('assetscategory-smarthome.jpg');}
+  .offer-dark{background:linear-gradient(135deg,rgba(24,50,74,.94),rgba(63,124,128,.45)),url('category-home.jpg.png') center/cover;}
+  #view-store>.hero-slider{background-image:url('assetscategory-smarthome.jpg');}
+  .category-kitchen{background-image:url('assetscategory-all.avif.avif');}
+  .category-kids{background-image:url('assetscategory-kids.jpg.webp');}
+  .category-home{background-image:url('category-home.jpg.png');}
+  .category-smart{background-image:url('assetscategory-tracking.png');}
+  .category-car{background-image:url('assetscategory-car.jpg.jpg');}
+  .category-appliances{background-image:url('assetscategory-smarthome.jpg');}
+  #view-store .need-card:nth-child(1) .need-ic{background-image:url('assetscategory-all.avif.avif');}
+  #view-store .need-card:nth-child(2) .need-ic{background-image:url('assetscategory-kids.jpg');}
+  #view-store .need-card:nth-child(3) .need-ic{background-image:url('category-home.jpg.png');}
+  #view-store .need-card:nth-child(4) .need-ic{background-image:url('assetscategory-tracking.png');}
+  #view-store .need-card:nth-child(5) .need-ic{background-image:url('assetscategory-car.jpg.jpg');}
   /* ---------- شريط تنقل سفلي للموبايل ---------- */
   .mobile-bottom-nav{display:none;}
   @media(max-width:760px){
@@ -1558,6 +1558,9 @@ const FIREBASE_CONFIG = {
           <button type="button" onclick="stepOoQty(1)">+</button>
         </div>
       </div>
+      <div class="field" id="ooTierHintWrap" style="display:none">
+        <div id="ooTierHint" style="font-size:12.5px;background:rgba(63,124,128,.12);border:1px dashed var(--copper);color:var(--copper);border-radius:8px;padding:8px 10px;line-height:1.7"></div>
+      </div>
       <div class="cart-total" style="margin-top:4px">
         <span>سعر القطعة</span><span class="mono" id="ooUnitPrice">0 ج.م</span>
       </div>
@@ -2129,6 +2132,7 @@ function goInternal(view){
   }
   document.querySelectorAll('nav.links button').forEach(b=>b.classList.toggle('active', b.dataset.view===view));
   document.querySelectorAll('.mobile-bottom-nav button[data-view]').forEach(b=>b.classList.toggle('active', b.dataset.view===view));
+  document.body.classList.toggle('dashboard-view', (view==='team'||view==='admin'));
   if(view==='my-orders') renderMyOrdersGate();
   window.scrollTo({top:0,behavior:'instant'});
   currentAppView = view;
@@ -2225,7 +2229,7 @@ function renderUserChip(user){
   const name = myDisplayName(user);
   authArea.innerHTML = `
     <div class="user-chip" onclick="openMyProfile()" title="بياناتي">
-      <span class="user-avatar">${esc(avatarInitial(name))}</span>
+      <span class="user-avatar"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2.5c-3.34 0-10 1.68-10 5v1.5c0 .55.45 1 1 1h18c.55 0 1-.45 1-1V19.5c0-3.32-6.66-5-10-5z"/></svg></span>
       <span class="user-chip-name">${esc(name)}</span>
       <span class="user-chip-mlabel">حسابي</span>
       <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();signOutUser()">خروج</button>
@@ -2771,6 +2775,19 @@ function onOoQtyChange(){
   if(!p) return;
   const qty = Math.max(1, Number(document.getElementById('ooQty').value)||1);
   document.getElementById('ooUnitPrice').textContent = money(tierUnitPrice(p, qty));
+  const hintWrap = document.getElementById('ooTierHintWrap');
+  const hintEl = document.getElementById('ooTierHint');
+  const tier3 = p.priceTiers && p.priceTiers[3];
+  if(tier3){
+    hintWrap.style.display = 'block';
+    if(qty>=3){
+      hintEl.textContent = `✅ مستفيد من عرض الـ3 قطع — سعر القطعة ${money(tier3)} بدل ${money(p.price)}.`;
+    }else{
+      hintEl.textContent = `🎁 اطلب 3 قطع واحصل على سعر القطعة ${money(tier3)} بدل ${money(p.price)}.`;
+    }
+  }else{
+    hintWrap.style.display = 'none';
+  }
 }
 async function confirmOrderOptions(e){
   e.preventDefault();
