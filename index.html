@@ -12,8 +12,8 @@
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0b0f16">
-<link rel="apple-touch-icon" href="xerea-logo.png.png">
-<link rel="icon" href="xerea-logo.png.png">
+<link rel="apple-touch-icon" href="xerea-logo-transparent.png">
+<link rel="icon" href="xerea-logo-transparent.png">
 
 <!-- Open Graph (مؤقت — صورة عامة لحد ما يتعمل حل ديناميكي عبر Cloud Function يعرض صورة كل منتج وقت المشاركة) -->
 <meta property="og:type" content="website">
@@ -244,6 +244,8 @@
   .field textarea{resize:vertical;min-height:70px;}
   .modal-close{position:absolute;top:18px;left:18px;background:none;border:none;font-size:20px;color:#9a9a9a;}
   .modal{position:relative;}
+  .modal-close{position:sticky;top:0;z-index:10;float:left;width:34px;height:34px;margin:-10px -4px 0 0;background:#18324a;color:#fff;border:1px solid #8fb9be;border-radius:50%;font-size:22px;line-height:28px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.22);}
+  .modal-close:hover{background:#3f7c80;color:#fff;}
 
   /* ---------- تسجيل دخول الفريق ---------- */
   .gate{max-width:420px;margin:60px auto;text-align:center;padding:40px 30px;background:var(--paper);border:1px solid var(--line);border-radius:16px;}
@@ -337,6 +339,12 @@
   .step-dot{flex:1;min-width:60px;text-align:center;font-size:10.5px;padding:6px 4px;border-radius:6px;background:#232323;color:#7a7a7a;}
   .step-dot.on{background:var(--copper);color:#ffffff;font-weight:700;}
   .step-dot.stop-dot{background:var(--rose);color:#fff;}
+  #view-my-orders .p-card{color:#243746;background:#fff;border-color:#d9e2e4;}
+  #view-my-orders .p-card .items-list{color:#4b5f6c!important;}
+  #view-my-orders .p-card .step-dot{background:#e7edef;color:#526674;border:1px solid #c8d6da;}
+  #view-my-orders .p-card .step-dot.on{background:#3f7c80;color:#fff;border-color:#28565c;}
+  #view-my-orders .p-card .step-dot.stop-dot{background:#b86b55;color:#fff;border-color:#934d3b;}
+  #view-my-orders .p-card .btn-outline{color:#243746;border-color:#9db4bd;background:#fff;}
 
   /* ---------- بانر تثبيت التطبيق ---------- */
   .install-banner{
@@ -871,7 +879,7 @@
   .category-orb:hover .category-orb-image{border-color:#fff;outline-color:#28565c;}
   .floating-whatsapp{box-shadow:0 3px 10px rgba(24,50,74,.25);}
   /* صور GitHub المرفوعة في جذر المستودع */
-  .brand:before{background-image:url('https://abozakynet88-rgb.github.io/Zaro/xerea-logo.png.png');}
+  .brand:before{background-image:url('https://abozakynet88-rgb.github.io/Zaro/xerea-logo-transparent.png');}
   .offer-red{background-image:linear-gradient(90deg,rgba(24,50,74,.94),rgba(63,124,128,.42)),url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-smarthome.jpg.webp');}
   .offer-dark{background:linear-gradient(135deg,rgba(24,50,74,.94),rgba(63,124,128,.45)),url('https://abozakynet88-rgb.github.io/Zaro/category-home.jpg.png') center/cover;}
   #view-store>.hero-slider{background-image:url('https://abozakynet88-rgb.github.io/Zaro/assetscategory-smarthome.jpg.webp');}
