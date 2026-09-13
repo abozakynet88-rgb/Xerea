@@ -43,6 +43,26 @@
   }
   *{box-sizing:border-box;}
   body{margin:0;background:var(--ink);color:var(--ink-text);}
+  /* ---------- الواجهة الخارجية (المتجر/طلباتي) — هوية بصرية فاتحة بالأحمر ---------- */
+  body.light-theme{
+    --ink:#f5f5f6;
+    --ink-2:#ffffff;
+    --paper:#ffffff;
+    --copper:#e0182a;
+    --copper-dark:#b30e1d;
+    --emerald:#1a9e56;
+    --emerald-light:#1a9e56;
+    --rose:#e0182a;
+    --line:#e8e8e8;
+    --line-dark:#dcdcdc;
+    --ink-text:#232323;
+    background:var(--ink);
+  }
+  body.light-theme .p-thumb,
+  body.light-theme .new-slide .thumb,
+  body.light-theme .pd-gallery-main{
+    background:linear-gradient(135deg,#f2f2f3,#e9e9ea);
+  }
   h1,h2,h3,.display{font-family:'Almarai',sans-serif;}
   .mono{font-variant-numeric:tabular-nums;}
   a{color:inherit;}
@@ -55,7 +75,7 @@
     position:sticky;top:0;z-index:40;
   }
   .nav-wrap{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
-  .brand{display:flex;align-items:center;font-family:'Almarai',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em;color:#fff;}
+  .brand{display:flex;align-items:center;font-family:'Almarai',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em;color:var(--ink-text);}
   .brand img{height:56px;width:auto;display:block;}
   .brand span{color:var(--copper);}
   nav.links{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
@@ -125,7 +145,7 @@
   .hero-mini-stats .stat span{font-size:12.5px;color:#8a8a8a;}
 
   .section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px;}
-  .section-head h2{font-size:22px;margin:0;color:#fff;}
+  .section-head h2{font-size:22px;margin:0;color:var(--ink-text);}
   .section-head .count{font-size:13px;color:#8a8a8a;}
 
   .cat-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
@@ -144,20 +164,7 @@
   }
   .need-card:hover{border-color:var(--copper);background:rgba(47,139,240,.08);}
   .need-card .need-ic{font-size:28px;}
-
-  /* ---------- قايمة التصنيفات: أكورديون (نوع رئيسي ← أصناف قابلة للطي) ---------- */
-  .category-accordion{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:16px;}
-  .acc-item{border-bottom:1px solid var(--line);}
-  .acc-item:last-child{border-bottom:none;}
-  .acc-header{
-    width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;
-    background:var(--ink-2);border:none;padding:13px 16px;color:var(--ink-text);font-size:14px;font-weight:700;text-align:right;
-  }
-  .acc-header.active{color:var(--copper);}
-  .acc-header .acc-arrow{font-size:12px;color:#8a8a8a;transition:transform .2s;}
-  .acc-header.open .acc-arrow{transform:rotate(180deg);}
-  .acc-body{display:none;padding:10px 14px 14px;background:var(--paper);}
-  .acc-body.open{display:flex;flex-wrap:wrap;gap:8px;}
+  .need-card.active{border-color:var(--copper);background:var(--copper);color:#ffffff;}
 
   .gender-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
   .gender-tab{
@@ -178,7 +185,7 @@
   .p-thumb img{width:100%;height:100%;object-fit:contain;padding:6px;box-sizing:border-box;}
   .cat-tag{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.75);color:#fff;font-size:10.5px;padding:3px 10px;border-radius:99px;border:1px solid rgba(255,255,255,.22);}
   .p-body{padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;flex:1;}
-  .p-body h3{font-size:15.5px;margin:0;color:#fff;}
+  .p-body h3{font-size:15.5px;margin:0;color:var(--ink-text);}
   .p-body .desc{font-size:12.5px;color:#8f8f8f;flex:1;line-height:1.5;}
   .p-row{display:flex;align-items:center;justify-content:space-between;margin-top:4px;}
   .price-block{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;}
@@ -186,6 +193,10 @@
   .price-block .price{font-size:18px;font-weight:800;}
   .price{font-family:'Almarai',sans-serif;font-weight:800;color:var(--copper);font-size:16px;}
   .stock-tag{font-size:11px;color:var(--rose);}
+  .rating-row{display:flex;align-items:center;gap:6px;margin-top:2px;}
+  .rating-row .stars{color:#f5a623;font-size:12.5px;letter-spacing:1px;}
+  .rating-row .count{font-size:11px;color:#8a8a8a;}
+  .badge-new{display:inline-block;background:var(--copper);color:#ffffff;font-size:10.5px;font-weight:800;padding:3px 10px;border-radius:6px;}
   .btn{
     border:1px solid transparent;border-radius:9px;padding:9px 14px;font-size:13.5px;font-weight:700;
   }
@@ -486,6 +497,18 @@ const FIREBASE_CONFIG = {
 
   <!-- ================= المتجر ================= -->
   <section class="view active" id="view-store">
+    <div class="need-picker">
+      <div class="section-head"><h2>إنت محتاج إيه؟</h2></div>
+      <div class="need-grid" id="needGrid">
+        <button type="button" class="need-card" data-need="" onclick="pickNeed('')"><span class="need-ic">🛍️</span><span>كل المنتجات</span></button>
+        <button type="button" class="need-card" data-need="kids" onclick="pickNeed('kids')"><span class="need-ic">👶</span><span>عايز اطمن على اولادي</span></button>
+        <button type="button" class="need-card" data-need="home" onclick="pickNeed('home')"><span class="need-ic">🏠</span><span>عايز اطمن على بيتي</span></button>
+        <button type="button" class="need-card" data-need="tracking" onclick="pickNeed('tracking')"><span class="need-ic">📍</span><span>عايز اطمن على متعلقاتي</span></button>
+        <button type="button" class="need-card" data-need="car" onclick="pickNeed('car')"><span class="need-ic">🚗</span><span>عايز اطمن على عربيتي</span></button>
+        <button type="button" class="need-card" data-need="smarthome" onclick="pickNeed('smarthome')"><span class="need-ic">⚡</span><span>عايز اخلي بيتي سمارت</span></button>
+      </div>
+    </div>
+
     <div class="hero-slider" id="heroSlider" style="display:none">
       <div class="hero-slides">
         <div class="hero-track" id="heroTrack"></div>
@@ -511,23 +534,7 @@ const FIREBASE_CONFIG = {
       <div class="new-slider" id="giftsScroller"><div class="new-slider-track" id="giftsSlider"></div></div>
     </div>
 
-    <div class="need-picker">
-      <div class="section-head"><h2>إنت محتاج إيه؟</h2></div>
-      <div class="need-grid">
-        <button type="button" class="need-card" onclick="pickNeed('kids')"><span class="need-ic">👶</span><span>عايز أطمن على ابني</span></button>
-        <button type="button" class="need-card" onclick="pickNeed('home')"><span class="need-ic">🏠</span><span>عايز أأمّن بيتي</span></button>
-        <button type="button" class="need-card" onclick="pickNeed('tracking')"><span class="need-ic">📍</span><span>خايف أفقد حاجة مهمة</span></button>
-        <button type="button" class="need-card" onclick="pickNeed('car')"><span class="need-ic">🚗</span><span>عايز أتابع عربيتي</span></button>
-        <button type="button" class="need-card" onclick="pickNeed('travel')"><span class="need-ic">🎒</span><span>مسافر وعايز أطمن على شنطتي</span></button>
-        <button type="button" class="need-card" onclick="pickNeed('smarthome')"><span class="need-ic">⚡</span><span>عايز أخلي بيتي أذكى</span></button>
-      </div>
-    </div>
-
-    <div class="store-filter-bar" id="storeFilterBar">
-      <div class="category-accordion" id="storeCategoryAccordion"></div>
-    </div>
-
-    <div class="section-head">
+    <div class="section-head" id="storeProductsSection">
       <h2>المنتجات</h2>
       <span class="count" id="prodCount"></span>
     </div>
@@ -1065,14 +1072,10 @@ const FIREBASE_CONFIG = {
     <button class="modal-close" onclick="closeModal('productModalWrap')">×</button>
     <h2 id="productModalTitle">إضافة منتج</h2>
     <form id="productForm" onsubmit="submitProduct(event)">
+      <div class="field"><label>القسم</label>
+        <select id="pGender"></select>
+      </div>
       <div class="field"><label>اسم المنتج</label><input type="text" id="pName" required></div>
-      <div class="field"><label>النوع</label>
-        <select id="pGender" onchange="renderPItemTypeSelect()"></select>
-      </div>
-      <div class="field"><label>الصنف</label>
-        <select id="pItemType"></select>
-        <div style="font-size:11.5px;color:#8a8a8a;margin-top:4px">الأصناف بتتضاف من قسم "المشتريات" — لو الصنف اللي محتاجه مش موجود، ضيفه من هناك الأول.</div>
-      </div>
       <div class="field"><label>الوصف</label><textarea id="pDesc"></textarea></div>
       <div class="field"><label>المميزات (اختياري — كل ميزة في سطر، مثال: بطارية تدوم 30 يوم)</label><textarea id="pSpecs" placeholder="بطارية تدوم 30 يوم&#10;مقاوم للماء IP67&#10;تتبع مباشر عبر تطبيق الموبايل"></textarea></div>
       <div class="field"><label>طريقة التشغيل (اختياري — كل خطوة في سطر)</label><textarea id="pHowToUse" placeholder="حمّل تطبيق XEREA وسجّل حساب&#10;اضغط زرار التشغيل 3 ثواني لحد ما تشتغل اللمبة الزرقاء&#10;اربط الجهاز بالتطبيق عن طريق مسح كود QR"></textarea></div>
@@ -1091,12 +1094,8 @@ const FIREBASE_CONFIG = {
         <div id="pImagesPreview" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"></div>
       </div>
       <div class="field">
-        <label>أسعار الكمية (عرض تخفيض حسب عدد القطع — اتركه فاضي لو نفس السعر الأساسي)</label>
-        <div class="unit-row"><span class="n">قطعة واحدة</span><input type="number" id="pTier1" min="0" step="0.01" placeholder="السعر الأساسي"></div>
-        <div class="unit-row"><span class="n">قطعتين</span><input type="number" id="pTier2" min="0" step="0.01" placeholder="سعر القطعة عند شراء 2"></div>
+        <label>سعر عرض 3 قطع (اختياري — سعر القطعة عند شراء 3، اتركه فاضي لو مفيش عرض)</label>
         <div class="unit-row"><span class="n">3 قطع</span><input type="number" id="pTier3" min="0" step="0.01" placeholder="سعر القطعة عند شراء 3"></div>
-        <div class="unit-row"><span class="n">4 قطع</span><input type="number" id="pTier4" min="0" step="0.01" placeholder="سعر القطعة عند شراء 4"></div>
-        <div class="unit-row"><span class="n">5 فأكثر</span><input type="number" id="pTier5" min="0" step="0.01" placeholder="سعر القطعة عند شراء 5 أو أكثر"></div>
       </div>
       <button type="submit" class="btn btn-copper btn-block" id="productModalSubmitBtn">حفظ المنتج</button>
     </form>
@@ -1827,20 +1826,17 @@ listenItemTypes();
    التصنيف الرئيسي (تصنيفات XEREA) + الأصناف (تُضاف من قسم المشتريات)
    ============================================================ */
 const GENDER_LABELS = {
-  kids:'أمان الأطفال 👶',
-  home:'أمان المنزل 🏠',
-  tracking:'التتبع والحماية 📍',
-  smarthome:'البيت الذكي ⚡',
-  car:'السيارة 🚗',
-  travel:'السفر 🎒',
-  gadgets:'أجهزة ذكية للحياة اليومية ✨',
+  kids:'عايز اطمن على اولادي 👶',
+  home:'عايز اطمن على بيتي 🏠',
+  tracking:'عايز اطمن على متعلقاتي 📍',
+  car:'عايز اطمن على عربيتي 🚗',
+  smarthome:'عايز اخلي بيتي سمارت ⚡',
 };
 let itemTypesCache = [];
 function listenItemTypes(){
   db.collection('itemTypes').orderBy('label').onSnapshot(snap=>{
     itemTypesCache = snap.docs.map(d=>({id:d.id,...d.data()}));
     renderPGenderSelect();
-    renderStoreFilters();
     renderPurchaseGenderSelect();
     refreshCategoryFilterSelects();
     renderTeamAllOrders();
@@ -1850,6 +1846,7 @@ function listenItemTypes(){
   }, err=>{ console.error('listenItemTypes', err); toast('تعذر تحميل الأصناف (itemTypes) من Firestore — '+(err.message||'')); });
 }
 function itemTypeLabel(id){
+  if(GENDER_LABELS[id]) return GENDER_LABELS[id];
   const it = itemTypesCache.find(x=>x.id===id);
   return it ? it.label : 'غير مصنف';
 }
@@ -1860,96 +1857,38 @@ function categoryGroupKeyOf(catId){
   const it = itemTypesCache.find(x=>x.id===catId);
   return it ? it.gender : '';
 }
-/* --- فورم إضافة/تعديل منتج: اختيار النوع ثم الصنف من الأصناف المتاحة --- */
+/* --- فورم إضافة/تعديل منتج: اختيار القسم مباشرة (بدون صنف فرعي) --- */
 function renderPGenderSelect(){
   const sel = document.getElementById('pGender');
   if(!sel) return;
   const current = sel.value;
-  sel.innerHTML = '<option value="">اختر النوع</option>' + Object.entries(GENDER_LABELS).map(([k,l])=>`<option value="${k}">${l}</option>`).join('');
+  sel.innerHTML = '<option value="">اختر القسم</option>' + Object.entries(GENDER_LABELS).map(([k,l])=>`<option value="${k}">${l}</option>`).join('');
   if(current) sel.value = current;
-  renderPItemTypeSelect();
-}
-function renderPItemTypeSelect(){
-  const genderSel = document.getElementById('pGender');
-  const itemSel = document.getElementById('pItemType');
-  if(!genderSel || !itemSel) return;
-  const gender = genderSel.value;
-  const current = itemSel.value;
-  const types = gender ? itemTypesForGender(gender) : [];
-  itemSel.innerHTML = types.length
-    ? types.map(t=>`<option value="${t.id}">${esc(t.label)}</option>`).join('')
-    : `<option value="">لا توجد أصناف لهذا النوع بعد — أضِف صنف من قسم المشتريات</option>`;
-  if(types.some(t=>t.id===current)) itemSel.value = current;
 }
 
-/* --- فلتر المتجر الاحترافي: أكورديون للتصنيف الرئيسي + الأصناف --- */
-let categoryFilter = '';
+/* --- فلتر المتجر: أزرار "إنت محتاج إيه؟" — كل قسم بيعرض منتجاته مباشرة --- */
 let genderFilter = '';
-let openAccordionKey = null; // مفتاح النوع المفتوح حاليًا في الأكورديون (null = كله مقفول)
-function renderStoreFilters(){
-  const wrap = document.getElementById('storeCategoryAccordion');
-  if(!wrap) return;
-  if(genderFilter && !openAccordionKey) openAccordionKey = genderFilter; // افتح النوع المختار تلقائيًا لو جاي من "إنت محتاج إيه؟"
-  const allActive = !genderFilter;
-  wrap.innerHTML =
-    `<button type="button" class="acc-header ${allActive?'active':''}" onclick="setGenderFilter('')" style="border-bottom:1px solid var(--line)">
-      <span>🛍️ عرض كل المنتجات</span>
-    </button>` +
-    Object.entries(GENDER_LABELS).map(([k,l])=>{
-      const isOpen = openAccordionKey===k;
-      const types = itemTypesForGender(k);
-      const isActiveGender = genderFilter===k && !categoryFilter;
-      return `
-      <div class="acc-item">
-        <button type="button" class="acc-header ${isOpen?'open':''} ${isActiveGender?'active':''}" onclick="toggleCategoryAccordion('${k}')">
-          <span>${esc(l)}</span>
-          <span class="acc-arrow">▾</span>
-        </button>
-        <div class="acc-body ${isOpen?'open':''}">
-          <button class="cat-chip ${genderFilter===k && !categoryFilter?'active':''}" onclick="setGenderFilter('${k}')">الكل</button>
-          ${types.map(t=>`<button class="cat-chip ${categoryFilter===t.id?'active':''}" onclick="setCategoryFilter('${t.id}')">${esc(t.label)}</button>`).join('')}
-          ${!types.length? `<span style="color:#8a8a8a;font-size:12px">لسه مفيش أصناف مضافة تحت "${esc(l)}"</span>` : ''}
-        </div>
-      </div>`;
-    }).join('');
-}
-/* فتح/قفل نوع في الأكورديون — فتح نوع بيقفل اللي فاتح قبله (أكورديون حقيقي)،
-   وبيفلتر المنتجات على النوع ده على طول (بدون تحديد صنف فرعي لسه) */
-function toggleCategoryAccordion(key){
-  if(openAccordionKey===key){
-    openAccordionKey = null;
-  } else {
-    openAccordionKey = key;
-    setGenderFilter(key);
-    return; // setGenderFilter بيعمل render + renderStoreProducts بالفعل
-  }
-  renderStoreFilters();
+/* بيحدّث حالة التحديد (active) على أزرار "إنت محتاج إيه؟" */
+function renderNeedPicker(){
+  document.querySelectorAll('#needGrid .need-card').forEach(btn=>{
+    btn.classList.toggle('active', (btn.dataset.need||'')===genderFilter);
+  });
 }
 function setGenderFilter(v){
   genderFilter = v;
-  categoryFilter = '';
-  openAccordionKey = v || null;
-  renderStoreFilters();
+  renderNeedPicker();
   renderStoreProducts();
 }
-/* لما العميل يختار احتياجه من "إنت محتاج إيه؟" — بنفلتر بنفس منطق التصنيف
-   الرئيسي الموجود، وبننزّل الصفحة للمنتجات على طول */
+/* لما العميل يختار احتياجه من "إنت محتاج إيه؟" — بنفلتر المنتجات على طول
+   وبننزّل الصفحة لقسم المنتجات */
 function pickNeed(key){
   setGenderFilter(key);
-  document.getElementById('storeFilterBar')?.scrollIntoView({behavior:'smooth', block:'start'});
-}
-function setCategoryFilter(cat){
-  categoryFilter = cat;
-  if(cat) genderFilter = categoryGroupKeyOf(cat) || genderFilter;
-  openAccordionKey = genderFilter || null;
-  renderStoreFilters();
-  renderStoreProducts();
+  document.getElementById('storeProductsSection')?.scrollIntoView({behavior:'smooth', block:'start'});
 }
 function renderStoreProducts(){
   const grid = document.getElementById('productsGrid');
   let visible = products;
-  if(genderFilter) visible = visible.filter(p=>categoryGroupKeyOf(p.category)===genderFilter);
-  if(categoryFilter) visible = visible.filter(p=>p.category===categoryFilter);
+  if(genderFilter) visible = visible.filter(p=>p.gender===genderFilter);
   document.getElementById('prodCount').textContent = visible.length + ' قطعة';
   document.getElementById('productsEmpty').style.display = visible.length? 'none':'block';
   grid.innerHTML = visible.map(p=>{
@@ -2280,12 +2219,9 @@ function renderProductDetail(p){
       </div>
     </div>
 
-    ${p.priceTiers? `<h3 style="color:#fff;font-size:14px;margin:16px 0 4px">عروض الكمية</h3><table class="pd-tier-table">
-      <tr><td>قطعة واحدة</td><td>${money(p.priceTiers[1])}</td></tr>
-      <tr><td>قطعتين</td><td>${money(p.priceTiers[2])}</td></tr>
-      <tr><td>3 قطع</td><td>${money(p.priceTiers[3])}</td></tr>
-      <tr><td>4 قطع</td><td>${money(p.priceTiers[4])}</td></tr>
-      <tr><td>5 فأكثر</td><td>${money(p.priceTiers['5plus'])}</td></tr>
+    ${p.priceTiers && p.priceTiers[3] ? `<h3 style="color:#fff;font-size:14px;margin:16px 0 4px">عرض الكمية</h3><table class="pd-tier-table">
+      <tr><td>قطعة واحدة</td><td>${money(p.price)}</td></tr>
+      <tr><td>عرض 3 قطع (سعر القطعة)</td><td>${money(p.priceTiers[3])}</td></tr>
     </table>` : ''}
     <div style="display:flex;gap:8px;margin:14px 0;flex-wrap:wrap">
       <button class="btn btn-copper" ${p.stock>0?'':'disabled style="opacity:.5"'} onclick="closeModal('productDetailModalWrap');openOrderOptions('${p.id}')">اطلب الآن</button>
@@ -3434,7 +3370,7 @@ function renderTeamProducts(targetId){
     return `
     <tr>
       <td>${esc(p.name)}</td>
-      <td>${esc(GENDER_LABELS[p.gender]||'—')} — ${esc(itemTypeLabel(p.category))}</td>
+      <td>${esc(GENDER_LABELS[p.gender]||'—')}</td>
       <td class="mono">${money(p.price)}</td>
       <td class="mono">${stock}</td>
       <td class="mono">${reserved}</td>
@@ -3844,8 +3780,6 @@ function openProductModal(id){
     if(submitBtn) submitBtn.textContent = 'حفظ التعديلات';
     document.getElementById('pName').value = p.name||'';
     document.getElementById('pGender').value = p.gender||'';
-    renderPItemTypeSelect();
-    document.getElementById('pItemType').value = p.category||'';
     document.getElementById('pDesc').value = p.description||'';
     document.getElementById('pSpecs').value = Array.isArray(p.specs)? p.specs.join('\n') : '';
     document.getElementById('pHowToUse').value = Array.isArray(p.howToUse)? p.howToUse.join('\n') : '';
@@ -3856,16 +3790,11 @@ function openProductModal(id){
     document.getElementById('pStock').value = p.stock||0;
     document.getElementById('pLowStock').value = (p.lowStockThreshold!=null) ? p.lowStockThreshold : '';
     const t = p.priceTiers||{};
-    document.getElementById('pTier1').value = t[1]||'';
-    document.getElementById('pTier2').value = t[2]||'';
     document.getElementById('pTier3').value = t[3]||'';
-    document.getElementById('pTier4').value = t[4]||'';
-    document.getElementById('pTier5').value = t['5plus']||'';
     pendingProductImages = productImages(p).slice();
   } else {
     if(titleEl) titleEl.textContent = 'إضافة منتج';
     if(submitBtn) submitBtn.textContent = 'حفظ المنتج';
-    renderPItemTypeSelect();
   }
   renderProductImagesPreview();
   document.getElementById('productModalWrap').classList.add('active');
@@ -3943,27 +3872,20 @@ function removePendingProductImage(i){
 async function submitProduct(e){
   e.preventDefault();
   const gender = document.getElementById('pGender').value;
-  const itemType = document.getElementById('pItemType').value;
-  if(!gender){ toast('اختر التصنيف الرئيسي للمنتج'); return; }
-  if(!itemType){ toast('اختر الصنف — لو مش موجود ضيفه الأول من قسم المشتريات'); return; }
+  if(!gender){ toast('اختر القسم اللي المنتج ده تابع له'); return; }
   const images = pendingProductImages.slice();
   const basePrice = Number(document.getElementById('pPrice').value);
   const compareAt = Number(document.getElementById('pCompareAt').value) || 0;
   const specs = document.getElementById('pSpecs').value.split('\n').map(s=>s.trim()).filter(Boolean);
   const howToUse = document.getElementById('pHowToUse').value.split('\n').map(s=>s.trim()).filter(Boolean);
   const video = document.getElementById('pVideo').value.trim();
-  const tiers = {
-    1: Number(document.getElementById('pTier1').value)||basePrice,
-    2: Number(document.getElementById('pTier2').value)||basePrice,
-    3: Number(document.getElementById('pTier3').value)||basePrice,
-    4: Number(document.getElementById('pTier4').value)||basePrice,
-    '5plus': Number(document.getElementById('pTier5').value)||basePrice,
-  };
+  const tier3Val = Number(document.getElementById('pTier3').value)||0;
+  const tiers = tier3Val ? { 3: tier3Val } : {};
   const newStock = Number(document.getElementById('pStock').value);
   const payload = {
     name: document.getElementById('pName').value.trim(),
     gender,
-    category: itemType,
+    category: gender,
     description: document.getElementById('pDesc').value.trim(),
     specs,
     howToUse,
@@ -4331,7 +4253,7 @@ async function submitSupplierItem(e){
 
 /* أول تحميل */
 renderCart();
-renderStoreFilters(); /* اظهار تابات التصنيف الرئيسي فورًا من ثابت GENDER_LABELS، من غير ما تنتظر تحميل الأصناف من فايرستور */
+renderNeedPicker(); /* اظهار حالة التحديد على أزرار "إنت محتاج إيه؟" فورًا */
 /* نفس الفكرة بالظبط لقايمتي "النوع" في فورم المنتج وفورم إضافة صنف جديد —
    دول قايمتين ثابتتين من GENDER_LABELS ومش المفروض يستنوا استجابة Firestore
    خالص. قبل الإصلاح ده كانوا بيفضلوا فاضيين لو استعلام itemTypes اتأخر أو
