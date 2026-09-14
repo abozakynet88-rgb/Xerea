@@ -900,6 +900,123 @@
   #view-store .need-card:nth-child(3) .need-ic{background-image:url('category-home.jpg.png');}
   #view-store .need-card:nth-child(4) .need-ic{background-image:url('assetscategory-tracking.png');}
   #view-store .need-card:nth-child(5) .need-ic{background-image:url('assetscategory-car.jpg.jpg');}
+
+  /* ================= الأقسام الرئيسية الخمسة — Bento Grid ================= */
+  .cat-bento{margin:26px 0 30px;font-family:'Cairo','Tajawal',sans-serif;}
+  .cat-bento .section-head{margin-bottom:16px;}
+  .cat-bento-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px;}
+  .cat-bento-card{
+    position:relative;grid-column:span 2;grid-row:span 1;border-radius:18px;overflow:hidden;
+    border:1px solid var(--line);background:var(--ink-2) center/cover no-repeat;color:#fff;text-align:right;
+    padding:0;cursor:pointer;transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .cat-bento-card:nth-child(1){grid-column:span 4;grid-row:span 2;}
+  .cat-bento-card:nth-child(4),.cat-bento-card:nth-child(5){grid-row:span 1;}
+  .cat-bento-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.28);}
+  .cat-bento-card.active{outline:3px solid var(--copper);outline-offset:-3px;}
+  .cat-bento-card .cbc-overlay{
+    position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.82) 15%, rgba(0,0,0,.25) 60%, rgba(0,0,0,.05));
+    display:flex;flex-direction:column;justify-content:flex-end;padding:16px 18px;
+  }
+  .cat-bento-card .cbc-icon{font-size:26px;margin-bottom:4px;}
+  .cat-bento-card h3{margin:0 0 4px;font-size:18px;color:#fff;}
+  .cat-bento-card:nth-child(1) h3{font-size:24px;}
+  .cat-bento-card p{margin:0 0 10px;font-size:12.5px;color:#e8e8e8;opacity:.92;}
+  .cat-bento-card .cbc-btn{
+    display:inline-flex;align-items:center;gap:6px;align-self:flex-start;background:var(--copper);color:#fff;
+    font-size:12px;font-weight:700;padding:7px 14px;border-radius:99px;transition:background .2s;
+  }
+  .cat-bento-card:hover .cbc-btn{background:var(--copper-dark);}
+  @media(max-width:760px){
+    .cat-bento-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px;}
+    .cat-bento-card{grid-column:span 1!important;}
+    .cat-bento-card:nth-child(1){grid-column:span 2!important;grid-row:span 1;}
+  }
+
+  /* ================= "إنت محتاج إيه؟" — Dropdown ================= */
+  .need-select-wrap{margin:22px 0 30px;font-family:'Cairo','Tajawal',sans-serif;}
+  .need-select-wrap .section-head{margin-bottom:12px;}
+  .need-select-box{position:relative;max-width:520px;}
+  .need-select-box select{
+    width:100%;appearance:none;-webkit-appearance:none;background:var(--ink-2);color:var(--ink-text);
+    border:1px solid var(--line);border-radius:14px;padding:16px 46px 16px 18px;font-size:15px;font-weight:700;
+    font-family:inherit;cursor:pointer;
+  }
+  .need-select-box select:focus{outline:2px solid var(--copper);}
+  .need-select-box::after{
+    content:'˅';position:absolute;top:50%;left:18px;transform:translateY(-55%);font-size:18px;color:var(--copper);pointer-events:none;
+  }
+
+  /* ================= نموذج المنتج — احتياجات / ملحقات / عرض ================= */
+  .need-check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:6px 14px;margin-top:8px;}
+  .need-check{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-text);}
+  .need-check input{width:auto;}
+  .accessory-chip{
+    display:inline-flex;align-items:center;gap:6px;background:var(--ink-2);border:1px solid var(--line);
+    border-radius:99px;padding:5px 6px 5px 12px;font-size:12.5px;
+  }
+  .accessory-chip button{background:none;border:none;color:var(--rose);font-size:15px;line-height:1;padding:0 4px;}
+  .toggle-row{display:flex;gap:8px;}
+  .toggle-row .btn.active{background:var(--copper);color:#fff;border-color:var(--copper);}
+  .img-preview-item{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;}
+  .img-preview-item img{width:74px;height:74px;object-fit:cover;border-radius:8px;border:2px solid transparent;}
+  .img-preview-item.is-main img{border-color:var(--copper);}
+  .img-preview-item .ipi-actions{display:flex;gap:4px;}
+  .img-preview-item .ipi-actions button{font-size:10px;padding:2px 6px;border-radius:6px;background:var(--ink-2);border:1px solid var(--line);color:var(--ink-text);}
+  .img-preview-item .ipi-main-tag{position:absolute;top:2px;right:2px;background:var(--copper);color:#fff;font-size:9px;padding:1px 5px;border-radius:99px;}
+
+  /* ================= بانرات ترويجية: عروض XEREA / الهدايا الذكية ================= */
+  .promo-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .promo-head small{color:var(--copper);font-weight:700;}
+  .gift-banner{
+    margin:0 0 30px;border-radius:18px;padding:34px 26px;text-align:center;cursor:pointer;
+    background:linear-gradient(135deg, var(--copper), var(--copper-dark));color:#fff;
+    transition:transform .2s ease;
+  }
+  .gift-banner:hover{transform:translateY(-3px);}
+  .gift-banner-text h2{margin:0 0 6px;font-size:22px;}
+  .gift-banner-text p{margin:0 0 14px;opacity:.92;}
+  .gift-banner .cbc-btn{background:#fff;color:var(--copper-dark);}
+
+  /* ================= ترتيب أقسام الصفحة الرئيسية — Override نهائي (الأعلى أولوية) ================= */
+  #view-store>.hero-slider{order:1;}
+  #view-store>.need-select-wrap{order:2;}
+  #view-store>.cat-bento{order:3;}
+  #view-store>#bestsellersWrap{order:4;}
+  #view-store>#offersWrap{order:5;}
+  #view-store>#newArrivalsWrap{order:6;}
+  #view-store>#giftBanner{order:7;}
+  #view-store>#giftsWrap{order:8;}
+  #view-store>#innovationsWrap{order:9;}
+  #view-store>#featuredWrap{order:10;}
+  #view-store>.shop-benefits{order:11;}
+  #view-store>.section-head#storeProductsSection{order:12;}
+  #view-store>#productsGrid{order:13;}
+  #view-store>#productsEmpty{order:14;}
+  #view-store>.offers-strip{order:15;}
+  #view-store>.site-stats-footer{order:16;}
+
+  /* ================= إحصائيات الزوار (أسفل الصفحة) ================= */
+  .site-stats-footer{
+    display:flex;gap:18px;flex-wrap:wrap;margin:38px 0 10px;padding:20px;
+    border:1px solid var(--line);border-radius:16px;background:var(--ink-2);
+  }
+  .stat-box{display:flex;align-items:center;gap:12px;flex:1;min-width:200px;}
+  .stat-box .stat-ic{font-size:26px;}
+  .stat-box b{display:block;font-size:18px;color:var(--ink-text);}
+  .stat-box small{color:#9aa4b2;font-size:12px;}
+  .stat-countries-body{width:100%;}
+  .stat-countries-list{display:flex;flex-direction:column;gap:4px;margin-top:6px;}
+  .stat-country-row{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-text);}
+  .stat-country-row .pct{color:var(--copper);font-weight:700;}
+
+  /* ================= نظرة عامة — لوحة الإدارة ================= */
+  .overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:16px;}
+  .ov-card{border:1px solid var(--line);background:var(--ink-2);border-radius:14px;padding:14px 16px;}
+  .ov-card b{display:block;font-size:20px;color:var(--ink-text);margin-bottom:4px;}
+  .ov-card small{color:#9aa4b2;font-size:12px;}
+  .ov-card.ov-warn{border-color:#c0392b;}
+  .ov-card.ov-warn b{color:#e05a4d;}
   /* ---------- شريط تنقل سفلي للموبايل ---------- */
   .mobile-bottom-nav{display:none;}
   @media(max-width:760px){
@@ -1004,29 +1121,6 @@ const FIREBASE_CONFIG = {
 
   <!-- ================= المتجر ================= -->
   <section class="view active" id="view-store">
-    <section class="smartmart-category-strip" aria-label="تصنيفات المنتجات">
-      <div class="category-strip-head"><h2>إنت محتاج إيه؟</h2><button type="button" onclick="clearStoreCategory()">كل المنتجات</button></div>
-      <div class="category-strip-track">
-        <button type="button" class="category-orb" onclick="pickNeed('')"><span class="category-orb-image category-kitchen">🛍️</span><b>كل المنتجات</b></button>
-        <button type="button" class="category-orb" onclick="pickNeed('kids')"><span class="category-orb-image category-kids">👶</span><b>عايز اطمن على اولادي</b></button>
-        <button type="button" class="category-orb" onclick="pickNeed('home')"><span class="category-orb-image category-home">🏠</span><b>عايز اطمن على بيتي</b></button>
-        <button type="button" class="category-orb" onclick="pickNeed('tracking')"><span class="category-orb-image category-smart">📍</span><b>عايز اطمن على متعلقاتي</b></button>
-        <button type="button" class="category-orb" onclick="pickNeed('car')"><span class="category-orb-image category-car">🚗</span><b>عايز اطمن على عربيتي</b></button>
-        <button type="button" class="category-orb" onclick="pickNeed('smarthome')"><span class="category-orb-image category-appliances">⚡</span><b>عايز اخلي بيتي سمارت</b></button>
-      </div>
-    </section>
-    <div class="need-picker">
-      <div class="section-head"><h2>إنت محتاج إيه؟</h2></div>
-      <div class="need-grid" id="needGrid">
-        <button type="button" class="need-card" data-need="" onclick="pickNeed('')"><span class="need-ic">🛍️</span><span>كل المنتجات</span></button>
-        <button type="button" class="need-card" data-need="kids" onclick="pickNeed('kids')"><span class="need-ic">👶</span><span>عايز اطمن على اولادي</span></button>
-        <button type="button" class="need-card" data-need="home" onclick="pickNeed('home')"><span class="need-ic">🏠</span><span>عايز اطمن على بيتي</span></button>
-        <button type="button" class="need-card" data-need="tracking" onclick="pickNeed('tracking')"><span class="need-ic">📍</span><span>عايز اطمن على متعلقاتي</span></button>
-        <button type="button" class="need-card" data-need="car" onclick="pickNeed('car')"><span class="need-ic">🚗</span><span>عايز اطمن على عربيتي</span></button>
-        <button type="button" class="need-card" data-need="smarthome" onclick="pickNeed('smarthome')"><span class="need-ic">⚡</span><span>عايز اخلي بيتي سمارت</span></button>
-      </div>
-    </div>
-
     <div class="hero-slider" id="heroSlider" style="display:none">
       <div class="hero-slides">
         <div class="hero-track" id="heroTrack"></div>
@@ -1035,21 +1129,56 @@ const FIREBASE_CONFIG = {
       <button type="button" class="hero-arrow next" onclick="heroStep(1)" aria-label="التالي">‹</button>
       <div class="hero-dots" id="heroDots"></div>
     </div>
-    <div class="new-slider-wrap" id="newArrivalsWrap" style="display:none">
-      <div class="section-head"><h2>وصل حديثًا 🆕</h2></div>
-      <div class="new-slider" id="newArrivalsScroller"><div class="new-slider-track" id="newArrivalsSlider"></div></div>
+
+    <!-- "إنت محتاج إيه؟" — Needs/Use-Case Dropdown، منفصل تمامًا عن الأقسام (Category) -->
+    <div class="need-select-wrap">
+      <div class="section-head"><h2>إنت محتاج إيه؟</h2></div>
+      <div class="need-select-box">
+        <select id="needSelect" onchange="onNeedSelect(this.value)"></select>
+      </div>
     </div>
+
+    <!-- الأقسام الرئيسية الخمسة فقط -->
+    <section class="cat-bento" aria-label="أقسام XEREA">
+      <div class="section-head"><h2>أقسام XEREA</h2></div>
+      <div class="cat-bento-grid" id="categoryBentoGrid"></div>
+    </section>
+
     <div class="new-slider-wrap" id="bestsellersWrap" style="display:none">
       <div class="section-head"><h2>الأكثر مبيعًا 🔥</h2></div>
       <div class="new-slider" id="bestsellersScroller"><div class="new-slider-track" id="bestsellersSlider"></div></div>
     </div>
-    <div class="new-slider-wrap" id="offersWrap" style="display:none">
-      <div class="section-head"><h2>عروض إكسيرا 💰</h2></div>
+
+    <div class="new-slider-wrap promo-wrap" id="offersWrap" style="display:none">
+      <div class="section-head promo-head"><h2>🔥 عروض XEREA</h2><small>خصومات لفترة محدودة</small></div>
       <div class="new-slider" id="offersScroller"><div class="new-slider-track" id="offersSlider"></div></div>
     </div>
+
+    <div class="new-slider-wrap" id="newArrivalsWrap" style="display:none">
+      <div class="section-head"><h2>وصل حديثًا 🆕</h2></div>
+      <div class="new-slider" id="newArrivalsScroller"><div class="new-slider-track" id="newArrivalsSlider"></div></div>
+    </div>
+
+    <section class="gift-banner" id="giftBanner" style="display:none" onclick="pickNeedByKey('need_gift')">
+      <div class="gift-banner-text">
+        <h2>مش عارف تجيبله إيه؟</h2>
+        <p>اختار هدية ذكية ومختلفة 🎁</p>
+        <span class="cbc-btn">اكتشف الهدايا ‹</span>
+      </div>
+    </section>
     <div class="new-slider-wrap" id="giftsWrap" style="display:none">
-      <div class="section-head"><h2>هدايا ذكية 🎁</h2></div>
+      <div class="section-head"><h2>🎁 الهدايا الذكية</h2></div>
       <div class="new-slider" id="giftsScroller"><div class="new-slider-track" id="giftsSlider"></div></div>
+    </div>
+
+    <div class="new-slider-wrap" id="innovationsWrap" style="display:none">
+      <div class="section-head"><h2>💡 أجهزة مبتكرة حديثة</h2></div>
+      <div class="new-slider" id="innovationsScroller"><div class="new-slider-track" id="innovationsSlider"></div></div>
+    </div>
+
+    <div class="new-slider-wrap" id="featuredWrap" style="display:none">
+      <div class="section-head"><h2>⭐ اختيارات XEREA</h2></div>
+      <div class="new-slider" id="featuredScroller"><div class="new-slider-track" id="featuredSlider"></div></div>
     </div>
 
     <section class="shop-benefits" aria-label="مميزات التسوق">
@@ -1070,6 +1199,20 @@ const FIREBASE_CONFIG = {
     </div>
     <div class="grid-products" id="productsGrid"></div>
     <div class="empty" id="productsEmpty" style="display:none">لا توجد منتجات معروضة حاليًا. تابعنا قريبًا.</div>
+
+    <section class="site-stats-footer" aria-label="إحصائيات الموقع">
+      <div class="stat-box">
+        <span class="stat-ic">👁️</span>
+        <div><b id="statVisitorsTotal">—</b><small>زوار الموقع</small></div>
+      </div>
+      <div class="stat-box stat-countries">
+        <span class="stat-ic">🌍</span>
+        <div class="stat-countries-body">
+          <b>أكثر البلدان زيارة</b>
+          <div id="statCountriesList" class="stat-countries-list"></div>
+        </div>
+      </div>
+    </section>
   </section>
 
   <!-- ================= طلباتي ================= -->
@@ -1417,12 +1560,19 @@ const FIREBASE_CONFIG = {
   <section class="view" id="view-admin">
     <div class="dash">
       <div class="dash-tabs">
-        <button class="active" data-tab="orders" onclick="adminTab('orders')">كل الطلبات</button>
+        <button class="active" data-tab="overview" onclick="adminTab('overview')">نظرة عامة</button>
+        <button data-tab="orders" onclick="adminTab('orders')">كل الطلبات</button>
         <button data-tab="team" onclick="adminTab('team')">الفريق</button>
         <button data-tab="customers" onclick="adminTab('customers')">العملاء</button>
       </div>
       <div class="dash-inner">
-        <div id="admin-tab-orders">
+        <div id="admin-tab-overview">
+          <h2>نظرة عامة</h2>
+          <div class="sub">ملخص سريع على المنتجات والمخزون والمبيعات والموردين والعروض والزوار.</div>
+          <div class="overview-grid" id="adminOverviewGrid"></div>
+        </div>
+
+        <div id="admin-tab-orders" style="display:none">
           <h2>كل الطلبات</h2>
           <div class="sub">نظرة شاملة على كل طلب ومين استلمه من الفريق.</div>
           <div class="filters">
@@ -1620,31 +1770,88 @@ const FIREBASE_CONFIG = {
     <button class="modal-close" onclick="closeModal('productModalWrap')">×</button>
     <h2 id="productModalTitle">إضافة منتج</h2>
     <form id="productForm" onsubmit="submitProduct(event)">
-      <div class="field"><label>القسم</label>
+      <div class="field"><label>القسم (الأقسام الخمسة الثابتة فقط)</label>
         <select id="pGender"></select>
       </div>
       <div class="field"><label>اسم المنتج</label><input type="text" id="pName" required></div>
       <div class="field"><label>الوصف</label><textarea id="pDesc"></textarea></div>
       <div class="field"><label>المميزات (اختياري — كل ميزة في سطر، مثال: بطارية تدوم 30 يوم)</label><textarea id="pSpecs" placeholder="بطارية تدوم 30 يوم&#10;مقاوم للماء IP67&#10;تتبع مباشر عبر تطبيق الموبايل"></textarea></div>
       <div class="field"><label>طريقة التشغيل (اختياري — كل خطوة في سطر)</label><textarea id="pHowToUse" placeholder="حمّل تطبيق XEREA وسجّل حساب&#10;اضغط زرار التشغيل 3 ثواني لحد ما تشتغل اللمبة الزرقاء&#10;اربط الجهاز بالتطبيق عن طريق مسح كود QR"></textarea></div>
-      <div class="field"><label>رابط فيديو قصير (اختياري — يوتيوب/تيك توك/رابط فيديو مباشر)</label><input type="url" id="pVideo" placeholder="https://..."></div>
-      <div class="field"><label>السعر الأساسي (قطعة واحدة) (ج.م)</label><input type="number" id="pPrice" min="0" step="0.01" required></div>
-      <div class="field"><label>السعر قبل الخصم (اختياري — لإظهار شارة تخفيض)</label><input type="number" id="pCompareAt" min="0" step="0.01" placeholder="مثال: 500"></div>
-      <div class="field"><label>المخزون المتاح</label><input type="number" id="pStock" min="0" step="1" required></div>
-      <div class="field"><label>حد المخزون المنخفض (تنبيه ⚠️ لما المتاح للبيع يوصله أو أقل)</label><input type="number" id="pLowStock" min="0" step="1" placeholder="افتراضي: 5"></div>
-      <div class="field" style="display:flex;align-items:center;gap:8px">
-        <input type="checkbox" id="pIsGift" style="width:auto">
-        <label style="margin:0" for="pIsGift">يظهر في قسم "هدايا ذكية 🎁"</label>
-      </div>
+
       <div class="field">
-        <label>صور المنتج (ارفع حتى 5 صور — هيتم إضافة لوجو XEREA عليها تلقائيًا)</label>
+        <label>الملحقات (اختياري — أضف كل ملحق على حدة)</label>
+        <div style="display:flex;gap:8px">
+          <input type="text" id="pAccessoryInput" placeholder="مثال: كابل شحن" style="flex:1" onkeydown="if(event.key==='Enter'){event.preventDefault();addPAccessory();}">
+          <button type="button" class="btn btn-outline btn-sm" onclick="addPAccessory()">+ إضافة</button>
+        </div>
+        <div id="pAccessoriesList" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px"></div>
+      </div>
+
+      <div class="field"><label>رابط فيديو شرح (اختياري — يوتيوب/تيك توك/رابط فيديو مباشر — لو فاضي مايظهرش قسم الفيديو في صفحة المنتج)</label><input type="url" id="pVideo" placeholder="https://..."></div>
+
+      <div class="field">
+        <label>صور المنتج (حتى 10 صور — هيتم إضافة لوجو XEREA عليها تلقائيًا، أول صورة هي الرئيسية)</label>
         <input type="file" id="pImagesInput" accept="image/*" multiple onchange="handleProductImagesSelected(event)">
         <div id="pImagesPreview" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"></div>
+        <div class="sub" style="margin-top:6px">اسحب أي صورة يمين/شمال في المعاينة عشان ترتّبها، أو دوس "تعيين كرئيسية" تحت أي صورة.</div>
       </div>
+
+      <div class="field"><label>السعر الأساسي (قطعة واحدة) (ج.م)</label><input type="number" id="pPrice" min="0" step="0.01" required oninput="updateBundleOfferPreview()"></div>
+      <div class="field"><label>السعر قبل الخصم (اختياري — لإظهار شارة تخفيض)</label><input type="number" id="pCompareAt" min="0" step="0.01" placeholder="مثال: 500"></div>
+      <div class="field"><label>المخزون المتاح (عدد القطع)</label><input type="number" id="pStock" min="0" step="1" required></div>
+      <div class="field"><label>حد المخزون المنخفض (تنبيه ⚠️ لما المتاح للبيع يوصله أو أقل)</label><input type="number" id="pLowStock" min="0" step="1" placeholder="افتراضي: 5"></div>
+
+      <div class="field" style="display:flex;align-items:center;gap:8px">
+        <input type="checkbox" id="pIsGift" style="width:auto">
+        <label style="margin:0" for="pIsGift">🎁 يظهر في قسم "هدايا ذكية"</label>
+      </div>
+      <div class="field" style="display:flex;align-items:center;gap:8px">
+        <input type="checkbox" id="pIsFeatured" style="width:auto">
+        <label style="margin:0" for="pIsFeatured">⭐ منتج مميز (يظهر في "اختيارات XEREA")</label>
+      </div>
+
       <div class="field">
-        <label>سعر عرض 3 قطع (اختياري — سعر القطعة عند شراء 3، اتركه فاضي لو مفيش عرض)</label>
+        <label>إنت محتاج إيه؟ — الاحتياجات المرتبطة بالمنتج (يمكن اختيار أكتر من واحد)</label>
+        <div id="pNeedsGrid" class="need-check-grid"></div>
+      </div>
+
+      <div class="field">
+        <label>سعر عرض 3 قطع (اختياري — سعر القطعة عند شراء 3 من نفس المنتج في السلة، اتركه فاضي لو مفيش عرض)</label>
         <div class="unit-row"><span class="n">3 قطع</span><input type="number" id="pTier3" min="0" step="0.01" placeholder="سعر القطعة عند شراء 3"></div>
       </div>
+
+      <div class="field">
+        <label>هل يوجد عرض ترويجي؟ (يظهر في قسم "🔥 عروض XEREA" بالصفحة الرئيسية)</label>
+        <div class="toggle-row">
+          <button type="button" id="pOfferYesBtn" class="btn btn-outline btn-sm" onclick="setOfferEnabled(true)">نعم</button>
+          <button type="button" id="pOfferNoBtn" class="btn btn-outline btn-sm" onclick="setOfferEnabled(false)">لا</button>
+        </div>
+        <div id="pOfferFields" style="display:none;margin-top:12px">
+          <div class="field"><label>عدد القطع في العرض</label>
+            <div class="unit-row">
+              <button type="button" class="btn btn-outline btn-sm" onclick="stepOfferQty(-1)">-</button>
+              <input type="number" id="pOfferQty" min="2" step="1" value="3" style="text-align:center" oninput="updateBundleOfferPreview()">
+              <button type="button" class="btn btn-outline btn-sm" onclick="stepOfferQty(1)">+</button>
+            </div>
+          </div>
+          <div class="field"><label>سعر العرض الكامل (لكل القطع مجتمعة، بالجنيه)</label>
+            <input type="number" id="pOfferTotal" min="0" step="0.01" placeholder="مثال: 799" oninput="updateBundleOfferPreview()">
+          </div>
+          <div class="field"><label>ينتهي العرض في (اختياري — لعرض Countdown)</label>
+            <input type="datetime-local" id="pOfferEndsAt">
+          </div>
+          <div class="sub" id="pOfferPreview" style="margin-top:6px"></div>
+        </div>
+      </div>
+
+      <div id="adminOnlyProductFields" style="display:none;border-top:1px dashed var(--line);margin-top:8px;padding-top:14px">
+        <div class="sub" style="margin-bottom:10px">⚠️ الحقول دي داخلية للإدارة فقط ولا تظهر للعميل نهائيًا في أي مكان بالموقع.</div>
+        <div class="field"><label>سعر الشراء للقطعة (ج.م) — داخلي فقط</label><input type="number" id="pPurchasePrice" min="0" step="0.01"></div>
+        <div class="field"><label>المورد — داخلي فقط</label>
+          <select id="pSupplierId"><option value="">بدون مورد محدد</option></select>
+        </div>
+      </div>
+
       <button type="submit" class="btn btn-copper btn-block" id="productModalSubmitBtn">حفظ المنتج</button>
     </form>
   </div>
@@ -2132,6 +2339,7 @@ function goInternal(view){
   document.querySelectorAll('.mobile-bottom-nav button[data-view]').forEach(b=>b.classList.toggle('active', b.dataset.view===view));
   document.body.classList.toggle('dashboard-view', (view==='team'||view==='admin'));
   if(view==='my-orders') renderMyOrdersGate();
+  if(view==='admin') renderAdminOverview();
   window.scrollTo({top:0,behavior:'instant'});
   currentAppView = view;
 }
@@ -2458,13 +2666,97 @@ listenItemTypes();
 /* ============================================================
    التصنيف الرئيسي (تصنيفات XEREA) + الأصناف (تُضاف من قسم المشتريات)
    ============================================================ */
+/* الأقسام الرئيسية الخمسة فقط — لا تتم زيادتها عن ذلك أبدًا (قاعدة ثابتة).
+   المفاتيح (kids/home/tracking/car/smarthome) اتحافظ عليها زي ما هي عشان منتجات
+   XEREA الحالية متبنية عليها، وتم بس تحديث الاسم/الأيقونة/الوصف عشان تطابق
+   الأقسام الخمسة المطلوبة: الأمان والتتبع، البيت الذكي، السيارة الذكية،
+   التقنية اليومية، ابتكارات ذكية. */
 const GENDER_LABELS = {
-  kids:'عايز اطمن على اولادي 👶',
-  home:'عايز اطمن على بيتي 🏠',
-  tracking:'عايز اطمن على متعلقاتي 📍',
-  car:'عايز اطمن على عربيتي 🚗',
-  smarthome:'عايز اخلي بيتي سمارت ⚡',
+  tracking:'🛡️ الأمان والتتبع',
+  home:'🏠 البيت الذكي',
+  car:'🚗 السيارة الذكية',
+  smarthome:'⚡ التقنية اليومية',
+  kids:'💡 ابتكارات ذكية',
 };
+const CATEGORY_META = {
+  tracking:{ tagline:'اطمن على الأشخاص والممتلكات', cls:'category-smart' },
+  home:{ tagline:'خلّي بيتك أذكى وأسهل', cls:'category-home' },
+  car:{ tagline:'ذكاء وأمان أكتر لعربيتك', cls:'category-car' },
+  smarthome:{ tagline:'أجهزة صغيرة تسهّل يومك', cls:'category-appliances' },
+  kids:{ tagline:'أفكار ذكية لم تكن تعرف أنك تحتاجها', cls:'category-kids' },
+};
+function renderCategoryBento(){
+  const grid = document.getElementById('categoryBentoGrid');
+  if(!grid) return;
+  grid.innerHTML = Object.entries(GENDER_LABELS).map(([key,label])=>{
+    const meta = CATEGORY_META[key]||{};
+    const active = categoryFilter===key;
+    return `
+    <button type="button" class="cat-bento-card ${meta.cls||''} ${active?'active':''}" onclick="pickCategory('${key}')">
+      <div class="cbc-overlay">
+        <h3>${esc(label)}</h3>
+        <p>${esc(meta.tagline||'')}</p>
+        <span class="cbc-btn">اكتشف المنتجات ‹</span>
+      </div>
+    </button>`;
+  }).join('');
+}
+
+/* "إنت محتاج إيه؟" — Needs / Use-Cases / Smart Filters.
+   ملاحظة مهمة: ده مش Category. المنتج الواحد ممكن يترشّح لأكتر من احتياج
+   في نفس الوقت (product.needs[])، وده مستقل تمامًا عن قسمه (product.gender). */
+const NEEDS_LABELS = {
+  need_kids:'👶 عايز أطمن على أولادي',
+  need_home:'🏠 عايز أطمن على بيتي',
+  need_find:'📍 عايز ألاقي حاجتي',
+  need_car:'🚗 عايز أطمن على عربيتي',
+  need_protect:'🔐 عايز أحمي ممتلكاتي',
+  need_smarthome:'⚡ عايز أخلي بيتي سمارت',
+  need_electricity:'💡 عايز أوفر كهرباء',
+  need_travel:'🧳 عايز أحمي حاجتي وأنا مسافر',
+  need_pet:'🐾 عايز أطمن على حيواني',
+  need_gift:'🎁 عايز هدية مختلفة',
+  need_innovate:'💡 عايز أجهزة مبتكرة حديثة',
+};
+function renderNeedSelect(){
+  const sel = document.getElementById('needSelect');
+  if(!sel) return;
+  sel.innerHTML = '<option value="">كل المنتجات</option>' +
+    Object.entries(NEEDS_LABELS).map(([k,l])=>`<option value="${k}">${l}</option>`).join('');
+  sel.value = needFilter;
+}
+function onNeedSelect(v){
+  needFilter = v;
+  renderStoreProducts();
+  document.getElementById('storeProductsSection')?.scrollIntoView({behavior:'smooth', block:'start'});
+}
+/* بيستخدم برضه من بانر "الهدايا الذكية" عشان يحدد قيمة الـselect تلقائيًا */
+function pickNeedByKey(key){
+  needFilter = key;
+  const sel = document.getElementById('needSelect');
+  if(sel) sel.value = key;
+  renderStoreProducts();
+  document.getElementById('storeProductsSection')?.scrollIntoView({behavior:'smooth', block:'start'});
+}
+function pickCategory(key){
+  categoryFilter = (categoryFilter===key) ? '' : key;
+  renderCategoryBento();
+  renderStoreProducts();
+  document.getElementById('storeProductsSection')?.scrollIntoView({behavior:'smooth', block:'start'});
+}
+/* نموذج إضافة/تعديل منتج: checkboxes للاحتياجات (متعدد الاختيار) */
+function renderPNeedsCheckboxes(selected){
+  const wrap = document.getElementById('pNeedsGrid');
+  if(!wrap) return;
+  const sel = new Set(selected||[]);
+  wrap.innerHTML = Object.entries(NEEDS_LABELS).map(([k,l])=>`
+    <label class="need-check">
+      <input type="checkbox" value="${k}" ${sel.has(k)?'checked':''}> ${esc(l)}
+    </label>`).join('');
+}
+function getSelectedPNeeds(){
+  return Array.from(document.querySelectorAll('#pNeedsGrid input[type=checkbox]:checked')).map(i=>i.value);
+}
 let itemTypesCache = [];
 function listenItemTypes(){
   db.collection('itemTypes').orderBy('label').onSnapshot(snap=>{
@@ -2499,8 +2791,9 @@ function renderPGenderSelect(){
   if(current) sel.value = current;
 }
 
-/* --- فلتر المتجر: أزرار "إنت محتاج إيه؟" — كل قسم بيعرض منتجاته مباشرة --- */
-let genderFilter = '';
+/* --- فلتر المتجر: الأقسام الخمسة (categoryFilter) + الاحتياجات (needFilter) مستقلين عن بعض --- */
+let categoryFilter = '';
+let needFilter = '';
 let storeSearchText = '';
 function focusStoreSearch(){
   document.getElementById('storeSearch')?.focus();
@@ -2516,35 +2809,21 @@ function clearStoreCategory(){
   const input = document.getElementById('storeSearch');
   if(input) input.value = '';
   storeSearchText = '';
-  genderFilter = '';
-  renderNeedPicker();
+  categoryFilter = '';
+  needFilter = '';
+  renderCategoryBento();
+  renderNeedSelect();
   renderStoreProducts();
 }
 document.getElementById('storeSearch')?.addEventListener('input', event=>{
   storeSearchText = event.target.value.trim().toLowerCase();
   renderStoreProducts();
 });
-/* بيحدّث حالة التحديد (active) على أزرار "إنت محتاج إيه؟" */
-function renderNeedPicker(){
-  document.querySelectorAll('#needGrid .need-card').forEach(btn=>{
-    btn.classList.toggle('active', (btn.dataset.need||'')===genderFilter);
-  });
-}
-function setGenderFilter(v){
-  genderFilter = v;
-  renderNeedPicker();
-  renderStoreProducts();
-}
-/* لما العميل يختار احتياجه من "إنت محتاج إيه؟" — بنفلتر المنتجات على طول
-   وبننزّل الصفحة لقسم المنتجات */
-function pickNeed(key){
-  setGenderFilter(key);
-  document.getElementById('storeProductsSection')?.scrollIntoView({behavior:'smooth', block:'start'});
-}
 function renderStoreProducts(){
   const grid = document.getElementById('productsGrid');
   let visible = products;
-  if(genderFilter) visible = visible.filter(p=>p.gender===genderFilter);
+  if(categoryFilter) visible = visible.filter(p=>p.gender===categoryFilter);
+  if(needFilter) visible = visible.filter(p=>Array.isArray(p.needs) && p.needs.includes(needFilter));
   if(storeSearchText){
     visible = visible.filter(p=>[p.name,p.description,p.category,p.gender,itemTypeLabel(p.category||'')].filter(Boolean).join(' ').toLowerCase().includes(storeSearchText));
   }
@@ -2734,6 +3013,16 @@ function renderHomeSliders(){
   /* هدايا ذكية — منتجات متعلّم عليها كهدية من فورم المنتج */
   const gifts = products.filter(p=>p.isGift).slice(0,10);
   renderProductSlider('gifts', gifts, '🎁 هدية ذكية');
+  const giftBanner = document.getElementById('giftBanner');
+  if(giftBanner) giftBanner.style.display = gifts.length ? 'block' : 'none';
+
+  /* أجهزة مبتكرة حديثة — منتجات متعلّم عليها باحتياج "عايز أجهزة مبتكرة حديثة" */
+  const innovations = products.filter(p=>Array.isArray(p.needs) && p.needs.includes('need_innovate')).slice(0,10);
+  renderProductSlider('innovations', innovations, '💡 مبتكر');
+
+  /* اختيارات XEREA — منتجات متعلّم عليها "منتج مميز" من لوحة الإدارة */
+  const featured = products.filter(p=>p.isFeatured).slice(0,10);
+  renderProductSlider('featured', featured, '⭐ مميز');
 }
 
 /* ============================================================
@@ -4440,14 +4729,23 @@ function renderSalesReport(){
 }
 
 let editingProductId = null;
+let pAccessories = [];
+let currentOfferEnabled = false;
 function openProductModal(id){
   editingProductId = id || null;
   const form = document.getElementById('productForm');
   form.reset();
   pendingProductImages = [];
+  pAccessories = [];
+  currentOfferEnabled = false;
   const titleEl = document.getElementById('productModalTitle');
   const submitBtn = document.getElementById('productModalSubmitBtn');
   const p = id ? products.find(x=>x.id===id) : null;
+  renderPNeedsCheckboxes(p ? p.needs : []);
+  renderPSupplierSelect(p ? p.supplierId : '');
+  /* سعر الشراء واسم المورد بيانات داخلية للإدارة فقط، ولا تظهر في الفورم لغير الأدمن */
+  const adminBox = document.getElementById('adminOnlyProductFields');
+  if(adminBox) adminBox.style.display = (currentRole==='admin') ? 'block' : 'none';
   if(p){
     if(titleEl) titleEl.textContent = 'تعديل المنتج';
     if(submitBtn) submitBtn.textContent = 'حفظ التعديلات';
@@ -4458,20 +4756,95 @@ function openProductModal(id){
     document.getElementById('pHowToUse').value = Array.isArray(p.howToUse)? p.howToUse.join('\n') : '';
     document.getElementById('pVideo').value = p.video||'';
     document.getElementById('pIsGift').checked = !!p.isGift;
+    document.getElementById('pIsFeatured').checked = !!p.isFeatured;
     document.getElementById('pPrice').value = p.price||0;
     document.getElementById('pCompareAt').value = p.compareAtPrice||'';
     document.getElementById('pStock').value = p.stock||0;
     document.getElementById('pLowStock').value = (p.lowStockThreshold!=null) ? p.lowStockThreshold : '';
     const t = p.priceTiers||{};
     document.getElementById('pTier3').value = t[3]||'';
+    if(currentRole==='admin'){
+      document.getElementById('pPurchasePrice').value = p.purchasePrice||'';
+    }
+    pAccessories = Array.isArray(p.accessories) ? p.accessories.slice() : [];
+    const bo = p.bundleOffer || {};
+    setOfferEnabled(!!bo.enabled);
+    document.getElementById('pOfferQty').value = bo.qty || 3;
+    document.getElementById('pOfferTotal').value = bo.totalPrice || '';
+    document.getElementById('pOfferEndsAt').value = bo.endsAt || '';
     pendingProductImages = productImages(p).slice();
   } else {
     if(titleEl) titleEl.textContent = 'إضافة منتج';
     if(submitBtn) submitBtn.textContent = 'حفظ المنتج';
+    setOfferEnabled(false);
+    document.getElementById('pOfferQty').value = 3;
   }
+  renderPAccessoriesList();
   renderProductImagesPreview();
+  updateBundleOfferPreview();
   document.getElementById('productModalWrap').classList.add('active');
   pushModalHistory();
+}
+
+/* --- الملحقات (اختياري، متعدد) --- */
+function addPAccessory(){
+  const input = document.getElementById('pAccessoryInput');
+  const val = input.value.trim();
+  if(!val) return;
+  pAccessories.push(val);
+  input.value = '';
+  renderPAccessoriesList();
+}
+function removePAccessory(i){
+  pAccessories.splice(i,1);
+  renderPAccessoriesList();
+}
+function renderPAccessoriesList(){
+  const wrap = document.getElementById('pAccessoriesList');
+  if(!wrap) return;
+  wrap.innerHTML = pAccessories.map((a,i)=>`
+    <span class="accessory-chip">${esc(a)}<button type="button" onclick="removePAccessory(${i})">×</button></span>`).join('');
+}
+
+/* --- المورد (داخلي للإدارة فقط) --- */
+function renderPSupplierSelect(current){
+  const sel = document.getElementById('pSupplierId');
+  if(!sel) return;
+  sel.innerHTML = '<option value="">بدون مورد محدد</option>' +
+    (suppliersCache||[]).map(s=>`<option value="${s.id}">${esc(s.name)}</option>`).join('');
+  sel.value = current || '';
+}
+
+/* --- العرض الترويجي (اختياري) — عدد قطع + سعر إجمالي، مع حساب سعر القطعة والتوفير تلقائيًا --- */
+function setOfferEnabled(v){
+  currentOfferEnabled = v;
+  document.getElementById('pOfferYesBtn').classList.toggle('active', v);
+  document.getElementById('pOfferNoBtn').classList.toggle('active', !v);
+  document.getElementById('pOfferFields').style.display = v ? 'block' : 'none';
+  updateBundleOfferPreview();
+}
+function stepOfferQty(delta){
+  const el = document.getElementById('pOfferQty');
+  const next = Math.max(2, (Number(el.value)||3) + delta);
+  el.value = next;
+  updateBundleOfferPreview();
+}
+function updateBundleOfferPreview(){
+  const previewEl = document.getElementById('pOfferPreview');
+  if(!previewEl) return;
+  if(!currentOfferEnabled){ previewEl.textContent=''; return; }
+  const qty = Number(document.getElementById('pOfferQty').value)||0;
+  const total = Number(document.getElementById('pOfferTotal').value)||0;
+  const basePrice = Number(document.getElementById('pPrice').value)||0;
+  if(!qty || !total){ previewEl.textContent = 'أدخل عدد القطع وسعر العرض الكامل لمعاينة الحساب.'; return; }
+  const perPiece = total/qty;
+  let txt = `سعر القطعة داخل العرض: ${money(perPiece)} (${money(total)} ÷ ${qty})`;
+  if(basePrice>0){
+    const fullPrice = basePrice*qty;
+    const savings = fullPrice - total;
+    if(savings>0) txt += ` — التوفير مقارنة بالسعر الأساسي: ${money(savings)}`;
+  }
+  previewEl.textContent = txt;
 }
 
 /* ============================================================
@@ -4515,10 +4888,11 @@ async function fileToWatermarkedDataUrl(file, maxDim){
   }catch(err){ /* لو تعذر تحميل اللوجو، تكمل الصورة من غيره */ }
   return canvas.toDataURL('image/jpeg', 0.72);
 }
+const MAX_PRODUCT_IMAGES = 10;
 async function handleProductImagesSelected(e){
-  const remaining = 5 - pendingProductImages.length;
+  const remaining = MAX_PRODUCT_IMAGES - pendingProductImages.length;
   const files = Array.from(e.target.files).slice(0, Math.max(0,remaining));
-  if(!files.length){ toast('وصلت للحد الأقصى (5 صور)'); e.target.value=''; return; }
+  if(!files.length){ toast('وصلت للحد الأقصى ('+MAX_PRODUCT_IMAGES+' صور)'); e.target.value=''; return; }
   for(const f of files){
     try{
       const dataUrl = await fileToWatermarkedDataUrl(f);
@@ -4532,10 +4906,26 @@ function renderProductImagesPreview(){
   const wrap = document.getElementById('pImagesPreview');
   if(!wrap) return;
   wrap.innerHTML = pendingProductImages.map((img,i)=>`
-    <div class="img-preview-item">
+    <div class="img-preview-item ${i===0?'is-main':''}">
+      ${i===0? '<span class="ipi-main-tag">رئيسية</span>' : ''}
       <img src="${img}">
-      <button type="button" onclick="removePendingProductImage(${i})">×</button>
+      <div class="ipi-actions">
+        ${i>0? `<button type="button" onclick="moveProductImage(${i},${i-1})">‹</button>` : ''}
+        ${i>0? `<button type="button" onclick="setMainProductImage(${i})">تعيين كرئيسية</button>` : ''}
+        ${i<pendingProductImages.length-1? `<button type="button" onclick="moveProductImage(${i},${i+1})">›</button>` : ''}
+        <button type="button" onclick="removePendingProductImage(${i})">حذف</button>
+      </div>
     </div>`).join('');
+}
+function moveProductImage(from,to){
+  const [img] = pendingProductImages.splice(from,1);
+  pendingProductImages.splice(to,0,img);
+  renderProductImagesPreview();
+}
+function setMainProductImage(i){
+  const [img] = pendingProductImages.splice(i,1);
+  pendingProductImages.unshift(img);
+  renderProductImagesPreview();
 }
 function removePendingProductImage(i){
   pendingProductImages.splice(i,1);
@@ -4555,15 +4945,28 @@ async function submitProduct(e){
   const tier3Val = Number(document.getElementById('pTier3').value)||0;
   const tiers = tier3Val ? { 3: tier3Val } : {};
   const newStock = Number(document.getElementById('pStock').value);
+  const needs = getSelectedPNeeds();
+  const offerQty = Number(document.getElementById('pOfferQty').value)||0;
+  const offerTotal = Number(document.getElementById('pOfferTotal').value)||0;
+  const bundleOffer = (currentOfferEnabled && offerQty>=2 && offerTotal>0) ? {
+    enabled: true,
+    qty: offerQty,
+    totalPrice: offerTotal,
+    perPiece: Math.round((offerTotal/offerQty)*100)/100,
+    endsAt: document.getElementById('pOfferEndsAt').value || null,
+  } : { enabled:false };
   const payload = {
     name: document.getElementById('pName').value.trim(),
     gender,
     category: gender,
+    needs,
+    accessories: pAccessories.slice(),
     description: document.getElementById('pDesc').value.trim(),
     specs,
     howToUse,
     video: video||null,
     isGift: document.getElementById('pIsGift').checked,
+    isFeatured: document.getElementById('pIsFeatured').checked,
     price: basePrice,
     compareAtPrice: compareAt>basePrice ? compareAt : 0,
     stock: newStock,
@@ -4571,8 +4974,15 @@ async function submitProduct(e){
     image: images[0]||'',
     images,
     priceTiers: tiers,
+    bundleOffer,
     updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
   };
+  /* سعر الشراء والمورد بيانات داخلية للإدارة فقط — تُحفظ فقط لو اللي بيحفظ أدمن،
+     وما بتتضافش أصلًا لأي كود عرض للعميل (شوف productImages/renderStoreProducts/pd-render إلخ). */
+  if(currentRole==='admin'){
+    payload.purchasePrice = Number(document.getElementById('pPurchasePrice').value)||0;
+    payload.supplierId = document.getElementById('pSupplierId').value || null;
+  }
   try{
     if(editingProductId){
       const before = products.find(x=>x.id===editingProductId);
@@ -4610,10 +5020,61 @@ async function deleteProduct(id){
    لوحة الإدارة
    ============================================================ */
 function adminTab(name){
-  ['orders','team','customers'].forEach(t=>{
+  ['overview','orders','team','customers'].forEach(t=>{
     document.getElementById('admin-tab-'+t).style.display = (t===name)?'block':'none';
   });
   document.querySelectorAll('#view-admin .dash-tabs button').forEach(b=>b.classList.toggle('active', b.dataset.tab===name));
+  if(name==='overview') renderAdminOverview();
+}
+
+/* ============================================================
+   نظرة عامة (Dashboard) — منتجات / مخزون / مبيعات / موردين / عروض / زوار
+   بيعتمد بالكامل على الـcaches اللي أصلًا محملة (products, suppliersCache,
+   allOrdersCache) من غير أي استعلامات إضافية لـFirestore.
+   ============================================================ */
+function renderAdminOverview(){
+  const grid = document.getElementById('adminOverviewGrid');
+  if(!grid) return;
+  const totalProducts = products.length;
+  const inStock = products.filter(p=>Number(p.stock||0)>0).length;
+  const outOfStock = products.filter(p=>Number(p.stock||0)<=0).length;
+  const newIn7Days = products.filter(p=>{
+    const t = tsMillis(p.createdAt);
+    return t && (Date.now()-t) < 7*24*60*60*1000;
+  }).length;
+  const lowStock = products.filter(p=>Number(p.stock||0)>0 && Number(p.stock||0) <= Number(p.lowStockThreshold!=null?p.lowStockThreshold:5)).length;
+  const totalUnitsInStock = products.reduce((s,p)=>s+Number(p.stock||0),0);
+
+  const totalSalesUnits = products.reduce((s,p)=>s+Number(p.soldCount||0),0);
+  const totalRevenue = products.reduce((s,p)=>s+Number(p.soldCount||0)*Number(p.price||0),0);
+  const totalProfit = products.reduce((s,p)=>{
+    const cost = Number(p.purchasePrice||0);
+    return s + Number(p.soldCount||0)*(Number(p.price||0)-cost);
+  }, 0);
+  const topSeller = [...products].sort((a,b)=>Number(b.soldCount||0)-Number(a.soldCount||0))[0];
+
+  const supplierCount = (suppliersCache||[]).length;
+  const productsPerSupplier = {};
+  products.forEach(p=>{ if(p.supplierId) productsPerSupplier[p.supplierId] = (productsPerSupplier[p.supplierId]||0)+1; });
+
+  const onOffer = products.filter(p=>p.bundleOffer && p.bundleOffer.enabled);
+  const totalOfferPieces = onOffer.reduce((s,p)=>s+Number(p.bundleOffer.qty||0),0);
+
+  grid.innerHTML = `
+    <div class="ov-card"><b>${totalProducts}</b><small>إجمالي المنتجات</small></div>
+    <div class="ov-card"><b>${inStock}</b><small>منتجات متوفرة</small></div>
+    <div class="ov-card"><b>${outOfStock}</b><small>منتجات نفدت</small></div>
+    <div class="ov-card"><b>${newIn7Days}</b><small>منتجات جديدة (آخر 7 أيام)</small></div>
+    <div class="ov-card"><b>${totalUnitsInStock}</b><small>إجمالي القطع بالمخزون</small></div>
+    <div class="ov-card ${lowStock?'ov-warn':''}"><b>${lowStock}</b><small>منتجات مخزونها منخفض</small></div>
+    <div class="ov-card"><b>${totalSalesUnits}</b><small>إجمالي القطع المباعة</small></div>
+    <div class="ov-card"><b>${money(totalRevenue)}</b><small>إجمالي المبيعات</small></div>
+    <div class="ov-card"><b>${money(totalProfit)}</b><small>إجمالي الأرباح (تقديري)</small></div>
+    <div class="ov-card"><b>${topSeller? esc(topSeller.name) : '—'}</b><small>الأكثر مبيعًا</small></div>
+    <div class="ov-card"><b>${supplierCount}</b><small>عدد الموردين</small></div>
+    <div class="ov-card"><b>${onOffer.length}</b><small>منتجات عليها عروض</small></div>
+    <div class="ov-card"><b>${totalOfferPieces}</b><small>إجمالي القطع في العروض</small></div>
+  `;
 }
 
 let allOrdersCache = [];
@@ -4926,7 +5387,53 @@ async function submitSupplierItem(e){
 
 /* أول تحميل */
 renderCart();
-renderNeedPicker(); /* اظهار حالة التحديد على أزرار "إنت محتاج إيه؟" فورًا */
+/* ============================================================
+   إحصائيات الزوار — عدد الزيارات الفريدة + أكثر البلدان زيارة
+   لا يتم عرض IP الخاص بالزائر أو أي بيانات شخصية؛ يُستخدم فقط اسم/كود الدولة.
+   ============================================================ */
+async function trackVisitAndCountry(){
+  try{
+    const already = sessionStorage.getItem('xerea_visit_counted');
+    await db.collection('stats').doc('visitors').set({
+      total: firebase.firestore.FieldValue.increment(1),
+      unique: already ? firebase.firestore.FieldValue.increment(0) : firebase.firestore.FieldValue.increment(1),
+    }, {merge:true});
+    if(!already){
+      sessionStorage.setItem('xerea_visit_counted','1');
+      /* بنجيب اسم الدولة بس (من غير أي بيانات شخصية أو IP) من خدمة GeoIP عامة ومجانية */
+      try{
+        const res = await fetch('https://ipapi.co/json/');
+        const geo = await res.json();
+        const code = (geo && geo.country_code) ? geo.country_code : 'XX';
+        await db.collection('stats').doc('countries').set({
+          [code]: firebase.firestore.FieldValue.increment(1),
+        }, {merge:true});
+      }catch(geoErr){ /* لو خدمة الـGeoIP مش متاحة، نتجاهل ونكمل عادي من غير كسر الموقع */ }
+    }
+  }catch(err){ console.error('trackVisitAndCountry', err); }
+}
+const COUNTRY_NAMES = {EG:'🇪🇬 مصر',SA:'🇸🇦 السعودية',AE:'🇦🇪 الإمارات',KW:'🇰🇼 الكويت',QA:'🇶🇦 قطر',BH:'🇧🇭 البحرين',OM:'🇴🇲 عُمان',JO:'🇯🇴 الأردن',IQ:'🇮🇶 العراق',LY:'🇱🇾 ليبيا',SD:'🇸🇩 السودان',MA:'🇲🇦 المغرب',DZ:'🇩🇿 الجزائر',TN:'🇹🇳 تونس',US:'🇺🇸 أمريكا',XX:'🌍 أخرى'};
+function listenSiteStats(){
+  db.collection('stats').doc('visitors').onSnapshot(doc=>{
+    const d = doc.data()||{};
+    const el = document.getElementById('statVisitorsTotal');
+    if(el) el.textContent = (Number(d.unique||0)).toLocaleString('en-US') + ' زائر';
+  }, err=>console.error('listenSiteStats visitors', err));
+  db.collection('stats').doc('countries').onSnapshot(doc=>{
+    const d = doc.data()||{};
+    const listEl = document.getElementById('statCountriesList');
+    if(!listEl) return;
+    const total = Object.values(d).reduce((s,n)=>s+Number(n||0),0) || 1;
+    const rows = Object.entries(d).sort((a,b)=>Number(b[1])-Number(a[1])).slice(0,6);
+    listEl.innerHTML = rows.map(([code,count])=>{
+      const pct = Math.round((Number(count)/total)*100);
+      return `<div class="stat-country-row"><span>${COUNTRY_NAMES[code]||('🌍 '+code)}</span><span class="pct">${pct}%</span></div>`;
+    }).join('') || '<div class="stat-country-row"><span>لا توجد بيانات كافية بعد</span></div>';
+  }, err=>console.error('listenSiteStats countries', err));
+}
+
+renderCategoryBento(); /* الأقسام الخمسة الرئيسية */
+renderNeedSelect(); /* قائمة "إنت محتاج إيه؟" */
 /* نفس الفكرة بالظبط لقايمتي "النوع" في فورم المنتج وفورم إضافة صنف جديد —
    دول قايمتين ثابتتين من GENDER_LABELS ومش المفروض يستنوا استجابة Firestore
    خالص. قبل الإصلاح ده كانوا بيفضلوا فاضيين لو استعلام itemTypes اتأخر أو
@@ -4936,6 +5443,8 @@ if(document.getElementById('itNewGender')){
   document.getElementById('itNewGender').innerHTML = Object.entries(GENDER_LABELS).map(([k,l])=>`<option value="${k}">${l}</option>`).join('');
 }
 go('store');
+trackVisitAndCountry();
+listenSiteStats();
 </script>
 </body>
 </html>
