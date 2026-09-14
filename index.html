@@ -886,20 +886,20 @@
   .category-orb:hover .category-orb-image{border-color:#fff;outline-color:#28565c;}
   .floating-whatsapp{box-shadow:0 3px 10px rgba(24,50,74,.25);}
   /* صور GitHub المرفوعة في جذر المستودع */
-  .offer-red{background-image:linear-gradient(90deg,rgba(24,50,74,.94),rgba(63,124,128,.42)),url('assetscategory-smarthome.jpg');}
+  .offer-red{background-image:linear-gradient(90deg,rgba(24,50,74,.94),rgba(63,124,128,.42)),url('category-smarthome.jpg');}
   .offer-dark{background:linear-gradient(135deg,rgba(24,50,74,.94),rgba(63,124,128,.45)),url('category-home.jpg.png') center/cover;}
-  #view-store>.hero-slider{background-image:url('assetscategory-smarthome.jpg');}
-  .category-kitchen{background-image:url('assetscategory-all.avif.avif');}
-  .category-kids{background-image:url('assetscategory-kids.jpg.webp');}
+  #view-store>.hero-slider{background-image:url('category-smarthome.jpg');}
+  .category-kitchen{background-image:url('category-all.avif');}
+  .category-kids{background-image:url('category-kids.jpg.webp');}
   .category-home{background-image:url('category-home.jpg.png');}
-  .category-smart{background-image:url('assetscategory-tracking.png');}
-  .category-car{background-image:url('assetscategory-car.jpg.jpg');}
-  .category-appliances{background-image:url('assetscategory-smarthome.jpg');}
-  #view-store .need-card:nth-child(1) .need-ic{background-image:url('assetscategory-all.avif.avif');}
-  #view-store .need-card:nth-child(2) .need-ic{background-image:url('assetscategory-kids.jpg');}
+  .category-smart{background-image:url('category-tracking.png');}
+  .category-car{background-image:url('category-car.jpg');}
+  .category-appliances{background-image:url('category-smarthome.jpg');}
+  #view-store .need-card:nth-child(1) .need-ic{background-image:url('category-all.avif');}
+  #view-store .need-card:nth-child(2) .need-ic{background-image:url('category-kids.jpg');}
   #view-store .need-card:nth-child(3) .need-ic{background-image:url('category-home.jpg.png');}
-  #view-store .need-card:nth-child(4) .need-ic{background-image:url('assetscategory-tracking.png');}
-  #view-store .need-card:nth-child(5) .need-ic{background-image:url('assetscategory-car.jpg.jpg');}
+  #view-store .need-card:nth-child(4) .need-ic{background-image:url('category-tracking.png');}
+  #view-store .need-card:nth-child(5) .need-ic{background-image:url('category-car.jpg');}
 
   /* ================= الأقسام الرئيسية الخمسة — Bento Grid ================= */
   .cat-bento{margin:26px 0 30px;font-family:'Cairo','Tajawal',sans-serif;}
@@ -922,6 +922,20 @@
   .cat-bento-card h3{margin:0 0 4px;font-size:18px;color:#fff;}
   .cat-bento-card:nth-child(1) h3{font-size:24px;}
   .cat-bento-card p{margin:0 0 10px;font-size:12.5px;color:#e8e8e8;opacity:.92;}
+
+  /* خلفيات احتياطية أنيقة — لو الصورة فشلت تتحمّل، يفضل التدرّج اللوني ظاهر بدل مربع فاضي؛
+     ولو الصورة اشتغلت، تظهر تحت التدرّج مباشرة (background-image متعدد الطبقات) */
+  .cat-bento-card{background-color:#16222f;}
+  .cat-bento-card:after{
+    content:var(--cbc-emoji,'');position:absolute;left:14px;bottom:8px;z-index:1;
+    font-size:64px;opacity:.14;line-height:1;pointer-events:none;
+  }
+  .cat-bento-card .cbc-overlay{z-index:2;}
+  .category-smart{--cbc-emoji:'🛡️';background-image:linear-gradient(135deg,rgba(18,58,74,.55),rgba(10,27,36,.85)),url('category-tracking.png')!important;}
+  .category-home{--cbc-emoji:'🏠';background-image:linear-gradient(135deg,rgba(28,74,53,.55),rgba(12,31,22,.85)),url('category-home.jpg.png')!important;}
+  .category-car{--cbc-emoji:'🚗';background-image:linear-gradient(135deg,rgba(51,50,79,.55),rgba(23,22,40,.85)),url('category-car.jpg')!important;}
+  .category-appliances{--cbc-emoji:'⚡';background-image:linear-gradient(135deg,rgba(74,52,22,.55),rgba(36,23,10,.85)),url('category-smarthome.jpg')!important;}
+  .category-kids{--cbc-emoji:'💡';background-image:linear-gradient(135deg,rgba(74,28,58,.55),rgba(35,13,26,.85)),url('category-kids.jpg.webp')!important;}
   .cat-bento-card .cbc-btn{
     display:inline-flex;align-items:center;gap:6px;align-self:flex-start;background:var(--copper);color:#fff;
     font-size:12px;font-weight:700;padding:7px 14px;border-radius:99px;transition:background .2s;
@@ -1043,6 +1057,36 @@
     .floating-whatsapp{bottom:72px!important;}
     .toast-wrap{bottom:72px;}
     #view-store>.new-slider-wrap{scroll-margin-top:12px;}
+  }
+
+  /* =====================================================================
+     إعادة هيكلة نهائية للواجهة (Redesign Pass)
+     1) إخفاء السلايدر الكبير المتحرك لتوفير المساحة أعلى الصفحة.
+     2) نقل شريط "إنت محتاج إيه؟" ليكون أول عنصر ظاهر في المتجر، وعرض
+        العنوان والقائمة المنسدلة على سطر واحد بدل سطرين.
+     ===================================================================== */
+  #view-store>.hero-slider{display:none!important;}
+
+  #view-store>.need-select-wrap{order:0!important;}
+  .need-select-wrap{
+    margin:18px 0 26px;display:flex;align-items:center;gap:16px;flex-wrap:nowrap;
+    background:linear-gradient(135deg,var(--ink-2),var(--ink));
+    border:1px solid var(--line);border-radius:16px;padding:14px 22px;
+    box-shadow:0 6px 18px rgba(0,0,0,.12);
+  }
+  .need-select-wrap .section-head{margin:0;flex:none;}
+  .need-select-wrap .section-head h2{
+    margin:0;font-size:16px;white-space:nowrap;display:flex;align-items:center;gap:8px;
+  }
+  .need-select-wrap .section-head h2:before{content:'🧭';font-size:17px;}
+  .need-select-box{flex:1;max-width:none;min-width:0;margin:0;}
+  .need-select-box select{
+    padding:12px 42px 12px 16px;border-radius:11px;font-size:14px;background:var(--paper);
+  }
+  @media(max-width:640px){
+    .need-select-wrap{flex-wrap:wrap;gap:8px;padding:14px 16px;}
+    .need-select-wrap .section-head{width:100%;}
+    .need-select-box{width:100%;}
   }
 </style>
 </head>
