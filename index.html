@@ -1162,8 +1162,105 @@
     .need-select-wrap .section-head h2{font-size:12.5px;}
     .need-select-box select{padding:7px 32px 7px 10px;font-size:12.5px;}
   }
+
+  /* =====================================================================
+     دفعة تصحيح ثانية (Redesign Pass 2)
+     1) هيدر مضغوط في سطر واحد فقط، بلون واضح ونص مقروء دايمًا.
+     2) تحويل سلايدرات "الأكثر مبيعًا/العروض/الهدايا/المبتكرة/الاختيارات"
+        من تمرير تلقائي لا نهائي إلى شبكة ثابتة بتلف على أسطر (بلا سحب).
+     3) ترقيم صفحات لقسم "كل المنتجات" (10 منتجات في الصفحة).
+     4) شريط أزرار سريع أعلى الصفحة يودّي بالسكرول للأقسام الثانوية
+        اللي بقت في آخر الصفحة.
+     5) فوتر مبسّط في سطر واحد.
+     ===================================================================== */
+
+  /* ---- 1) الهيدر: سطر واحد ثابت، فوق كل الثيمات المتضاربة اللي فوق ---- */
+  header.site{
+    background:#101826!important;border-bottom:1px solid #232f3d!important;
+    box-shadow:none!important;color:#eef2f7!important;
+  }
+  .nav-wrap{
+    max-width:1200px;padding:8px 20px!important;min-height:0!important;
+    display:flex!important;flex-wrap:nowrap!important;align-items:center!important;
+    justify-content:space-between;gap:14px;overflow-x:auto;
+  }
+  .nav-wrap::-webkit-scrollbar{display:none;}
+  .brand{color:#eef2f7!important;flex:none;}
+  .brand img{height:38px!important;width:auto!important;}
+  .brand-tagline{color:#c7d2e0!important;opacity:1!important;}
+  nav.links{flex-wrap:nowrap!important;flex:none;}
+  nav.links button{color:#eef2f7!important;flex:none;}
+  nav.links button:hover{background:rgba(255,255,255,.1)!important;}
+  nav.links button.active{background:var(--copper)!important;color:#fff!important;}
+  header.site .g-btn,.g-btn{color:#eef2f7;}
+  header.site .btn-outline{color:#eef2f7!important;border-color:rgba(255,255,255,.3)!important;}
+  header.site .btn-outline:hover{background:rgba(255,255,255,.1)!important;}
+  @media(max-width:760px){
+    .brand img{height:32px!important;}
+    .nav-wrap{padding:8px 14px!important;}
+  }
+
+  /* ---- 2) سلايدرات الأقسام الثانوية: بلا تمرير تلقائي، تلف على أسطر ---- */
+  .new-slider{overflow:visible!important;padding:4px 2px 4px!important;}
+  .new-slider-track{flex-wrap:wrap!important;}
+  .new-slide{flex:0 0 190px!important;width:190px;}
+  @media(max-width:640px){ .new-slide{flex:0 0 44%!important;width:44%;} }
+
+  /* ---- 3) ترقيم صفحات "كل المنتجات" ---- */
+  .pagination{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;margin:22px 0 6px;}
+  .page-btn{
+    background:var(--ink-2);border:1px solid var(--line);color:var(--ink-text);
+    border-radius:8px;padding:8px 13px;font-size:13.5px;font-weight:700;min-width:38px;
+  }
+  .page-btn:hover:not(:disabled){border-color:var(--copper);}
+  .page-btn.active{background:var(--copper);border-color:var(--copper);color:#fff;}
+  .page-btn:disabled{opacity:.4;cursor:default;}
+  .page-dots{color:#8a8a8a;padding:0 4px;font-weight:700;}
+
+  /* ---- 4) شريط تنقّل سريع للأقسام الثانوية (أعلى الصفحة) ---- */
+  .quicknav-row{margin:14px 0 8px;}
+  .quicknav-row .cat-chip{background:var(--ink-2);}
+  .quicknav-row .cat-chip:hover{background:var(--copper);border-color:var(--copper);color:#fff;}
+
+  /* ---- ترتيب نهائي 2 لأقسام الصفحة الرئيسية ----
+     وصل حديثًا (آخر 5 منتجات) أولًا، بعده كل المنتجات في صفحات مرقّمة (10/صفحة)،
+     والأقسام الثانوية (عروض/هدايا/اختيارات/مبتكرة/الأكثر مبيعًا) بقت في آخر الصفحة،
+     وليها أزرار تنقّل سريع أعلى الصفحة (quicknav-row) بتودّي لها بالسكرول مباشرة. */
+  #view-store>.hero-slider{order:1;}
+  #view-store>.need-select-wrap{order:2;}
+  #view-store>.cat-bento{order:3;}
+  #view-store>.quicknav-row{order:4;}
+  #view-store>#newArrivalsWrap{order:5;}
+  #view-store>.section-head#storeProductsSection{order:6;}
+  #view-store>#productsGrid{order:7;}
+  #view-store>#productsPagination{order:8;}
+  #view-store>#productsEmpty{order:9;}
+  #view-store>.shop-benefits{order:10;}
+  #view-store>#offersWrap{order:11;}
+  #view-store>#bestsellersWrap{order:12;}
+  #view-store>#giftBanner{order:13;}
+  #view-store>#giftsWrap{order:14;}
+  #view-store>#innovationsWrap{order:15;}
+  #view-store>#featuredWrap{order:16;}
+  #view-store>.offers-strip{display:none;} /* استُبدلت بشريط التنقل السريع فوق */
+  #view-store>.site-stats-footer{order:17;}
+
+  /* ---- 5) فوتر مبسّط في سطر واحد ---- */
+  .site-footer{padding:16px 20px!important;margin-top:10px;}
+  .footer-simple{
+    max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;gap:10px;font-size:12.5px;color:inherit;
+  }
+  .footer-simple .footer-social{display:flex;gap:8px;}
+  .footer-simple .footer-social a{
+    width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:var(--copper);color:#fff;
+  }
+  @media(max-width:640px){ .footer-simple{justify-content:center;text-align:center;} }
+  @media(max-width:760px){ .site-footer{padding-bottom:78px!important;} }
 </style>
 </head>
+
 <body>
 
 <!-- ============================================================
@@ -1265,6 +1362,15 @@ const FIREBASE_CONFIG = {
       <div class="cat-chip-row" id="categoryBentoGrid"></div>
     </section>
 
+    <!-- شريط تنقّل سريع: يودّي بالسكرول لأقسام العروض/الهدايا/الاختيارات/الأجهزة المبتكرة في آخر الصفحة -->
+    <div class="cat-chip-row quicknav-row" aria-label="تصفح سريع">
+      <button type="button" class="cat-chip" onclick="scrollToSection('offersWrap')"><span class="cat-chip-ic">🔥</span> عروض إكسيرا</button>
+      <button type="button" class="cat-chip" onclick="scrollToSection('giftsWrap')"><span class="cat-chip-ic">🎁</span> هدايا ذكية</button>
+      <button type="button" class="cat-chip" onclick="scrollToSection('featuredWrap')"><span class="cat-chip-ic">⭐</span> اختيارات إكسيرا</button>
+      <button type="button" class="cat-chip" onclick="scrollToSection('innovationsWrap')"><span class="cat-chip-ic">💡</span> أجهزة مبتكرة</button>
+      <button type="button" class="cat-chip" onclick="scrollToSection('bestsellersWrap')"><span class="cat-chip-ic">🏆</span> الأكثر مبيعًا</button>
+    </div>
+
     <div class="new-slider-wrap" id="bestsellersWrap" style="display:none">
       <div class="section-head"><h2>الأكثر مبيعًا 🔥</h2></div>
       <div class="new-slider" id="bestsellersScroller"><div class="new-slider-track" id="bestsellersSlider"></div></div>
@@ -1320,6 +1426,7 @@ const FIREBASE_CONFIG = {
     </div>
     <div class="grid-products" id="productsGrid"></div>
     <div class="empty" id="productsEmpty" style="display:none">لا توجد منتجات معروضة حاليًا. تابعنا قريبًا.</div>
+    <div class="pagination" id="productsPagination" style="display:none"></div>
 
     <section class="site-stats-footer" aria-label="إحصائيات الموقع">
       <div class="stat-box">
@@ -1688,6 +1795,7 @@ const FIREBASE_CONFIG = {
         <button data-tab="orders" onclick="adminTab('orders')">كل الطلبات</button>
         <button data-tab="team" onclick="adminTab('team')">الفريق</button>
         <button data-tab="customers" onclick="adminTab('customers')">العملاء</button>
+        <button data-tab="actionlog" onclick="adminTab('actionlog')">سجل الإجراءات</button>
       </div>
       <div class="dash-quicksearch">
         <input type="text" id="adminQuickSearch" placeholder="🔍 بحث سريع في القسم الحالي..." oninput="applyDashQuickSearch('view-admin', this.value)">
@@ -1789,6 +1897,15 @@ const FIREBASE_CONFIG = {
           <div id="customersList"></div>
           <div class="empty" id="customersEmpty" style="display:none;color:#8a8a8a">لا يوجد عملاء مطابقين لهذا الفلتر.</div>
         </div>
+
+        <div id="admin-tab-actionlog" style="display:none">
+          <h2>سجل الإجراءات</h2>
+          <div class="sub">كل عملية تعديل أو حذف تمت على الطلبات أو بيانات التحصيل، مع إمكانية التراجع عن الإجراء خلال 3 أيام من وقت تنفيذه فقط.</div>
+          <div class="table-wrap"><table class="data">
+            <thead><tr><th>الوقت</th><th>النوع</th><th>الإجراء</th><th>تفاصيل</th><th>بواسطة</th><th>تراجع</th></tr></thead>
+            <tbody id="actionLogsTable"></tbody>
+          </table></div>
+        </div>
       </div>
     </div>
   </section>
@@ -1796,15 +1913,17 @@ const FIREBASE_CONFIG = {
 </main>
 
 <footer class="site-footer">
-  <div class="footer-content">
-    <div class="footer-brand">
-      <h3>XEREA<span>.</span></h3>
-      <p>وجهتك للتقنيات الذكية والمنتجات العملية. اختيارات مفيدة، طلب واضح، وخدمة تقدر تعتمد عليها.</p>
-      <div class="footer-social"><a href="https://wa.me/201152155717" target="_blank" rel="noopener">واتساب</a><a href="https://www.facebook.com/share/19gYbwSUyr/" target="_blank" rel="noopener">فيسبوك</a></div>
+  <div class="footer-simple">
+    <span>© 2025 XEREA. جميع الحقوق محفوظة.</span>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/share/19gYbwSUyr/" target="_blank" rel="noopener" aria-label="فيسبوك">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.24 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06z"/></svg>
+      </a>
+      <a href="https://wa.me/201152155717" target="_blank" rel="noopener" aria-label="واتساب">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.86 14.05c-.24.68-1.39 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3s.74-2.12 1-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.35 1.46.29.15.46.13.63-.08.17-.21.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.13.07.72-.17 1.4z"/></svg>
+      </a>
     </div>
-    <div class="footer-column"><h4>خدمة العملاء</h4><a href="tel:01152155717">📞 01152155717</a><a href="mailto:support@xerea.com">✉️ support@xerea.com</a><span>📍 القاهرة، مصر</span></div>
   </div>
-  <div class="footer-bottom"><span>© 2025 XEREA. جميع الحقوق محفوظة.</span><span>دفع آمن عند الاستلام أو إلكترونيًا</span></div>
 </footer>
 
 <a class="floating-whatsapp" href="https://wa.me/201152155717" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب">تواصل معنا</a>
@@ -2663,6 +2782,7 @@ function refreshRoleBoundListeners(){
   if(unsubCollections){unsubCollections();unsubCollections=null;}
   if(unsubTreasury){unsubTreasury();unsubTreasury=null;}
   if(unsubReturns){unsubReturns();unsubReturns=null;}
+  if(unsubActionLogs){unsubActionLogs();unsubActionLogs=null;}
 
   if(currentRole==='team' || currentRole==='admin'){
     listenTeamOrders();
@@ -2681,6 +2801,7 @@ function refreshRoleBoundListeners(){
   }
   if(currentRole==='admin'){
     listenAdminOrders();
+    listenActionLogs();
   }
 }
 
@@ -2860,24 +2981,28 @@ function renderNeedSelect(){
 }
 function onNeedSelect(v){
   needFilter = v;
+  productsPage = 1;
   renderStoreProducts();
   document.getElementById('storeProductsSection')?.scrollIntoView({behavior:'smooth', block:'start'});
 }
 /* بيستخدم برضه من بانر "الهدايا الذكية" عشان يحدد قيمة الـselect تلقائيًا */
 function pickNeedByKey(key){
   needFilter = key;
+  productsPage = 1;
   const sel = document.getElementById('needSelect');
   if(sel) sel.value = key;
   renderStoreProducts();
   document.getElementById('storeProductsSection')?.scrollIntoView({behavior:'smooth', block:'start'});
 }
-function scrollToOffers(){
-  const el = document.getElementById('offersWrap');
+function scrollToSection(id){
+  const el = document.getElementById(id);
   if(el && el.style.display!=='none'){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
   else { document.getElementById('storeProductsSection')?.scrollIntoView({behavior:'smooth', block:'start'}); }
 }
+function scrollToOffers(){ scrollToSection('offersWrap'); }
 function pickCategory(key){
   categoryFilter = (categoryFilter===key) ? '' : key;
+  productsPage = 1;
   renderCategoryBento();
   renderStoreProducts();
   document.getElementById('storeProductsSection')?.scrollIntoView({behavior:'smooth', block:'start'});
@@ -2933,6 +3058,8 @@ function renderPGenderSelect(){
 let categoryFilter = '';
 let needFilter = '';
 let storeSearchText = '';
+let productsPage = 1;               /* رقم الصفحة الحالية في قسم "كل المنتجات" */
+const PRODUCTS_PAGE_SIZE = 10;      /* عدد المنتجات في كل صفحة */
 function focusStoreSearch(){
   document.getElementById('storeSearch')?.focus();
 }
@@ -2940,6 +3067,7 @@ function searchStoreCategory(label){
   const input = document.getElementById('storeSearch');
   if(input) input.value = label;
   storeSearchText = label.toLowerCase();
+  productsPage = 1;
   renderStoreProducts();
   document.getElementById('storeProductsSection')?.scrollIntoView({behavior:'smooth', block:'start'});
 }
@@ -2949,12 +3077,14 @@ function clearStoreCategory(){
   storeSearchText = '';
   categoryFilter = '';
   needFilter = '';
+  productsPage = 1;
   renderCategoryBento();
   renderNeedSelect();
   renderStoreProducts();
 }
 document.getElementById('storeSearch')?.addEventListener('input', event=>{
   storeSearchText = event.target.value.trim().toLowerCase();
+  productsPage = 1;
   renderStoreProducts();
 });
 function renderStoreProducts(){
@@ -2967,7 +3097,15 @@ function renderStoreProducts(){
   }
   document.getElementById('prodCount').textContent = visible.length + ' قطعة';
   document.getElementById('productsEmpty').style.display = visible.length? 'none':'block';
-  grid.innerHTML = visible.map(p=>{
+
+  /* ترقيم الصفحات: نعرض عدد محدد من المنتجات في كل صفحة بدل عرضهم كلهم مرة واحدة */
+  const totalPages = Math.max(1, Math.ceil(visible.length / PRODUCTS_PAGE_SIZE));
+  if(productsPage > totalPages) productsPage = totalPages;
+  if(productsPage < 1) productsPage = 1;
+  const startIdx = (productsPage-1) * PRODUCTS_PAGE_SIZE;
+  const pageItems = visible.slice(startIdx, startIdx + PRODUCTS_PAGE_SIZE);
+
+  grid.innerHTML = pageItems.map(p=>{
     const thumb = productImages(p)[0];
     const hasDiscount = p.compareAtPrice && p.compareAtPrice > p.price;
     const reviews = Array.isArray(p.reviews) ? p.reviews : [];
@@ -2998,9 +3136,36 @@ function renderStoreProducts(){
       </div>
     </div>`;
   }).join('');
+  renderProductsPagination(totalPages);
   renderHomeSliders();
   renderHeroSlider();
   tryOpenPendingSharedProduct();
+}
+function renderProductsPagination(totalPages){
+  const wrap = document.getElementById('productsPagination');
+  if(!wrap) return;
+  if(totalPages<=1){ wrap.innerHTML=''; wrap.style.display='none'; return; }
+  wrap.style.display = 'flex';
+  const goPage = (n)=>{
+    productsPage = n;
+    renderStoreProducts();
+    document.getElementById('storeProductsSection')?.scrollIntoView({behavior:'smooth', block:'start'});
+  };
+  window.__goProductsPage = goPage;
+  /* نعرض أول صفحة وآخر صفحة دايمًا + الصفحات القريبة من الصفحة الحالية، وباقي الصفحات بـ "..." */
+  const pages = [];
+  for(let i=1;i<=totalPages;i++){
+    if(i===1 || i===totalPages || Math.abs(i-productsPage)<=1) pages.push(i);
+    else if(pages[pages.length-1]!=='…') pages.push('…');
+  }
+  wrap.innerHTML = `
+    <button type="button" class="page-btn" ${productsPage<=1?'disabled':''} onclick="__goProductsPage(${productsPage-1})">‹ السابق</button>
+    ${pages.map(p=> p==='…'
+      ? `<span class="page-dots">…</span>`
+      : `<button type="button" class="page-btn ${p===productsPage?'active':''}" onclick="__goProductsPage(${p})">${p}</button>`
+    ).join('')}
+    <button type="button" class="page-btn" ${productsPage>=totalPages?'disabled':''} onclick="__goProductsPage(${productsPage+1})">التالي ›</button>
+  `;
 }
 function productImages(p){
   const imgs = Array.isArray(p.images) ? p.images.filter(Boolean) : [];
@@ -3095,20 +3260,17 @@ function productRecencyScore(p){
 const sliderStates = {};
 function renderProductSlider(key, list, badgeText){
   const wrap = document.getElementById(key+'Wrap');
-  const scroller = document.getElementById(key+'Scroller');
   const el = document.getElementById(key+'Slider');
-  if(!wrap||!el||!scroller) return;
-  if(!sliderStates[key]) sliderStates[key] = {rafId:0, paused:false};
-  const state = sliderStates[key];
+  if(!wrap||!el) return;
   wrap.style.display = list.length? 'block':'none';
-  if(!list.length){ cancelAnimationFrame(state.rafId); return; }
-  const slideHtml = list.map(p=>{
+  if(!list.length) return;
+  el.innerHTML = list.map(p=>{
     const thumb = productImages(p)[0];
     const hasDiscount = p.compareAtPrice && p.compareAtPrice > p.price;
     return `
     <div class="new-slide" onclick="openProductDetail('${p.id}')">
       <div class="thumb">
-        ${thumb? `<img src="${esc(thumb)}">` : ''}
+        ${thumb? `<img src="${esc(thumb)}" loading="lazy">` : ''}
         <span class="badge-new">${badgeText}</span>
       </div>
       <div class="body">
@@ -3120,30 +3282,14 @@ function renderProductSlider(key, list, badgeText){
       </div>
     </div>`;
   }).join('');
-  /* بنكرر المحتوى مرتين بالظبط (نسخة أصلية + نسخة مطابقة) عشان لما نوصل لنص عرض
-     الشريط بالظبط نرجّع scrollLeft لأول نقطة، فيبقى فيه شريط بلا نهاية بدون أي فراغ */
-  el.innerHTML = slideHtml + slideHtml;
-  scroller.scrollLeft = 0;
-  cancelAnimationFrame(state.rafId);
-  const step = ()=>{
-    if(!state.paused){
-      const halfWidth = el.scrollWidth / 2;
-      scroller.scrollLeft += 0.6;
-      if(scroller.scrollLeft >= halfWidth) scroller.scrollLeft -= halfWidth;
-    }
-    state.rafId = requestAnimationFrame(step);
-  };
-  state.rafId = requestAnimationFrame(step);
-  scroller.onmouseenter = ()=>{ state.paused = true; };
-  scroller.onmouseleave = ()=>{ state.paused = false; };
 }
 function renderHomeSliders(){
-  /* وصل حديثًا — بترتيب تاريخ الإضافة الفعلي، مش أي تعديل لاحق */
+  /* وصل حديثًا — آخر 5 منتجات بترتيب تاريخ الإضافة الفعلي، مش أي تعديل لاحق */
   const newest = [...products].sort((a,b)=>{
     const at = a.createdAt?.toMillis ? a.createdAt.toMillis() : 0;
     const bt = b.createdAt?.toMillis ? b.createdAt.toMillis() : 0;
     return bt-at;
-  }).slice(0,10);
+  }).slice(0,5);
   renderProductSlider('newArrivals', newest, '🆕 جديد');
 
   /* الأكثر مبيعًا — من soldCount الفعلي اللي بيتحدث تلقائيًا مع كل عملية بيع */
@@ -3845,6 +3991,152 @@ function notifyNewOrderArrived(added){
   }catch(err){ /* لو المتصفح مانع الصوت من غير تفاعل مستخدم، بنتجاهل من غير ما نكسر الصفحة */ }
 }
 let teamAllOrdersCache = [];
+
+/* ============================================================
+   سجل الإجراءات (Actions Log) — تسجيل أي تعديل/حذف على الطلبات أو
+   بيانات التحصيل، مع إمكانية تراجع الإدارة عن الإجراء خلال 3 أيام من وقته.
+   بعد مرور 3 أيام، الإجراء يفضل مسجل في السجل لكن زرار "تراجع" بيتعطل.
+   ============================================================ */
+const ACTION_LOG_REVERT_WINDOW_MS = 3 * 24 * 60 * 60 * 1000; /* 3 أيام */
+async function logAction(action, entity, entityId, label, beforeData, afterData){
+  try{
+    await db.collection('actionLogs').add({
+      action,                 /* 'edit' أو 'delete' */
+      entity,                 /* 'order' أو 'collection' */
+      entityId,
+      label: label || '',
+      beforeData: beforeData || null,
+      afterData: afterData || null,
+      performedByEmail: (currentUser && currentUser.email) || null,
+      performedByName: (currentUser && currentUser.displayName) || null,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      reverted: false,
+      revertedAt: null,
+    });
+  }catch(err){ console.error('logAction', err); }
+}
+let actionLogsCache = [];
+let unsubActionLogs = null;
+function listenActionLogs(){
+  if(unsubActionLogs) return;
+  unsubActionLogs = db.collection('actionLogs').orderBy('createdAt','desc').limit(300).onSnapshot(snap=>{
+    actionLogsCache = snap.docs.map(d=>({id:d.id,...d.data()}));
+    renderActionLogsTable();
+  }, err=>console.error('listenActionLogs', err));
+}
+const ACTION_LOG_LABELS = {edit:'تعديل', delete:'حذف'};
+const ACTION_ENTITY_LABELS = {order:'طلب', collection:'تحصيل'};
+function renderActionLogsTable(){
+  const tbody = document.getElementById('actionLogsTable');
+  if(!tbody) return;
+  const now = Date.now();
+  tbody.innerHTML = actionLogsCache.map(l=>{
+    const at = l.createdAt?.toMillis ? l.createdAt.toMillis() : 0;
+    const withinWindow = at && (now - at) <= ACTION_LOG_REVERT_WINDOW_MS;
+    const canRevert = withinWindow && !l.reverted;
+    return `
+    <tr>
+      <td class="mono" style="font-size:11.5px">${fmtDate(l.createdAt)}</td>
+      <td>${ACTION_ENTITY_LABELS[l.entity]||l.entity}</td>
+      <td>${ACTION_LOG_LABELS[l.action]||l.action}</td>
+      <td style="font-size:12.5px">${esc(l.label||'—')}</td>
+      <td style="font-size:12px">${esc(l.performedByName||l.performedByEmail||'—')}</td>
+      <td>
+        ${l.reverted
+          ? `<span style="color:#7fd4bd;font-size:12px">تم التراجع</span>`
+          : canRevert
+            ? `<button class="btn btn-outline btn-sm" onclick="revertActionLog('${l.id}')">↩ تراجع</button>`
+            : `<span style="color:#8a8a8a;font-size:11.5px">مر عليها أكتر من 3 أيام</span>`}
+      </td>
+    </tr>`;
+  }).join('') || `<tr><td colspan="6" style="text-align:center;color:#8a8a8a;padding:20px">لا توجد إجراءات مسجلة بعد</td></tr>`;
+}
+async function revertActionLog(logId){
+  const log = actionLogsCache.find(l=>l.id===logId);
+  if(!log){ toast('تعذر إيجاد الإجراء'); return; }
+  const at = log.createdAt?.toMillis ? log.createdAt.toMillis() : 0;
+  if(!at || (Date.now()-at) > ACTION_LOG_REVERT_WINDOW_MS){ toast('مر على الإجراء أكتر من 3 أيام، مينفعش التراجع عنه'); return; }
+  if(log.reverted){ toast('اتعمله تراجع قبل كده'); return; }
+  if(!confirm('تأكيد التراجع عن هذا الإجراء؟ هيرجع البيانات لحالتها قبل ما يتم الإجراء ده.')) return;
+  try{
+    if(log.entity==='order' && log.action==='delete'){
+      /* الطلب كان اتمسح بالكامل — نرجّعه بنفس الـID وبنفس بياناته */
+      await db.collection('orders').doc(log.entityId).set(log.beforeData||{});
+    } else if(log.entity==='order' && log.action==='edit'){
+      await db.collection('orders').doc(log.entityId).update(log.beforeData||{});
+    } else if(log.entity==='collection'){
+      await db.collection('orders').doc(log.entityId).update(log.beforeData||{});
+    }
+    await db.collection('actionLogs').doc(logId).update({
+      reverted: true,
+      revertedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      revertedByEmail: (currentUser && currentUser.email) || null,
+    });
+    toast('تم التراجع عن الإجراء بنجاح');
+  }catch(err){
+    console.error('revertActionLog', err);
+    toast('تعذر التراجع — '+(err.message||''));
+  }
+}
+
+/* ---- تعديل/حذف الطلبات من لوحة الإدارة، مع تسجيل الإجراء ---- */
+function openEditOrderModal(orderId){
+  const o = allOrdersCache.find(x=>x.id===orderId) || teamAllOrdersCache.find(x=>x.id===orderId);
+  if(!o){ toast('تعذر إيجاد الطلب'); return; }
+  document.getElementById('eoOrderId').value = orderId;
+  document.getElementById('eoName').value = o.customerName||'';
+  document.getElementById('eoPhone').value = o.phone||'';
+  document.getElementById('eoAddress').value = o.address||'';
+  document.getElementById('eoTotal').value = o.total||0;
+  document.getElementById('eoNotes').value = o.notes||'';
+  document.getElementById('editOrderModalWrap').classList.add('active');
+  pushModalHistory();
+}
+async function submitEditOrder(e){
+  e.preventDefault();
+  const orderId = document.getElementById('eoOrderId').value;
+  const o = allOrdersCache.find(x=>x.id===orderId) || teamAllOrdersCache.find(x=>x.id===orderId);
+  if(!o){ toast('تعذر إيجاد الطلب'); return; }
+  const before = {
+    customerName: o.customerName||null, phone: o.phone||null,
+    address: o.address||null, total: o.total||0, notes: o.notes||null,
+  };
+  const after = {
+    customerName: document.getElementById('eoName').value.trim(),
+    phone: document.getElementById('eoPhone').value.trim(),
+    address: document.getElementById('eoAddress').value.trim(),
+    total: Number(document.getElementById('eoTotal').value)||0,
+    notes: document.getElementById('eoNotes').value.trim(),
+  };
+  await db.collection('orders').doc(orderId).update({
+    ...after,
+    updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    timeline: firebase.firestore.FieldValue.arrayUnion(timelineEntry('تم تعديل بيانات الطلب من لوحة الإدارة', o.status)),
+  });
+  await logAction('edit','order', orderId, `طلب #${orderId.slice(0,6)} — ${after.customerName||'—'}`, before, after);
+  closeModal('editOrderModalWrap');
+  toast('تم حفظ التعديلات، والإجراء اتسجل في سجل الإجراءات');
+}
+async function deleteOrderByAdmin(orderId){
+  const o = allOrdersCache.find(x=>x.id===orderId) || teamAllOrdersCache.find(x=>x.id===orderId);
+  if(!o){ toast('تعذر إيجاد الطلب'); return; }
+  if(!confirm('تأكيد حذف الطلب نهائيًا؟ تقدر تتراجع عن الحذف من "سجل الإجراءات" خلال 3 أيام.')) return;
+  const {id, ...beforeData} = o;
+  await logAction('delete','order', orderId, `طلب #${orderId.slice(0,6)} — ${o.customerName||'—'}`, beforeData, null);
+  await db.collection('orders').doc(orderId).delete();
+  toast('تم حذف الطلب — تقدر تتراجع من سجل الإجراءات لو احتجت');
+}
+
+/* ---- تعديل/حذف بيانات التحصيل من قسم الحسابات، مع تسجيل الإجراء ---- */
+async function resetOrderCollection(orderId){
+  const o = teamAllOrdersCache.find(x=>x.id===orderId);
+  if(!o){ toast('تعذر إيجاد الطلب'); return; }
+  if(!confirm('تأكيد حذف بيانات التحصيل المسجلة لهذا الطلب؟')) return;
+  const before = {collectedAmount: o.collectedAmount||0, collectionStatus: o.collectionStatus||null};
+  await logAction('delete','collection', orderId, `تحصيل طلب #${orderId.slice(0,6)} — ${o.customerName||'—'}`, before, null);
+  await db.collection('orders').doc(orderId).update({collectedAmount: 0, collectionStatus: null});
+  toast('تم حذف بيانات التحصيل — تقدر تتراجع من سجل الإجراءات لو احتجت');
+}
 
 /* فلاتر النوع + الموظف المشتركة بين كل تابات لوحة الفريق ولوحة الإدارة */
 function refreshCategoryFilterSelects(){
@@ -5246,11 +5538,12 @@ async function deleteProduct(id){
    لوحة الإدارة
    ============================================================ */
 function adminTab(name){
-  ['overview','orders','team','customers'].forEach(t=>{
+  ['overview','orders','team','customers','actionlog'].forEach(t=>{
     document.getElementById('admin-tab-'+t).style.display = (t===name)?'block':'none';
   });
   document.querySelectorAll('#view-admin .dash-tabs button').forEach(b=>b.classList.toggle('active', b.dataset.tab===name));
   if(name==='overview') renderAdminOverview();
+  if(name==='actionlog') renderActionLogsTable();
 }
 
 /* ============================================================
